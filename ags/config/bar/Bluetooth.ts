@@ -10,7 +10,6 @@ const btbattery = Variable("", {
 export default () => Widget.EventBox({
 	class_name: "custom_b",
 	child: Widget.Label({
-		css: 'padding-right : 5px;',
 		label: btbattery.bind().as(v => {
 			if (v == "")
 				return "󰂯"

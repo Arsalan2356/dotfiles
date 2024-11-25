@@ -228,6 +228,7 @@ in
       python-pkgs.keyboard
       python-pkgs.pyqt6
       python-pkgs.pyqtdarktheme
+      python-pkgs.scikit-learn
     ]))
 
     # Dev Packages
