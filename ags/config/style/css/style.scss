@@ -1,0 +1,9 @@
+@use "color";
+
+@use "bar/bar";
+
+
+window.bar {
+  background-color: #1a1b26;
+  color: color.$text;
+}

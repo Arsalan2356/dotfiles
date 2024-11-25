@@ -1,0 +1,76 @@
+@use "../color";
+
+.custom_b {
+  background: none;
+  border: none;
+  outline: none;
+  color: color.$text;
+}
+
+.launcher {
+  padding-left: 10px;
+  padding-top: 4pt;
+  padding-bottom: 4pt;
+  color: color.$text;
+}
+
+.workspaces {
+  padding-left: 12px;
+  padding-top: 3px;
+
+  label {
+    font-size: 14pt;
+    min-width: 14pt;
+    min-height: 10pt;
+    border-radius: 3px;
+    margin: 0 2.5pt;
+
+    transition: all 0.5s ease-in-out;
+
+    &.occupied {
+      /* box-shadow: inset 0 0 0 20pt #2d6780; */
+      background: linear-gradient(to top, #565f89 37%, color.$base);
+      min-width: 32px;
+    }
+
+    &.active {
+      /* box-shadow: inset 0 0 0 20pt #01d962; */
+      background: linear-gradient(to top, #2ac3de, color.$base);
+      min-width: 44px;
+    }
+  }
+}
+
+.clients {
+  padding-left: 12px;
+  padding-top: 3px;
+}
+
+.clientchild {
+  border: none;
+  transition: all 0.2s ease-in-out;
+  border-radius: 3px;
+
+  &.active {
+    background: linear-gradient(to top, #2ac3de, color.$base);
+    min-width: 42px;
+  }
+}
+
+.client-title {
+  padding: 0 0 0 20pt;
+  font-size: 10pt;
+}
+
+.time {
+  color: color.$text;
+  padding-right: 6px;
+}
+
+.systray {
+  /* background-color: #171829; */
+  /* border: 2px solid #171829; */
+  /* border-radius: 20pt; */
+  padding: 0 5pt 0 5pt;
+  font-size: 1.2em;
+}
