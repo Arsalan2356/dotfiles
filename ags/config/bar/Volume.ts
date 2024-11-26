@@ -11,7 +11,7 @@ export default () => Widget.EventBox({
 				return "0"
 			else {
 				const v2 = parseFloat(v.substring(8));
-				return `${v2 >= 0.5 ? " " : " "} ${v2 * 100}%`
+				return `${v2 >= 0.3 ? " " : " "} ${Math.round(v2 * 100)}%`
 			}
 		}),
 	}),

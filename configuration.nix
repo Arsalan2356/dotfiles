@@ -229,6 +229,7 @@ in
       python-pkgs.pyqt6
       python-pkgs.pyqtdarktheme
       python-pkgs.scikit-learn
+      python-pkgs.seaborn
     ]))
 
     # Dev Packages
