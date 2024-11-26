@@ -106,11 +106,6 @@ in
     inputs.aagl.packages.x86_64-linux.sleepy-launcher
     inputs.aagl.packages.x86_64-linux.wavey-launcher
 
-
-    inputs.astal.packages.x86_64-linux.astal3
-    inputs.astal.packages.x86_64-linux.hyprland
-    inputs.astal.packages.x86_64-linux.tray
-
   ];
 
 

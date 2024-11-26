@@ -16,11 +16,6 @@
     };
     # stylix.url = "github:danth/stylix";
 
-    astal = {
-      url = "github:aylur/astal";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     ags.url = "github:Aylur/ags/67b0e31ded361934d78bddcfc01f8c3fcf781aad";
 
     aagl = {
