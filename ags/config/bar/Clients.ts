@@ -30,13 +30,15 @@ class Client {
 
 
 var windows = Variable(new Map<String, Client>());
+export var inactive = Variable(false);
 
 // Load all windows once before starting
 const out = Utils.exec("hyprclients").split("\n");
 
 const startm = new Map();
 
-const active_id = parseInt(Utils.exec("hypractive"));
+const active_workspace_stats = Utils.exec("hypractive").split("<separator>");
+const active_id = parseInt(active_workspace_stats[0]);
 for (const q of out) {
 	const vals = q.split("<separator>");
 	if (parseInt(vals[2]) == active_id) {
@@ -48,6 +50,12 @@ for (const q of out) {
 	}
 }
 windows.setValue(startm);
+
+const numWindows = parseInt(active_workspace_stats[1]);
+if (numWindows == 0) {
+	inactive.setValue(true);
+}
+
 
 hyprland.connect("event", (__, v, _args) => {
 	if (events.includes(v)) {
@@ -66,7 +74,8 @@ hyprland.connect("event", (__, v, _args) => {
 			}
 		}
 		else {
-			const active_workspace_id = parseInt(Utils.exec("hypractive"));
+			const active_workspace_stats = Utils.exec("hypractive").split("<separator>");
+			const active_workspace_id = parseInt(active_workspace_stats[0]);
 			const newm = new Map();
 			const out = Utils.exec("hyprclients").split("\n");
 			for (const q of out) {
@@ -78,6 +87,13 @@ hyprland.connect("event", (__, v, _args) => {
 					}
 					newm.set(vals[0], new Client(vals[1], vals[2], vals[3], Variable(vals[4]), vals[5], tempcname));
 				}
+			}
+			const numWindows = parseInt(active_workspace_stats[1]);
+			if (numWindows == 0) {
+				inactive.setValue(true);
+			}
+			else {
+				inactive.setValue(false);
 			}
 			windows.setValue(newm);
 		}
@@ -94,6 +110,7 @@ hyprland.connect("event", (__, v, _args) => {
 		}
 	}
 })
+
 
 export default () => Widget.Box({
 	class_name: "clients",

@@ -5,6 +5,10 @@
   background: #1a1b26;
   border-radius: 20px;
   padding: 0 10px;
+
+  &.inactive {
+    background: transparent;
+  }
 }
 
 .custom_b {
@@ -49,13 +53,12 @@
 
 .clients {
   padding: 0 5px;
-  min-width: 36px;
 }
 
 .clientchild {
   border: none;
   transition: all 0.2s ease-in-out;
-  padding-top: 1px;
+  padding-top: 3px;
   border-radius: 25px;
 
   &.active {

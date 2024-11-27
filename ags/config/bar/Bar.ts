@@ -1,6 +1,6 @@
 import Launcher from "./Launcher";
 import Workspaces from "./Workspaces";
-import Clients from "./Clients";
+import { inactive, default as Clients } from "./Clients";
 import ClientTitle from "./ClientTitle";
 // import Cpu from "./Cpu";
 // import Mem from "./Mem";
@@ -40,7 +40,7 @@ const Left = Widget.Box({
 });
 
 const Center = Widget.Box({
-	class_name: "rbackground",
+	class_names: inactive.bind().as(m => { return m ? ["rbackground", "inactive"] : ["rbackground"] }),
 	hpack: "center",
 	spacing: 5,
 	children: [Clients()],
