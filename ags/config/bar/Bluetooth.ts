@@ -19,7 +19,7 @@ export default () => Widget.EventBox({
 			}
 		}),
 	}),
-	on_primary_click: () => { Utils.execAsync("btkitty") },
-	on_secondary_click: () => { Utils.execAsync("btkitty") },
-	on_middle_click: () => { Utils.execAsync("btkitty") },
+	on_primary_click: () => { Utils.execAsync("foot -e bluetuith") },
+	on_secondary_click: () => { Utils.execAsync("foot -e bluetuith") },
+	on_middle_click: () => { Utils.execAsync("foot -e bluetuith") },
 })

@@ -4,7 +4,6 @@
 
 { config, pkgs, inputs, lib, ... }:
 let
-  themes = pkgs.callPackage ./theme.nix {};
   tokyonight = pkgs.tokyonight-gtk-theme.overrideAttrs (old : {
     src = pkgs.fetchFromGitHub {
       owner = "Fausto-Korpsvart";
@@ -146,16 +145,12 @@ in
 
     # General Purpose
     vim
-    kitty
+    foot
     gparted
-    parted
     pavucontrol
     lxqt.lxqt-policykit
-    walker
-    conky
     appimage-run
     rsync
-    nix-search-cli
     busybox
     btop
     papirus-icon-theme
@@ -272,7 +267,6 @@ in
     # Custom Stuff
     (pkgs.callPackage ./audiorelay.nix {})
     (import ./grimblast.nix { inherit pkgs; })
-    (import ./bt.nix { inherit pkgs; })
     (import ./sysinfo.nix { inherit pkgs; })
     (import ./clients.nix { inherit pkgs; })
     (import ./clients2.nix { inherit pkgs; })
@@ -280,8 +274,6 @@ in
     (import ./ags {inherit pkgs; })
     (import ./iconfinder.nix { inherit lib pkgs; })
     parsec-bin
-    themes.minimal
-
 
   ];
   environment.extraOutputsToInstall = [ "dev" ];
@@ -384,18 +376,6 @@ in
     "amdgpu"
     "nvidia"
   ];
-
-  services.displayManager.sddm = {
-    enable = false;
-    wayland.enable = true;
-    autoNumlock = true;
-    package = pkgs.kdePackages.sddm;
-    theme = "${themes.minimal}/share/sddm/themes/where_is_my_sddm_theme";
-    extraPackages = with pkgs; [
-      kdePackages.qt5compat
-    ];
-  };
-
 
   # Enable flatpaks
   services.flatpak.enable = true;

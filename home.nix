@@ -9,7 +9,7 @@ let
     };
   });
   customOhMyZshTheme = ''
-    PROMPT='λ %~ $(git_prompt_info)%{$reset_color%}'
+    PROMPT='%F{#c0caf5}λ %~%{$reset_color%} $(git_prompt_info)%{$reset_color%}'
     RPROMPT="%F{#c0caf5} %D{%d/%m/%Y | %H:%M:%S}%{$reset_color%}"
     ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
     ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
@@ -141,6 +141,58 @@ in
     enableZshIntegration = false;
   };
 
+  programs.foot = {
+    enable = true;
+    settings = {
+      main = {
+	font = "monospace:size=11";
+      };
+      colors = {
+	background = "1a1b26";
+	regular0 = "1a1b26";
+	selection-background = "c0caf5";
+	selection-foreground = "1a1b26";
+      };
+    };
+  };
+
+
+  programs.fuzzel = {
+    enable = true;
+    settings = {
+      main = {
+	layer = "overlay";
+	prompt = "\"λ \"";
+	terminal = "foot -e";
+	match-counter = "yes";
+	line-height = "28";
+	lines = "10";
+	font = "monospace:size=15";
+	anchor = "top";
+	y-margin = "150";
+	width = "50";
+	tabs = "4";
+	list-executables-in-path = "yes";
+	show-actions = "yes";
+      };
+      colors = {
+	background = "#1a1b26e6";
+	text = "#c0caf5ff";
+	prompt = "#c0caf5ff";
+	placeholder = "#c0caf5ff";
+	input = "#c0caf5ff";
+	match = "#79a0f5ff";
+	selection = "#31323cff";
+	selection-text = "#c0caf5ff";
+	selection-match = "#79a0f5ff";
+	counter = "#c0caf5ff";
+	border = "#1a1b26e6";
+      };
+    };
+  };
+
+  programs.fzf.enable = true;
+
 
   programs.obs-studio = {
     enable = true;
@@ -159,7 +211,30 @@ in
 	enable = true;
 	enableCompletion = true;
 	autosuggestion.enable = true;
-	syntaxHighlighting.enable = true;
+	syntaxHighlighting = {
+	  enable = true;
+	  highlighters = [
+	    "brackets"
+	  ];
+	  styles = {
+	    reserved-word = "fg=#24acd4";
+	    precommand = "fg=green,bold";
+	    commandseparator = "fg=#c0caf5";
+	    hashed-command = "fg=#c0caf5";
+	    autodirectory = "fg=green,bold";
+	    path = "fg=#c0caf5";
+	    globbing = "fg=#24acd4";
+	    history-expansion = "fg=#24acd4";
+	    single-hyphen-option = "fg=#c0caf5";
+	    double-hyphen-option = "fg=#c0caf5";
+	    assign = "fg=#c0caf5";
+	    redirection = "fg=#c0caf5";
+	    comment = "fg=#c0caf5";
+	    default = "fg=#c0caf5";
+	    arg0 = "fg=green,bold";
+	    none = "fg=#c0caf5";
+	  };
+	};
 	autocd = true;
 	sessionVariables = {
 		CASE_SENSITIVE = "true";

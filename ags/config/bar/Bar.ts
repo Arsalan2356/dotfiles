@@ -22,40 +22,32 @@ import Logout from "./Logout";
 	# add in the icons stuff with the clients (need to first make the iconfinder)
 	change client title to have an icon instead of a nerdfont text icon
 	add gpu usage to cpu and memory area and combine into one class file
-	date is fine but maybe move it around more to the right
-	bluetooth icon should be right beside the tray
+	# date is fine but maybe move it around more to the right
+	# bluetooth icon should be right beside the tray
 	# bluetooth should have a battery percentage beside it (update maybe every 5 minutes idk)
-	clipboard either remove or move somewhere else (feels out of place)
+	# clipboard either remove or move somewhere else (feels out of place)
 	maybe create some sort of dropdown or something (should be beside the tray icons)
-	tray icons are fine but just move it around
-	create a volume box with the ability to at least see volume and maybe change it
-
-# ALL DONE
-	FOR CLIENTS
-	we've switched to a db and query model (as long as we reubuild at most half the time,
-	this is faster)
-	So, we create the db once when creating the list of cliets and then we only query
-	This will always be faster than the other method as long as this condition is met
-
-	TODO:
-	ADD STEAM INTEGRATION (read acf convert into a dictionary mapping titles to appids)
-	then query with the appid instead of the title
-	Don't strip steam_icon_ anymore since we're gonna be reading appids directly
-
+	# tray icons are fine but just move it around
+	# create a volume box with the ability to at least see volume and maybe change it
 */
 
 
 const Left = Widget.Box({
+	class_name: "rbackground",
+	hpack: "start",
 	spacing: 2,
 	children: [Launcher(), Workspaces(), ClientTitle()],
 });
 
 const Center = Widget.Box({
+	class_name: "rbackground",
+	hpack: "center",
 	spacing: 5,
 	children: [Clients()],
 });
 
 const Right = Widget.Box({
+	class_name: "rbackground",
 	hpack: "end",
 	spacing: 9,
 	children: [
