@@ -171,7 +171,6 @@ in
 	y-margin = "150";
 	width = "50";
 	tabs = "4";
-	list-executables-in-path = "yes";
 	show-actions = "yes";
       };
       colors = {
