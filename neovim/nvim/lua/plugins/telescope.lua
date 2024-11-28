@@ -3,10 +3,9 @@ return {
 	event = "VimEnter",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		{ 
+		{
 			"nvim-telescope/telescope-fzf-native.nvim",
-		 	build = 
-			'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
+			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
 		},
 
 		{ "nvim-telescope/telescope-ui-select.nvim" },
@@ -34,9 +33,9 @@ return {
 							end,
 						},
 						["<C-q>"] = { action = z_utils.create_basic_command("split") },
-					}
-				}
-			}
+					},
+				},
+			},
 		})
 
 		pcall(require("telescope").load_extension, "fzf")
@@ -59,17 +58,15 @@ return {
 			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 				winblend = 10,
 				previewer = false,
-		}))
+			}))
 		end, { desc = "[/] Fuzzily search in current buffer" })
 
-		
 		vim.keymap.set("n", "<leader>s/", function()
 			builtin.live_grep({
 				grep_open_files = true,
 				prompt_title = "Live Grep in Open Files",
 			})
 		end, { desc = "[S]earch [/] in Open Files" })
-		
 
 		vim.keymap.set("n", "<leader>sn", function()
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
@@ -83,7 +80,13 @@ return {
 				search_dirs = { "/home/rc", "G:/Rnd/Coding Stuff" },
 			})
 		end, { desc = "[S]earch [A]ll Files" })
-	
-		vim.keymap.set("n", "<leader>cd", require("telescope").extensions.zoxide.list)		
+
+		vim.keymap.set(
+			"n",
+			"<leader>cd",
+			require("telescope").extensions.zoxide.list,
+			{ desc = "[S]earch [F]iles with [Z]oxide" }
+		)
+		vim.keymap.set("n", "<leader>p", builtin.commands, { desc = "Open Command Palette" })
 	end,
 }
