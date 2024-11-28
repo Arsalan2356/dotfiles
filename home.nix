@@ -78,12 +78,8 @@ in
     php83Packages.composer
     php
     rustup
-    # zulu17
-    # zulu8
-    # zulu
     julia_19-bin
     inputs.hyprland-contrib.packages.x86_64-linux.grimblast
-    # inputs.stackpkgs.packages.x86_64-linux.audiorelay
     xarchiver
     curlFull
     heroic
@@ -97,6 +93,9 @@ in
     jc
     ffmpeg-full
     gst_all_1.gstreamer
+    qbittorrent
+    mpv
+    godot_4-mono
 
 
     inputs.aagl.packages.x86_64-linux.anime-game-launcher

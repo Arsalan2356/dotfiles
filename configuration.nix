@@ -158,37 +158,6 @@ in
     man-pages
     man-pages-posix
 
-    # graphene
-    # libsigcxx
-    # pkg-config
-    # sass
-    # cairo
-    # cairomm
-    # # GTK Stuff
-    # glib
-    # glibmm
-    # pango
-    # pangomm
-    # gdk-pixbuf
-    # atkmm
-    # gobject-introspection
-    # libepoxy
-    # gtk4
-    # gtk4-layer-shell
-    # # Dependencies
-    # autoconf
-    # automake
-    # bison
-    # debugedit
-    # fakeroot
-    # file
-    # flex
-    # gettext
-    # groff
-    # libtool
-    # gnum4
-
-
     # Hyprland specific
     nwg-displays
     networkmanagerapplet
@@ -293,15 +262,6 @@ in
 	"Hack"
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-
   # Enable flakes
   nix = {
 	package = pkgs.nix;
@@ -386,7 +346,6 @@ in
     wantedBy = ["default.target"];
 
     serviceConfig = {
-      #  ${pkgs.input-remapper}/bin/input-remapper-control --command autoload
       ExecStartPre = "${pkgs.coreutils-full}/bin/sleep 3";
       ExecStart = "${pkgs.sudo}/bin/sudo ${pkgs.input-remapper}/bin/input-remapper-service";
     };
@@ -479,8 +438,6 @@ in
   };
 
   programs.xwayland.enable = true;
-
-
 
 
   programs.virt-manager.enable = true;
