@@ -241,6 +241,7 @@ in
 		HIST_STAMPS = "yyyy-mm-dd";
 		NNN_PLUG = "f:fzcd;p:preview-tui;d:dups;";
 		NNN_FIFO = "/tmp/nnn.fifo";
+		SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent";
 	};
 	oh-my-zsh = {
 		enable = true;

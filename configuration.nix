@@ -420,6 +420,8 @@ in
     ];
   };
 
+  programs.ssh.startAgent = true;
+
 
   # Enable executing appimages
   programs.appimage = {
