@@ -180,7 +180,7 @@ in
 	placeholder = "#c0caf5ff";
 	input = "#c0caf5ff";
 	match = "#79a0f5ff";
-	selection = "#31323cff";
+	selection = "#54577bff";
 	selection-text = "#c0caf5ff";
 	selection-match = "#79a0f5ff";
 	counter = "#c0caf5ff";
