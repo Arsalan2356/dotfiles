@@ -5,8 +5,8 @@ import Bar from "bar/Bar"
 
 
 App.config({
-	closeWindowDelay: {},
-	windows: [Bar()],
+  closeWindowDelay: {},
+  windows: [Bar()],
 });
 
 
