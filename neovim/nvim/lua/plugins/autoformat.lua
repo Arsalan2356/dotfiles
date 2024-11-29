@@ -1,4 +1,4 @@
-return { 
+return {
 	"stevearc/conform.nvim",
 	event = { "BufWritePre" },
 	cmd = { "ConformInfo" },
@@ -6,7 +6,7 @@ return {
 		{
 			"<leader>f",
 			function()
-				require("conform").format({ async = true, lsp_fallback = true })
+				require("conform").format({ async = true, lsp_fallback = true, lsp_format = "prefer", undojoin = true })
 			end,
 			mode = "",
 			desc = "[F]ormat buffer",
