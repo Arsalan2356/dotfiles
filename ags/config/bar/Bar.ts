@@ -10,6 +10,7 @@ import Volume from "./Volume";
 import Time from "./Time";
 import SysTray from "./SysTray";
 import Logout from "./Logout";
+import Audio from "./Audio";
 
 
 /*
@@ -53,6 +54,7 @@ const Right = Widget.Box({
   children: [
     // Cpu(),
     // Mem(),
+    Audio(),
     Volume(),
     Bluetooth(),
     // Clipboard(),
