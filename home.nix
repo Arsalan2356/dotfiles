@@ -255,6 +255,8 @@ in
       cpr = "rsync -aHAX --info=progress2 --no-inc-recursive";
       update = "sudo nixos-rebuild switch --flake .#rc";
       setup = "cp ~/default/shell.nix . && echo \"use nix\" >> .envrc && direnv allow && echo \"Setup directory with .envrc and default shell.nix\"";
+      startwaydroid = "sudo systemctl start waydroid-container && waydroid session start";
+      stopwaydroid = "waydroid session stop && sudo systemctl stop waydroid-container";
     };
     initExtra = ''
 bindkey -s "^[[1;2D" 'cd ..\n'
