@@ -249,9 +249,8 @@ in
 
   # Fonts
   fonts.packages = with pkgs; [
-    fira-code
+    nerd-fonts.fira-code
     hack-font
-    (nerdfonts.override { fonts = [ "FiraCode" "Hack" ]; })
   ];
 
   fonts.fontDir.enable = true;
