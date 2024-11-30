@@ -38,7 +38,7 @@ export declare class CircularProgress<Child extends Gtk.Widget, Attr = unknown> 
     vfunc_get_preferred_width(): [number, number];
     private _toRadian;
     private _isFullCircle;
-    private _mapArcValueToRange;
+    private _scaleArcValue;
     vfunc_draw(cr: Context): boolean;
 }
 export default CircularProgress;

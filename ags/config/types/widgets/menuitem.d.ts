@@ -5,7 +5,7 @@ export type MenuItemProps<Child extends Gtk.Widget = Gtk.Widget, Attr = unknown,
     child?: Child;
     on_activate?: Event<Self>;
     on_select?: Event<Self>;
-    on_deselct?: Event<Self>;
+    on_deselect?: Event<Self>;
 }, Attr>;
 export declare function newMenuItem<Child extends Gtk.Widget = Gtk.Widget, Attr = unknown>(...props: ConstructorParameters<typeof MenuItem<Child, Attr>>): MenuItem<Child, Attr>;
 export interface MenuItem<Child, Attr> extends Widget<Attr> {

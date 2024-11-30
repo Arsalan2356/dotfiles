@@ -1,3 +1,4 @@
+import Gdk from 'gi://Gdk?version=3.0';
 import Service from '../service.js';
 export declare class ActiveClient extends Service {
     private _address;
@@ -37,6 +38,7 @@ export declare class Hyprland extends Service {
     readonly getMonitor: (id: number) => Monitor | undefined;
     readonly getWorkspace: (id: number) => Workspace | undefined;
     readonly getClient: (address: string) => Client | undefined;
+    readonly getGdkMonitor: (id: number) => Gdk.Monitor | null;
     constructor();
     private _connection;
     private _watchSocket;
