@@ -27,57 +27,67 @@ const ispaused = Variable(true, {
   }]
 })
 
-export default () => Widget.Box({
-  spacing: 14,
-  css: 'padding-right: 5px',
-  children: [
-    Widget.EventBox({
-      child: Widget.Label({
-        label: clients.bind().as(v => {
-          const ind = currplayer.getValue()
-          const name = v[ind >= v.length - 1 ? v.length - 1 : ind]
-          const i = name.indexOf(".")
-          return i != -1 ? name.substring(0, i) : name
-        })
-      }),
-      on_scroll_up: (_) => {
-        const oldval = currplayer.getValue()
-        const v = clients.getValue()
-        currplayer.setValue(oldval <= 0 ? v.length - 1 : oldval - 1)
-      },
-      on_scroll_down: (_) => {
-        const oldval = currplayer.getValue()
-        const v = clients.getValue()
-        currplayer.setValue(oldval >= v.length - 1 ? 0 : oldval + 1)
-      },
-    }),
-    Widget.CenterBox({
-      spacing: 21,
-      start_widget: Widget.EventBox({
-        child: Widget.Icon({
-          icon: `${App.configDir}/style/assets/previous.svg`,
-        }),
-        on_primary_click: () => { Utils.execAsync(`playerctl previous -p ${clients.getValue()[currplayer.getValue()]}`)}
-      }),
-      center_widget: Widget.EventBox({
-        child: Widget.Icon({
-          icon: ispaused.bind().as(v => {
-            return `${App.configDir}/style/assets/${v ? "play" : "pause"}.svg`
+export default () => Widget.Revealer({
+  revealChild: false,
+  transitionDuration : 400,
+  transition : "slide_left",
+  child: Widget.Box({
+    spacing: 14,
+    css: 'padding-right: 5px',
+    children: [
+      Widget.EventBox({
+        child: Widget.Label({
+          label: clients.bind().as(v => {
+            const ind = currplayer.getValue()
+            const name = v[ind >= v.length - 1 ? v.length - 1 : ind]
+            const i = name.indexOf(".")
+            return i != -1 ? name.substring(0, i) : name
           })
         }),
-        on_primary_click: () => { Utils.execAsync(`playerctl play-pause -p ${clients.getValue()[currplayer.getValue()]}`)}
+        on_scroll_up: (_) => {
+          const oldval = currplayer.getValue()
+          const v = clients.getValue()
+          currplayer.setValue(oldval <= 0 ? v.length - 1 : oldval - 1)
+        },
+        on_scroll_down: (_) => {
+          const oldval = currplayer.getValue()
+          const v = clients.getValue()
+          currplayer.setValue(oldval >= v.length - 1 ? 0 : oldval + 1)
+        },
       }),
-      end_widget: Widget.EventBox({
-        child: Widget.Icon({
-          icon: `${App.configDir}/style/assets/next.svg`,
+      Widget.CenterBox({
+        spacing: 21,
+        start_widget: Widget.EventBox({
+          child: Widget.Icon({
+            icon: `${App.configDir}/style/assets/previous.svg`,
+            size: 18,
+          }),
+          on_primary_click: () => { Utils.execAsync(`playerctl previous -p ${clients.getValue()[currplayer.getValue()]}`) }
         }),
-        on_primary_click: () => { Utils.execAsync(`playerctl next -p ${clients.getValue()[currplayer.getValue()]}`)}
+        center_widget: Widget.EventBox({
+          child: Widget.Icon({
+            icon: ispaused.bind().as(v => {
+              return `${App.configDir}/style/assets/${v ? "play" : "pause"}.svg`
+            }),
+            size: 22,
+          }),
+          on_primary_click: () => { Utils.execAsync(`playerctl play-pause -p ${clients.getValue()[currplayer.getValue()]}`) }
+        }),
+        end_widget: Widget.EventBox({
+          child: Widget.Icon({
+            icon: `${App.configDir}/style/assets/next.svg`,
+            size: 18,
+          }),
+          on_primary_click: () => { Utils.execAsync(`playerctl next -p ${clients.getValue()[currplayer.getValue()]}`) }
+        })
+      }),
+      Widget.Label({
+        label: "|",
       })
-    }),
-    Widget.Label({
-      label: "|",
-    })
-  ]
+    ]
+  }),
+  setup: self => self.poll(210, () => {
+    self.reveal_child = clients.getValue()[0] != ""
+  }),
 })
-
 
