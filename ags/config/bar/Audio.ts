@@ -1,6 +1,6 @@
-// Switch icons based on whether something is playing in current player
-// Allow switching current player by scrolling
-// Show something (event box) when clicking on current player name (!? maybe pavucontrol)
+// # Switch icons based on whether something is playing in current player
+// # Allow switching current player by scrolling
+// # Show something (event box) when clicking on current player name (!? maybe pavucontrol)
 // Possibly icons instead of names ? might be easier to work with
 // Use existing iconfinder and parse name and pass to get a path for an icon
 
