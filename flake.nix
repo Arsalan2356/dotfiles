@@ -24,7 +24,7 @@
     };
 
     nixpkgs-test = {
-      url = "git+file:///home/rc/nixtest/nixpkgs";
+      url = "github:Arsalan2356/nixpkgs/linux-zen-lqx";
     };
 
 

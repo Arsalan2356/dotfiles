@@ -64,11 +64,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1733085484,
-        "narHash": "sha256-dVmNuUajnU18oHzBQWZm1BQtANCHaqNuxTHZQ+GN0r8=",
+        "lastModified": 1733133928,
+        "narHash": "sha256-gU40r9AfpIr4eq+0noM8yH1Hxf+EA3dqfIpFtQl8Y1E=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c1fee8d4a60b89cae12b288ba9dbc608ff298163",
+        "rev": "873e39d5f4437d2f3ab06881fea8e63e45e1d011",
         "type": "github"
       },
       "original": {
@@ -115,17 +115,18 @@
     },
     "nixpkgs-test": {
       "locked": {
-        "lastModified": 1733091622,
-        "narHash": "sha256-4sA9ZgMGlFmJVn0teDMldgPvie0sLMiyle2qICV88NU=",
-        "ref": "refs/heads/master",
-        "rev": "9a6cc518e1af0cc86723880689b4c7c387baeaa0",
-        "revCount": 714828,
-        "type": "git",
-        "url": "file:///home/rc/nixtest/nixpkgs"
+        "lastModified": 1733134207,
+        "narHash": "sha256-2vsuGL47lcu8vy/oy8X62VdP5JOODgWu/3yk7hA+I04=",
+        "owner": "Arsalan2356",
+        "repo": "nixpkgs",
+        "rev": "c1d0a025aab8609c00258b163a9d9ac3498118ea",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/rc/nixtest/nixpkgs"
+        "owner": "Arsalan2356",
+        "ref": "linux-zen-lqx",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs_2": {
