@@ -22,6 +22,12 @@
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixpkgs-test = {
+      url = "git+file:///home/rc/nixtest/nixpkgs";
+    };
+
+
   };
   outputs = inputs @ { nixpkgs, home-manager, ... }:
   let
@@ -30,11 +36,15 @@
       inherit system;
       config.allowUnfree = true;
     };
+    pkgs-test = import inputs.nixpkgs-test {
+      inherit system;
+      config.allowUnfree = true;
+    };
   in {
     nixosConfigurations = {
       rc = nixpkgs.lib.nixosSystem {
 	inherit system;
-	specialArgs = { inherit pkgs inputs; };
+	specialArgs = { inherit pkgs inputs pkgs-test; };
 	modules = [
 	  ./configuration.nix
 	  home-manager.nixosModules.home-manager {

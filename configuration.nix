@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, lib, ... }:
+{ config, pkgs, pkgs-test, inputs, lib, ... }:
 let
   tokyonight = pkgs.tokyonight-gtk-theme.overrideAttrs (old : {
     src = pkgs.fetchFromGitHub {
@@ -27,7 +27,7 @@ in
   # Kernel Packages
   # Switch to latest
   # boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs-test.linuxPackages_zen;
 
 
   # Load amdgpu kernel module
