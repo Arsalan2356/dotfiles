@@ -102,14 +102,14 @@ in
 
   # Enable Nvidia Drivers
 
-  hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-  };
+  # hardware.nvidia = {
+  #   package = config.boot.kernelPackages.nvidiaPackages.stable;
+  #   modesetting.enable = true;
+  #   powerManagement.enable = true;
+  #   powerManagement.finegrained = false;
+  #   open = true;
+  #   nvidiaSettings = false;
+  # };
 
 
   # Set your time zone.
@@ -333,7 +333,7 @@ in
   # Enable multiple video drivers (automatically uses the correct one)
   services.xserver.videoDrivers = [
     "amdgpu"
-    "nvidia"
+    # "nvidia"
   ];
 
   # Enable flatpaks
