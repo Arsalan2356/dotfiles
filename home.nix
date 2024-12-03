@@ -97,6 +97,7 @@ in
     mpv
     godot_4-mono
     playerctl
+    nvd
 
 
     inputs.aagl.packages.x86_64-linux.anime-game-launcher
@@ -254,7 +255,8 @@ in
       cd = "z";
       cdi = "zi";
       cpr = "rsync -aHAX --info=progress2 --no-inc-recursive";
-      update = "sudo nixos-rebuild switch --flake .#rc";
+      diff = "${pkgs.coreutils-full}/bin/ls -v1 /nix/var/nix/profiles | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nvd diff";
+      update = "sudo nixos-rebuild switch --flake .#rc && diff";
       setup = "cp ~/default/shell.nix . && echo \"use nix\" >> .envrc && direnv allow && echo \"Setup directory with .envrc and default shell.nix\"";
       startwaydroid = "sudo systemctl start waydroid-container && waydroid session start";
       stopwaydroid = "waydroid session stop && sudo systemctl stop waydroid-container";
