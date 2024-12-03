@@ -51,6 +51,11 @@
   }
 }
 
+.client-title {
+  padding: 2px 0 0 8pt;
+  font-size: 10pt;
+}
+
 .clients {
   padding: 0 5px;
 }
@@ -67,20 +72,15 @@
   }
 }
 
-.client-title {
-  padding: 0 0 0 20pt;
-  font-size: 10pt;
-}
-
-.time {
-  color: color.$text;
-  padding-right: 6px;
-}
-
 .systray {
   /* background-color: #171829; */
   /* border: 2px solid #171829; */
   /* border-radius: 20pt; */
   padding: 0 5pt 0 5pt;
   font-size: 1.2em;
+}
+
+.time {
+  color: color.$text;
+  padding-right: 6px;
 }
