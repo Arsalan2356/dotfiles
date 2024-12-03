@@ -41,7 +41,7 @@ const Left = Widget.Box({
 });
 
 const Center = Widget.Box({
-  class_names: inactive.bind().as(m => { return m ? ["rbackground", "inactive"] : ["rbackground"] }),
+  class_names: inactive.bind().as(m => { return m ? ["inactive"] : [] }),
   hpack: "center",
   spacing: 5,
   children: [Clients()],
