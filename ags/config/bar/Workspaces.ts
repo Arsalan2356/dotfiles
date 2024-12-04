@@ -42,6 +42,8 @@ hyprland.connect("event", (__, v, _) => {
   }
 })
 
+
+// TODO: Wrap entire box in an event box so we can scroll through workspaces
 export default () => Widget.Box({
   class_name: "workspaces",
   children: Array.from({ length: 8 }, (_, i) => i + 1).map(i => Widget.EventBox({

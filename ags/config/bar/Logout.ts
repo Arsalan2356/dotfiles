@@ -2,9 +2,8 @@
 export default () => Widget.EventBox({
   class_name: "custom_b",
   child: Widget.Label({
-    css: 'color: #e8e8e8;'
-      + 'font-size : 20px;'
-      + 'padding-right : 5px;',
+    css: 'color: #c0caf5;'
+      + 'font-size : 20px;',
     label: " "
   }),
   on_primary_click: () => { Utils.execAsync("wlogout") },

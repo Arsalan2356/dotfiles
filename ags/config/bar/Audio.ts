@@ -27,6 +27,7 @@ const ispaused = Variable(true, {
   }]
 })
 
+// TODO: Wrap Label in Event Box to be able to scroll through audio sources
 export default () => Widget.Revealer({
   revealChild: false,
   transitionDuration : 400,
