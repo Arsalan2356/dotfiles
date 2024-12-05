@@ -48,5 +48,7 @@ export default () => Widget.EventBox({
   on_primary_click: () => { n.setValue(n.getValue() == 0 ? 1 : 0) },
   on_secondary_click: () => { n.setValue(n.getValue() == 0 ? 1 : 0) },
   on_middle_click: () => { n.setValue(n.getValue() == 0 ? 1 : 0) },
+  on_scroll_up: () => { n.setValue(n.getValue() == 0 ? 1 : 0) },
+  on_scroll_down: () => { n.setValue(n.getValue() == 0 ? 1 : 0) },
 })
 
