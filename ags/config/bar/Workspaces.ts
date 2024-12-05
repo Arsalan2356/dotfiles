@@ -43,28 +43,31 @@ hyprland.connect("event", (__, v, _) => {
 })
 
 
-// TODO: Wrap entire box in an event box so we can scroll through workspaces
-export default () => Widget.Box({
-  class_name: "workspaces",
-  children: Array.from({ length: 8 }, (_, i) => i + 1).map(i => Widget.EventBox({
-    "on-primary-click": (_) => {
-      hyprland.messageAsync(`dispatch workspace ${i}`)
-    },
-    child: Widget.Label({
-      attribute: i,
-      class_names: class_names[i - 1].bind(),
-      hpack: "center",
-      label: workspaces[i - 1].bind().as(v => {
-        var x = "";
-        var j = v;
-        while (j != 0) {
-          x = submap[j % 10] + x;
-          j = Math.floor(j / 10);
-        }
-        return v == 0 ? `${i}` : `${supermap[i]}⁄${x}`
-      }),
-    })
-  })),
+export default () => Widget.EventBox({
+  child: Widget.Box({
+    class_name: "workspaces",
+    children: Array.from({ length: 8 }, (_, i) => i + 1).map(i => Widget.EventBox({
+      on_primary_click: (_) => {
+        hyprland.messageAsync(`dispatch workspace ${i}`)
+      },
+      child: Widget.Label({
+        attribute: i,
+        class_names: class_names[i - 1].bind(),
+        hpack: "center",
+        label: workspaces[i - 1].bind().as(v => {
+          var x = "";
+          var j = v;
+          while (j != 0) {
+            x = submap[j % 10] + x;
+            j = Math.floor(j / 10);
+          }
+          return v == 0 ? `${i}` : `${supermap[i]}⁄${x}`
+        }),
+      })
+    })),
+  }),
+  on_scroll_up: () => Utils.execAsync("hyprctl dispatch workspace -1"),
+  on_scroll_down: () => Utils.execAsync("hyprctl dispatch workspace +1"),
 });
 
 
