@@ -82,7 +82,7 @@ env = XCURSOR_SIZE,24
 # https://wiki.hyprland.org/Configuring/Variables/#general
 general {
     gaps_in = 5
-    gaps_out = 6
+    gaps_out = 3
 
     border_size = 1
 
@@ -209,7 +209,7 @@ cursor {
 
 plugin {
   hy3 {
-    no_gaps_when_only = 2
+    no_gaps_when_only = 0
     tab_first_window = false
     tabs {
       text_center = true
@@ -270,10 +270,13 @@ bind = $mainMod SHIFT, down, hy3:movewindow, d
 bind = $mainMod SHIFT, J, hy3:movewindow, d
 
 
-bind = $mainMod, up, hy3:changegroup, v
-bind = SUPER, L, hy3:changegroup, v
-bind = $mainMod, down, hy3:changegroup, h
-bind = SUPER, H, hy3:changegroup, h
+# bind = $mainMod, up, hy3:changegroup, v
+# bind = SUPER, L, hy3:changegroup, v
+# bind = $mainMod, down, hy3:changegroup, h
+# bind = SUPER, H, hy3:changegroup, h
+
+bind = $mainMod, N, hy3:changegroup, opposite
+
 
 # Switch workspaces with mainMod + [0-9]
 bind = $mainMod, 1, workspace, 1
