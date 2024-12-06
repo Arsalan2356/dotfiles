@@ -24,6 +24,9 @@ in
       inputs.aagl.nixosModules.default
     ];
 
+
+  boot.kernel.sysctl = { "vm.swappiness" = 134; };
+
   # Kernel Packages
   # Switch to latest
   # boot.kernelPackages = pkgs.linuxPackages_latest;
