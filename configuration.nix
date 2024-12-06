@@ -336,6 +336,8 @@ in
     "nvidia"
   ];
 
+  services.zram-generator.enable = true;
+
   # Enable flatpaks
   services.flatpak.enable = true;
 
