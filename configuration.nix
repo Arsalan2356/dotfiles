@@ -206,6 +206,8 @@ in
     gcc14
     gdb
     scanmem
+    git-lfs
+    nix-prefetch-git
 
 
     # Installing wine here doesn't give conflicts for some reason
