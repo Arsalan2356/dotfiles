@@ -562,7 +562,7 @@ pkgs.mkShell {
     # EDITOR = "emacs";
   };
   home.sessionPath = [
-    "$HOME/jdks"
+    "$HOME/jdks/jdk/bin"
   ];
 
   # Let Home Manager install and manage itself.
