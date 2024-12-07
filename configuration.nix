@@ -4,6 +4,7 @@
 
 { config, pkgs, pkgs-test, inputs, lib, ... }:
 let
+  # TODO: Could possibly remove this from this file
   tokyonight = pkgs.tokyonight-gtk-theme.overrideAttrs (old : {
     src = pkgs.fetchFromGitHub {
       owner = "Fausto-Korpsvart";
@@ -24,11 +25,11 @@ in
       inputs.aagl.nixosModules.default
     ];
 
-
+  # Set swappiness
   boot.kernel.sysctl = { "vm.swappiness" = 134; };
 
   # Kernel Packages
-  # Switch to latest
+  # Switch to zen kernel (latest from fork)
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelPackages = pkgs-test.linuxPackages_zen;
 
@@ -47,7 +48,7 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 6;
 
-
+  # Store docs on system
   documentation = {
     enable = true;
     nixos.enable = true;
@@ -104,7 +105,6 @@ in
 
 
   # Enable Nvidia Drivers
-
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.beta;
     modesetting.enable = true;
@@ -250,21 +250,23 @@ in
     parsec-bin
 
   ];
+  # Add dev outputs from packages as well (for development packages)
   environment.extraOutputsToInstall = [ "dev" ];
 
   # Fonts
+  fonts.fontDir.enable = true;
+  fonts.enableDefaultPackages = true;
+  fonts.fontconfig.enable = true;
+  fonts.fontconfig.defaultFonts.monospace = [
+	"Hack"
+  ];
+
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
     hack-font
   ];
 
-  fonts.fontDir.enable = true;
-  fonts.enableDefaultPackages = true;
-  fonts.fontconfig.enable = true;
 
-  fonts.fontconfig.defaultFonts.monospace = [
-	"Hack"
-  ];
 
   # Enable flakes
   nix = {
@@ -277,18 +279,23 @@ in
     ";
   };
 
-
+  # Set performance mode
   powerManagement.cpuFreqGovernor = "performance";
 
 
   # Security
   security.polkit.enable = true;
   security.rtkit.enable = true;
+
+
+  # Udisks
   services.udisks2.enable = true;
 
+  # Enable input-remapper service (TODO: possibly remove this)
   services.input-remapper.enable = true;
   services.input-remapper.serviceWantedBy = lib.mkForce [];
 
+  # Enable greetd for tuigreet
   services.greetd = {
     enable = true;
     settings = {
@@ -341,12 +348,14 @@ in
     "nvidia"
   ];
 
+  # Enable zram
   services.zram-generator.enable = true;
 
   # Enable flatpaks
   services.flatpak.enable = true;
 
 
+  # Start input-remapper on startup with a delay
   systemd.services.input-remapper-sudo = {
     enable = true;
     wantedBy = ["default.target"];
@@ -390,21 +399,26 @@ in
     protontricks.enable = true;
   };
 
+  # Gamescope
   programs.gamescope = {
     enable = true;
     capSysNice = true;
   };
 
+  # Gamemode
   programs.gamemode = {
     enable = true;
     enableRenice = true;
   };
 
+  # Git
   programs.git.enable = true;
 
+  # htop (just in case btop doesn't work)
   programs.htop.enable = true;
 
 
+  # nh for system cleaning
   programs.nh = {
     flake = "/home/flake";
     enable = true;
@@ -417,8 +431,10 @@ in
 
   programs.fzf.fuzzyCompletion = true;
 
+  # Lazygit (Git TUI)
   programs.lazygit.enable = true;
 
+  # Fixes unpatched packages
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
@@ -426,6 +442,7 @@ in
     ];
   };
 
+  # ssh auth
   programs.ssh.startAgent = true;
 
 
@@ -445,9 +462,10 @@ in
     ];
   };
 
+  # Xwayland
   programs.xwayland.enable = true;
 
-
+  # Virt-Manager
   programs.virt-manager.enable = true;
 
   # Waydroid
@@ -455,21 +473,6 @@ in
 
   # VM
   virtualisation.libvirtd.enable = true;
-
-
-  # Stylix
-  # Still requires wallpaper (need to find a way to work this in with linux-wallpaperengine)
-  # and randomized wallpapers from that
-  # stylix = {
-  #   enable = true;
-  #   base16-schemes = "${pkgs.base16-schemes}/share/themes/tokyo-night-terminal-storm.yaml";
-  # };
-
-
-
-
-
-
 
 
   # List services that you want to enable:

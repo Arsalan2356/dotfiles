@@ -63,7 +63,6 @@ in
     gsmartcontrol
     nnn
     nwg-clipman
-    # deps
     cliphist
     wl-clipboard
     nwg-drawer
@@ -124,6 +123,7 @@ in
     inputs.ags.homeManagerModules.default
   ];
 
+  # AGS 1.9.0 bar
   programs.ags = {
     enable = true;
     configDir = null;
@@ -135,6 +135,7 @@ in
     ];
   };
 
+  # Enable direnv and nix-direnv
   programs.direnv = {
     enable = true;
     silent = false;
@@ -142,6 +143,7 @@ in
     enableZshIntegration = false;
   };
 
+  # Foot Terminal
   programs.foot = {
     enable = true;
     settings = {
@@ -157,7 +159,7 @@ in
     };
   };
 
-
+  # Fuzzel App Launcher
   programs.fuzzel = {
     enable = true;
     settings = {
@@ -191,21 +193,24 @@ in
     };
   };
 
+  # fuzzy finder
   programs.fzf.enable = true;
 
 
+  # OBS
   programs.obs-studio = {
     enable = true;
     plugins = [ pkgs.obs-studio-plugins.wlrobs ];
   };
 
-
+  # Zoxide searching
   programs.zoxide = {
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
   };
 
+  # Zsh with plugins
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -271,6 +276,8 @@ eval "$(direnv export zsh 2> >(egrep -v -e '^(.*)direnv: export' >&2))"
 '';
 
   };
+
+  # Enable hyprland
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -460,6 +467,7 @@ eval "$(direnv export zsh 2> >(egrep -v -e '^(.*)direnv: export' >&2))"
     extraConfig = builtins.readFile ./hyprland.txt;
   };
 
+  # Dunst Notifications
   services.dunst = {
     enable = true;
     settings = {
@@ -486,7 +494,7 @@ eval "$(direnv export zsh 2> >(egrep -v -e '^(.*)direnv: export' >&2))"
     };
   };
 
-
+  # Change dconf settings just in case
   dconf.settings = {
     "org/virt-manager/virt-manager/connections" = {
       autoconnect = [ "qemu:///system" ];
@@ -510,6 +518,7 @@ eval "$(direnv export zsh 2> >(egrep -v -e '^(.*)direnv: export' >&2))"
     #	org.gradle.console=verbose
     #	org.gradle.daemon.idletimeout=3600000
     # '';
+    # Multiple jdks on system
     "jdks/jdk8".source = pkgs.zulu8;
     "jdks/jdk17".source = pkgs.zulu17;
     "jdks/jdk".source = pkgs.zulu;
