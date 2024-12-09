@@ -30,6 +30,7 @@ import Audio from "./Audio";
   maybe create some sort of dropdown or something (should be beside the tray icons)
   # tray icons are fine but just move it around
   # create a volume box with the ability to at least see volume and maybe change it
+  Figure out why there are some missing window icons (Kdbg?)
 */
 
 

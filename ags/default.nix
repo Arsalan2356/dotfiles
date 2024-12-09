@@ -18,5 +18,3 @@ in
     /etc/profiles/per-user/rc/bin/ags -c ${toString ./config/config.js} $@
   ''
 
-
-
