@@ -270,12 +270,7 @@ bind = $mainMod SHIFT, down, hy3:movewindow, d
 bind = $mainMod SHIFT, J, hy3:movewindow, d
 
 
-# bind = $mainMod, up, hy3:changegroup, v
-# bind = SUPER, L, hy3:changegroup, v
-# bind = $mainMod, down, hy3:changegroup, h
-# bind = SUPER, H, hy3:changegroup, h
-
-bind = $mainMod, N, hy3:changegroup, opposite
+bind = $mainMod, I, hy3:changegroup, opposite
 
 
 # Switch workspaces with mainMod + [0-9]
@@ -330,10 +325,10 @@ bind = $mainMod, Space, exec, nwg-drawer
 
 # Move/resize windows with mainMod + LMB/RMB and dragging
 bindm = $mainMod, mouse:272, movewindow
-bindm = $mainMod, mouse:273, resizewindow
+bindm = , mouse:275, resizewindow
 
 bind = $mainMod, equal, submap, resize
-bind = $mainMod, n, submap, resize
+bind = $mainMod, O, submap, resize
 
 submap = resize
 binde = , l, resizeactive, 10 0
