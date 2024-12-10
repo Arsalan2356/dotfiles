@@ -120,9 +120,9 @@ export default () => Widget.Box({
     const q = Array.from(m.entries())
       .map(e => {
         const icon = Utils.exec(`iconfinder "${e[1].initialTitle}"`);
-        const i1 = icon == "" ? ["/home/rc/default/window-icon.svg", "0"] : icon.split("<separator>");
+        const i1 = (icon == "" || icon.includes(".svgz")) ? ["/home/rc/default/window-icon.svg", "0"] : icon.split("<separator>");
         const icon2 = Utils.exec(`iconfinder "${e[1].windowClass}"`);
-        const i2 = icon2 == "" ? ["/home/rc/default/window-icon.svg", "0"] : icon2.split("<separator>");
+        const i2 = (icon2 == "" || icon.includes(".svgz")) ? ["/home/rc/default/window-icon.svg", "0"] : icon2.split("<separator>");
         // Wrap this in an event box and try to listen for events to maybe switch which window is active?
         return Widget.Icon({
           class_names: e[1].class_names.bind().as((c: string | undefined) => {
