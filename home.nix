@@ -33,9 +33,6 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -47,27 +44,11 @@ in
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
     # (pkgs.writeShellScriptBin "my-hello" ''
-    #	echo "Hello, ${config.home.username}!"
+    #    echo "Hello, ${config.home.username}!"
     # '')
-    bluetuith
-    waybar
-    vesktop
-    spotify
-    ncdu
-    qdirstat
+
+    # Dev Packages
     progress
-    nwg-look
-    gedit
-    fsearch
-    pinta
-    gsmartcontrol
-    nnn
-    nwg-clipman
-    cliphist
-    wl-clipboard
-    nwg-drawer
-    nwg-bar
-    eza
     ripgrep
     ripgrep-all
     tree-sitter
@@ -78,27 +59,47 @@ in
     php
     rustup
     julia_19-bin
-    inputs.hyprland-contrib.packages.x86_64-linux.grimblast
-    xarchiver
     curlFull
+    libdbusmenu-gtk3
+    jc
+    gst_all_1.gstreamer
+    godot_4-mono
+    playerctl
+    nvd
+    eza
+
+
+    # General
+    bluetuith
+    vesktop
+    gedit
+    fsearch
+    pinta
+    xarchiver
+    nwg-drawer
+    inputs.hyprland-contrib.packages.x86_64-linux.grimblast
+    pinta
+    qbittorrent
+
+
+    # File Stuff
+    nnn
+    ncdu
+    qdirstat
+    gsmartcontrol
+
+
+    # Clipboard
+    nwg-clipman
+    cliphist
+    wl-clipboard
+
+
+    # Game Stuff
     heroic
     winetricks
     lutris
     protonup-qt
-    pinta
-    obs-cli
-    libdbusmenu-gtk3
-    gnome-bluetooth
-    jc
-    ffmpeg-full
-    gst_all_1.gstreamer
-    qbittorrent
-    mpv
-    godot_4-mono
-    playerctl
-    nvd
-
-
     inputs.aagl.packages.x86_64-linux.anime-game-launcher
     inputs.aagl.packages.x86_64-linux.anime-games-launcher
     inputs.aagl.packages.x86_64-linux.honkers-launcher
@@ -106,6 +107,12 @@ in
     inputs.aagl.packages.x86_64-linux.sleepy-launcher
     inputs.aagl.packages.x86_64-linux.wavey-launcher
 
+
+    # Audio/Video
+    obs-cli
+    ffmpeg-full
+    mpv
+    spotify
   ];
 
 
@@ -130,8 +137,6 @@ in
     extraPackages = with pkgs; [
       gtksourceview
       webkitgtk
-      accountsservice
-      libdbusmenu-gtk3
     ];
   };
 
@@ -140,6 +145,8 @@ in
     enable = true;
     silent = false;
     nix-direnv.enable = true;
+    # Disable ZSH integration and call it manually
+    # This is to change the colors when loading into a direnv
     enableZshIntegration = false;
   };
 
@@ -286,184 +293,6 @@ eval "$(direnv export zsh 2> >(egrep -v -e '^(.*)direnv: export' >&2))"
       pkgs.hyprlandPlugins.hy3
     ];
 
-    # settings = {
-    #   "source" = "~/.config/hypr/monitors.conf";
-    #   "$terminal" = "kitty";
-    #   "$fileManager" = "thunar";
-    #   "$menu" = "walker";
-    #   exec-once = [
-    #     "lxqt-policykit-agent"
-    #     "dunst"
-    #     "nm-applet &"
-    #     "steam -silent -nofriendsui"
-    #     "hyprctl setcursor Volantes 24"
-    #     "walker --gapplication-service"
-    #     "wl-paste --type text --watch cliphist store"
-    #     "wl-paste --type image --watch cliphist store"
-    #     "nwg-drawer -r -fm $fileManager -ft -term $terminal -wm hyprland"
-    #     "sleep 3; vesktop --start-minimized"
-    #     "sleep 5; input-remapper-control --command autoload"
-    #   ];
-    #   env = [
-    #     "XCURSOR_THEME,VolantesX"
-    #     "XCURSOR_SIZE,24"
-    #   ];
-    #   general = {
-    #     gaps_in = 3;
-    #     gaps_out = 8;
-    #     border_size = 1;
-    #     no_border_on_floating = true;
-    #     "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-    #     "col.inactive_border" = "rgba(595959aa)";
-    #     resize_on_border = true;
-    #     layout = "hy3";
-    #     snap = {
-    #       enabled = true;
-    #     };
-    #   };
-    #   decoration = {
-    #     rounding = 5;
-    #     blur = {
-    #   size = 3;
-    #   xray = true;
-    #     };
-    #   };
-    #   animations = {
-    #     enabled = true;
-    #     bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-    #     animation = [
-    #   "windows, 1, 5, myBezier"
-    #   "windowsOut, 1, 5, default, popin 80%"
-    #   "border, 1, 8, default"
-    #   "borderangle, 1, 5, default"
-    #   "fade, 1, 4, default"
-    #   "workspaces, 1, 5, default"
-    #     ];
-    #   };
-    #   input ={
-    #     numlock_by_default = true;
-    #     accel_profile = "flat";
-    #   };
-    #   misc = {
-    #     mouse_move_enables_dpms = true;
-    #     key_press_enables_dpms = true;
-    #   };
-    #   cursor = {
-    #     no_warps = true;
-    #   };
-    #   plugin = {
-    #     hy3 = {
-    #   no_gaps_when_only = 2;
-    #   tab_first_window = false;
-    #   tabs = {
-    #     text_center = true;
-    #   };
-    #   autotile = {
-    #     enable = true;
-    #   };
-    #     };
-    #   };
-    #
-    #   windowrulev2 = [
-    #     "suppressevent maximize, class:.*"
-    #     "float, class:(clipse)"
-    #     "size 622 652, class:(clipse)"
-    #     "opacity 0.0 override, class:^(xwaylandvideobridge)$"
-    #     "noanim, class:^(xwaylandvideobridge)$"
-    #     "noinitialfocus, class:^(xwaylandvideobridge)$"
-    #     "maxsize 1 1, class:^(xwaylandvideobridge)$"
-    #     "noblur, class:^(xwaylandvideobridge)$"
-    #   ];
-    #
-    #   "$mainMod" = "ALT";
-    #   bindr = [
-    #     "SUPER, SUPER_L, exec, $menu"
-    #   ];
-    #   bind = [
-    #     ", Print, exec, grimBlast"
-    #     "$mainMod, Return, exec, $terminal"
-    #     "$mainMod, Q, killactive"
-    #     "$mainMod, W, killactive"
-    #     "$mainMod, E, exec, $fileManager"
-    #     "$mainMod, R, exec, $fileManager"
-    #     "$mainMod, V, togglefloating"
-    #     "$mainMod, F, exec, firefox-developer-edition"
-    #     # Focus Bindings
-    #     "$mainMod, H, hy3:movefocus, l"
-    #     "$mainMod, L, hy3:movefocus, r"
-    #     "$mainMod, K, hy3:movefocus, u"
-    #     "$mainMod, J, hy3:movefocus, d"
-    #     # Move Bindings
-    #     "$mainMod SHIFT, left, hy3:movewindow, l"
-    #     "$mainMod SHIFT, H, hy3:movewindow, l"
-    #     "$mainMod SHIFT, right, hy3:movewindow, r"
-    #     "$mainMod SHIFT, L, hy3:movewindow, r"
-    #     "$mainMod SHIFT, up, hy3:movewindow, u"
-    #     "$mainMod SHIFT, K, hy3:movewindow, u"
-    #     "$mainMod SHIFT, down, hy3:movewindow, d"
-    #     "$mainMod SHIFT, J, hy3:movewindow, d"
-    #     # Change vertical/horizontal orientation
-    #     "$mainMod, up, hy3:changegroup, v"
-    #     "SUPER, L, hy3:changegroup, v"
-    #     "$mainMod, down, hy3:changegroup, h"
-    #     "SUPER, H, hy3:changegroup, h"
-    #     # Workspace Bindings
-    #     "$mainMod, 1, workspace, 1"
-    #     "$mainMod, KP_1, workspace, 1"
-    #     "$mainMod, 2, workspace, 2"
-    #     "$mainMod, KP_2, workspace, 2"
-    #     "$mainMod, 3, workspace, 3"
-    #     "$mainMod, KP_3, workspace, 3"
-    #     "$mainMod, 4, workspace, 4"
-    #     "$mainMod, KP_4, workspace, 4"
-    #     "$mainMod, 5, workspace, 5"
-    #     "$mainMod, KP_5, workspace, 5"
-    #     "$mainMod, 6, workspace, 6"
-    #     "$mainMod, KP_6, workspace, 6"
-    #     "$mainMod, 7, workspace, 7"
-    #     "$mainMod, KP_7, workspace, 7"
-    #     "$mainMod, 8, workspace, 8"
-    #     "$mainMod, KP_8, workspace, 8"
-    #     "$mainMod, 0, workspace, 8"
-    #     "$mainMod, KP_0, workspace, 8"
-    #     # Workspace Window Bindings
-    #     "$mainMod SHIFT, 1, movetoworkspacesilent, 1"
-    #     "$mainMod SHIFT, 2, movetoworkspacesilent, 2"
-    #     "$mainMod SHIFT, 3, movetoworkspacesilent, 3"
-    #     "$mainMod SHIFT, 4, movetoworkspacesilent, 4"
-    #     "$mainMod SHIFT, 5, movetoworkspacesilent, 5"
-    #     "$mainMod SHIFT, 6, movetoworkspacesilent, 6"
-    #     "$mainMod SHIFT, 7, movetoworkspacesilent, 7"
-    #     "$mainMod SHIFT, 8, movetoworkspacesilent, 8"
-    #     "$mainMod SHIFT, 0, movetoworkspacesilent, 8"
-    #     # Minimize/Maximize
-    #     "$mainMod, M, movetoworkspacesilent, 8"
-    #     "$mainMod SHIFT, M, fullscreen, 0"
-    #     # Workspace Scroll Bindings
-    #     "$mainMod, right, workspace, +1"
-    #     "$mainMod, left, workspace, -1"
-    #     # Workspace Overview
-    #     "$mainMod, Tab, overview:toggle"
-    #     ", Escape, overview:close"
-    #     # Show Clipboard
-    #     "SUPER, V, exec, nwg-clipman"
-    #     # Show Application Drawer
-    #     "$mainMod, Space, exec, nwg-drawer"
-    #     # Resize submap
-    #     "$mainMod, equal, submap, resize"
-    #     "$mainMod, n, submap, resize"
-    #   ];
-    # };
-    #
-    # extraConfig = ''
-    #     submap = resize
-    #     binde = , l, resizeactive, 10 0
-    #     binde = , k, resizeactive, 0 -10
-    #     binde = , j, resizeactive, 0 10
-    #     binde = , h, resizeactive, -10 0
-    #     bind = , catchall, submap, reset
-    #     submap = reset
-    # '';
     extraConfig = builtins.readFile ./hyprland.txt;
   };
 
@@ -508,16 +337,6 @@ eval "$(direnv export zsh 2> >(egrep -v -e '^(.*)direnv: export' >&2))"
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #	org.gradle.console=verbose
-    #	org.gradle.daemon.idletimeout=3600000
-    # '';
     # Multiple jdks on system
     "jdks/jdk8".source = pkgs.zulu8;
     "jdks/jdk17".source = pkgs.zulu17;
@@ -551,24 +370,8 @@ pkgs.mkShell {
 </svg>'';
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/rc/etc/profile.d/hm-session-vars.sh
-  #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    # EDITOR = "nvim";
   };
   home.sessionPath = [
     "$HOME/jdks/jdk/bin"
