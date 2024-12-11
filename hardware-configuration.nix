@@ -27,7 +27,9 @@
   swapDevices = [
     {
       device = "/dev/disk/by-uuid/4e8cb3de-2176-4335-a7a8-a2161703daae";
-      size = 16 * 1024;
+    }
+    {
+      device = "/dev/disk/by-uuid/816f0d3f-be49-4fab-845b-7883e984f0ba";
     }
   ];
 
