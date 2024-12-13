@@ -38,7 +38,6 @@ const time = Variable("", {
   ],
 });
 
-// TODO: Add ability to scroll between the two time options
 export default () => Widget.EventBox({
   child: Widget.Label({
     class_name: "time",

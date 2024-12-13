@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 
 let
   addBins = list: builtins.concatStringsSep ":" (builtins.map(p : "${p}/bin") list);

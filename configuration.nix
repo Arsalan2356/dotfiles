@@ -3,17 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, pkgs-test, inputs, lib, ... }:
-let
-  # TODO: Could possibly remove this from this file
-  tokyonight = pkgs.tokyonight-gtk-theme.overrideAttrs (old : {
-    src = pkgs.fetchFromGitHub {
-      owner = "Fausto-Korpsvart";
-      repo = "Tokyonight-GTK-Theme";
-      rev = "4dc45d60bf35f50ebd9ee41f16ab63783f80dd64";
-      hash = "sha256-AKZA+WCcfxDeNrNrq3XYw+SFoWd1VV2T9+CwK2y6+jA=";
-    };
-  });
-in
 {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = lib.mkForce true;
@@ -23,6 +12,7 @@ in
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.home-manager
       inputs.aagl.nixosModules.default
+      ./custom
     ];
 
   # Set swappiness
@@ -40,7 +30,6 @@ in
   # Load nvidia kernel module
   # boot.initrd.kernelModules = [ "nvidia" ];
   # boot.kernelParams = [ "module_blacklist=amdgpu" ];
-
 
 
   # Bootloader
@@ -157,7 +146,6 @@ in
     busybox
     btop
     papirus-icon-theme
-    tokyonight
     man-pages
     man-pages-posix
 
@@ -197,6 +185,8 @@ in
       python-pkgs.pyqtdarktheme
       python-pkgs.scikit-learn
       python-pkgs.seaborn
+      python-pkgs.tensorflow-bin
+      python-pkgs.torch
     ]))
 
     # Dev Packages
@@ -239,14 +229,13 @@ in
 
 
     # Custom Stuff
-    (pkgs.callPackage ./audiorelay.nix {})
-    (import ./grimblast.nix { inherit pkgs; })
-    (import ./sysinfo.nix { inherit pkgs; })
-    (import ./clients.nix { inherit pkgs; })
-    (import ./clients2.nix { inherit pkgs; })
-    (import ./bluetooth.nix {inherit pkgs; })
+    # (import ./grimblast.nix { inherit pkgs; })
+    # (import ./sysinfo.nix { inherit pkgs; })
+    # (import ./clients.nix { inherit pkgs; })
+    # (import ./clients2.nix { inherit pkgs; })
+    # (import ./bluetooth.nix {inherit pkgs; })
     (import ./ags {inherit pkgs; })
-    (import ./iconfinder.nix { inherit lib pkgs; })
+    # (import ./iconfinder.nix { inherit lib pkgs; })
     parsec-bin
 
   ];
