@@ -80,6 +80,8 @@ in
     inputs.hyprland-contrib.packages.x86_64-linux.grimblast
     pinta
     qbittorrent
+    bitwarden-desktop
+    linux-wallpaperengine
 
 
     # File Stuff
@@ -288,9 +290,9 @@ eval "$(direnv export zsh 2> >(egrep -v -e '^(.*)direnv: export' >&2))"
   wayland.windowManager.hyprland = {
     enable = true;
 
-    plugins = [
-      pkgs.hyprlandPlugins.hyprspace
-      pkgs.hyprlandPlugins.hy3
+    plugins = with pkgs.hyprlandPlugins; [
+      hyprspace
+      hy3
     ];
 
     extraConfig = builtins.readFile ./hyprland.txt;
