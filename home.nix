@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, pkgs-test, inputs, ... }:
 let
   tokyonight = pkgs.tokyonight-gtk-theme.overrideAttrs (old : {
     src = pkgs.fetchFromGitHub {
@@ -63,7 +63,6 @@ in
     libdbusmenu-gtk3
     jc
     gst_all_1.gstreamer
-    godot_4-mono
     playerctl
     nvd
     eza

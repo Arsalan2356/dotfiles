@@ -24,7 +24,7 @@
     };
 
     nixpkgs-test = {
-      url = "github:Arsalan2356/nixpkgs/linux-zen-lqx";
+      url = "github:Arsalan2356/nixpkgs/custom";
     };
 
 
@@ -50,7 +50,7 @@
 	  home-manager.nixosModules.home-manager {
 	    home-manager.useGlobalPkgs = true;
 	    home-manager.useUserPackages = true;
-	    home-manager.extraSpecialArgs = { inherit pkgs inputs; };
+	    home-manager.extraSpecialArgs = { inherit pkgs inputs pkgs-test; };
 	    home-manager.users.rc = import ./home.nix;
 	  }
 	  # inputs.stylix.nixosModules.stylix

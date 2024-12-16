@@ -124,7 +124,7 @@
       },
       "original": {
         "owner": "Arsalan2356",
-        "ref": "linux-zen-lqx",
+        "ref": "custom",
         "repo": "nixpkgs",
         "type": "github"
       }
