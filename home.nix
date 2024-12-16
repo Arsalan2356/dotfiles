@@ -63,6 +63,7 @@ in
     libdbusmenu-gtk3
     jc
     gst_all_1.gstreamer
+    godot_4-mono
     playerctl
     nvd
     eza

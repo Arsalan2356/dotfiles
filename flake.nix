@@ -35,6 +35,9 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
+      config.permittedInsecurePackages = [
+	"dotnet-sdk-6.0.428"
+      ];
     };
     pkgs-test = import inputs.nixpkgs-test {
       inherit system;
