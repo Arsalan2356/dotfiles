@@ -68,9 +68,13 @@ exec-once = sleep 1; input-remapper-control --command autoload
 
 env = XCURSOR_THEME,VolantesX
 env = XCURSOR_SIZE,24
-
 # env = HYPRCURSOR_THEME,Volantes
 # env = HYPRCURSOR_SIZE,24
+
+env = LIBVA_DRIVER_NAME,nvidia
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+env = NVD_BACKEND,direct
+
 
 
 #####################

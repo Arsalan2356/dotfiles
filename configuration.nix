@@ -25,11 +25,11 @@
 
 
   # Load amdgpu kernel module
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  # boot.initrd.kernelModules = [ "amdgpu" ];
 
   # Load nvidia kernel module
-  # boot.initrd.kernelModules = [ "nvidia" ];
-  # boot.kernelParams = [ "module_blacklist=amdgpu" ];
+  boot.initrd.kernelModules = [ "nvidia" ];
+  boot.kernelParams = [ "module_blacklist=amdgpu" ];
 
 
   # Bootloader
@@ -89,6 +89,7 @@
     enable32Bit = true;
     extraPackages = with pkgs; [
       rocmPackages.clr.icd
+      nvidia-vaapi-driver
     ];
   };
 
@@ -100,7 +101,7 @@
     powerManagement.enable = true;
     powerManagement.finegrained = false;
     open = true;
-    nvidiaSettings = false;
+    nvidiaSettings = true;
   };
 
 
@@ -155,6 +156,7 @@
     wlogout
     hyprcursor
     xcur2png
+    egl-wayland
 
     # Browser
     firefox-devedition-bin
@@ -333,8 +335,8 @@
 
   # Enable multiple video drivers (automatically uses the correct one)
   services.xserver.videoDrivers = [
-    "amdgpu"
     "nvidia"
+    "amdgpu"
   ];
 
   # Enable zram
