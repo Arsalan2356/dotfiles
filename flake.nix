@@ -29,10 +29,9 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
 
-    hyprspace = {
-      url = "github:hyprspace/hyprspace";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # hyprspace = {
+    #   url = "github:hyprspace/hyprspace";
+    # };
 
     hy3 = {
       url = "github:outfoxxed/hy3";

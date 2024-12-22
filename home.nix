@@ -292,7 +292,8 @@ eval "$(direnv export zsh 2> >(egrep -v -e '^(.*)direnv: export' >&2))"
 
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     plugins = with inputs; [
-      hyprspace.packages.${pkgs.stdenv.hostPlatform.system}.hyprspace
+      # TODO: disable until updated for 0.46.2
+      # hyprspace.packages.${pkgs.stdenv.hostPlatform.system}.hyprspace
       hy3.packages.${pkgs.stdenv.hostPlatform.system}.hy3
     ];
 
