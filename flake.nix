@@ -27,6 +27,18 @@
       url = "github:Arsalan2356/nixpkgs/custom";
     };
 
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    hyprspace = {
+      url = "github:hyprspace/hyprspace";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    hy3 = {
+      url = "github:outfoxxed/hy3";
+      inputs.hyprland.follows = "hyprland";
+    };
+
 
   };
   outputs = inputs @ { nixpkgs, home-manager, ... }:

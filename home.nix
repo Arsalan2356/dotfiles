@@ -290,9 +290,10 @@ eval "$(direnv export zsh 2> >(egrep -v -e '^(.*)direnv: export' >&2))"
   wayland.windowManager.hyprland = {
     enable = true;
 
-    plugins = with pkgs.hyprlandPlugins; [
-      hyprspace
-      hy3
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    plugins = with inputs; [
+      hyprspace.packages.${pkgs.stdenv.hostPlatform.system}.hyprspace
+      hy3.packages.${pkgs.stdenv.hostPlatform.system}.hy3
     ];
 
     extraConfig = builtins.readFile ./hyprland.txt;
