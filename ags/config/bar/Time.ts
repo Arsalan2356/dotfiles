@@ -9,8 +9,7 @@ const tooltip_text = Variable("");
 
 const update_tooltip_text = (d: Date) => {
   const v = Utils.exec(`cal -m ${month[d.getMonth()]} ${d.getFullYear()}`)
-  // TODO: add second portion where we highlight the current day via some math to find it's pos
-  // in the text
+  // TODO: add second portion where we highlight the current day via some math to find it's pos in the text
   tooltip_text.setValue(v);
 }
 

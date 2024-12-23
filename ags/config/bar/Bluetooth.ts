@@ -5,8 +5,6 @@ const btbattery = Variable("", {
   poll: [2000, 'btbattery']
 });
 
-// label: "󰂯"
-
 export default () => Widget.EventBox({
   class_name: "custom_b",
   child: Widget.Label({

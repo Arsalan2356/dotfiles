@@ -5,6 +5,7 @@ const hyprland = await Service.import("hyprland");
 // Open/Close Window -> remove said window from the list or just reload all windows
 // Active Window -> set a classname on the active window to give it some highlight or something
 // Urgent Window -> flickering on said window to indicate urgency
+// TODO: add middle click to override icon (add overrides to a config location so they're loaded on startup?)
 const events = ["workspacev2", "openwindow", "closewindow", "activewindowv2", "urgent", "movewindowv2"];
 
 
@@ -123,7 +124,7 @@ export default () => Widget.Box({
         const i1 = (icon == "" || icon.includes(".svgz")) ? ["/home/rc/default/window-icon.svg", "0"] : icon.split("<separator>");
         const icon2 = Utils.exec(`iconfinder "${e[1].windowClass}"`);
         const i2 = (icon2 == "" || icon.includes(".svgz")) ? ["/home/rc/default/window-icon.svg", "0"] : icon2.split("<separator>");
-        // Wrap this in an event box and try to listen for events to maybe switch which window is active?
+        // TODO: Wrap this in an event box and try to listen for events to maybe switch which window is active
         return Widget.Icon({
           class_names: e[1].class_names.bind().as((c: string | undefined) => {
             if (c != undefined) {

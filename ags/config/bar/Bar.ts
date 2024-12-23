@@ -14,20 +14,21 @@ import Audio from "./Audio";
 
 
 /*
-  change all event boxes to have a hover translucency thing
+  TODO: change all event boxes to have a hover translucency thing
   (have a blue shade when hovering over them)
+
   # change workspaces and how they appear and how the # of windows show up
   # rewrite workspaces
   # remove the gray background behind non-active workspaces (still visible)
   # everything should try and blend into the background
   # add in the icons stuff with the clients (need to first make the iconfinder)
-  change client title to have an icon instead of a nerdfont text icon
-  add gpu usage to cpu and memory area and combine into one class file
   # date is fine but maybe move it around more to the right
   # bluetooth icon should be right beside the tray
   # bluetooth should have a battery percentage beside it (update maybe every 5 minutes idk)
   # clipboard either remove or move somewhere else (feels out of place)
-  maybe create some sort of dropdown or something (should be beside the tray icons)
+  TODO: maybe create some sort of dropdown or something (should be beside the tray icons)
+  add gpu usage to cpu and memory area and combine into one class file
+
   # tray icons are fine but just move it around
   # create a volume box with the ability to at least see volume and maybe change it
   Figure out why there are some missing window icons (Kdbg?)

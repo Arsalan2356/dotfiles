@@ -1,5 +1,3 @@
-// Make event box so we can scroll
-
 const hyprland = await Service.import("hyprland");
 const submap = ["₀", "₁", "₂", "₃", "₄", "₅", "₆", "₇", "₈", "₉"];
 const supermap = ["⁰", "¹", "²", "³", "⁴", "⁵", "⁶", "⁷", "⁸", "⁹"];
