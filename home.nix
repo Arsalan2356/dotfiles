@@ -294,8 +294,9 @@ eval "$(direnv export zsh 2> >(egrep -v -e '^(.*)direnv: export' >&2))"
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     plugins = with inputs; [
       # TODO: disable until updated for 0.46.2
-      hyprspace.packages.${pkgs.stdenv.hostPlatform.system}.default
-      hy3.packages.${pkgs.stdenv.hostPlatform.system}.default
+      # runs in 0.46.2 but renderer changed so it doesn't work correctly
+      # hyprspace.packages.${pkgs.stdenv.hostPlatform.system}.default
+      hy3.packages.${pkgs.stdenv.hostPlatform.system}.hy3
     ];
 
     extraConfig = builtins.readFile ./hyprland.txt;
