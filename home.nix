@@ -272,7 +272,7 @@ in
       cpr = "rsync -aHAX --info=progress2 --no-inc-recursive";
       diff = "${pkgs.coreutils-full}/bin/ls -v1 /nix/var/nix/profiles | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nvd diff";
       update = "sudo nixos-rebuild switch --flake .#rc && diff";
-      setup = "cp ~/default/shell.nix . && echo \"use nix\" >> .envrc && direnv allow && echo \"Setup directory with .envrc and default shell.nix\"";
+      setup = "cp ~/default/shell.nix . && chattr -i shell.nix && echo \"use nix\" >> .envrc && direnv allow && echo \"Setup directory with .envrc and default shell.nix\"";
       startwaydroid = "sudo systemctl start waydroid-container && waydroid session start";
       stopwaydroid = "waydroid session stop && sudo systemctl stop waydroid-container";
     };
@@ -357,7 +357,8 @@ eval "$(direnv export zsh 2> >(egrep -v -e '^(.*)direnv: export' >&2))"
 { pkgs ? import <nixpkgs> {}}:
 
 pkgs.mkShell {
-  packages = [ pkgs.hello ];
+  # pkgs.hello
+  packages = [ ];
 }'';
 
     "default/window-icon.svg".text = ''<svg width="23px" height="20px" viewBox="-1 0 22 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
