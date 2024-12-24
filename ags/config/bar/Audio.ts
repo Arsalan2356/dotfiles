@@ -59,7 +59,7 @@ export default () => Widget.Revealer({
         spacing: 21,
         start_widget: Widget.EventBox({
           child: Widget.Icon({
-            icon: `${App.configDir}/style/assets/previous.svg`,
+            icon: "/home/rc/default/assets/previous.svg",
             size: 18,
           }),
           on_primary_click: () => { Utils.execAsync(`playerctl previous -p ${clients.getValue()[currplayer.getValue()]}`) }
@@ -67,7 +67,7 @@ export default () => Widget.Revealer({
         center_widget: Widget.EventBox({
           child: Widget.Icon({
             icon: ispaused.bind().as(v => {
-              return `${App.configDir}/style/assets/${v ? "play" : "pause"}.svg`
+              return `/home/rc/default/assets/${v ? "play" : "pause"}.svg`
             }),
             size: 22,
           }),
@@ -75,7 +75,7 @@ export default () => Widget.Revealer({
         }),
         end_widget: Widget.EventBox({
           child: Widget.Icon({
-            icon: `${App.configDir}/style/assets/next.svg`,
+            icon: "/home/rc/default/assets/next.svg",
             size: 18,
           }),
           on_primary_click: () => { Utils.execAsync(`playerctl next -p ${clients.getValue()[currplayer.getValue()]}`) }

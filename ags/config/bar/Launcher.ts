@@ -3,7 +3,7 @@ export default () =>
     class_name: "custom_b",
     child: Widget.Icon({
       class_name: "launcher",
-      icon: `${App.configDir}/style/assets/gamma.svg`,
+      icon: "/home/rc/default/assets/gamma.svg",
       size: 26,
       tooltip_text: "Application Drawer",
     }),

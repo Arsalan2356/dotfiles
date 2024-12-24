@@ -354,6 +354,11 @@ eval "$(direnv export zsh 2> >(egrep -v -e '^(.*)direnv: export' >&2))"
       sha256 = "087r0fr6crj1m9248lj70b2ppmh33lnh8szgjyjm2jv229k7rm0j";
     };
 
+    "default/assets" = {
+      source = ./ags/config/style/assets;
+      recursive = true;
+    };
+
     "default/shell.nix".text = ''
 { pkgs ? import <nixpkgs> {}}:
 
@@ -376,6 +381,7 @@ pkgs.mkShell {
     </g>
 </svg>'';
   };
+
 
   home.sessionVariables = {
     # EDITOR = "nvim";
