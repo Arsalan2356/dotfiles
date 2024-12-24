@@ -135,11 +135,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1734944412,
-        "narHash": "sha256-36QfCAl8V6nMIRUCgiC79VriJPUXXkHuR8zQA1vAtSU=",
+        "lastModified": 1734992499,
+        "narHash": "sha256-f9UyHMTb+BwF6RDZ8eO9HOkSlKeeSPBlcYhMmV1UNIk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8264bfe3a064d704c57df91e34b795b6ac7bad9e",
+        "rev": "f1b1786ea77739dcd181b920d430e30fb1608b8a",
         "type": "github"
       },
       "original": {
@@ -242,11 +242,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1734907157,
-        "narHash": "sha256-sF3Wot4jIemoSo0YigdHyoR5JMaXgKja+mPJGoXXk/k=",
+        "lastModified": 1734988658,
+        "narHash": "sha256-SSPQCHeqMRsR6rhONWFAHDMtQ5NEKnU8G2BktlDwIoY=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "5f7ad767dbf0bac9ddd6bf6c825fb9ed7921308a",
+        "rev": "2e2e2e2cad97eb017ab02f8a67b751e0abe3bb72",
         "type": "github"
       },
       "original": {
@@ -355,6 +355,27 @@
       "original": {
         "owner": "hyprwm",
         "repo": "hyprlang",
+        "type": "github"
+      }
+    },
+    "hyprspace": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ],
+        "systems": "systems_3"
+      },
+      "locked": {
+        "lastModified": 1735018823,
+        "narHash": "sha256-48QOdv7aCjrFePsSSkzJJYXNoKos0uuCIpY08jih6IU=",
+        "owner": "Arsalan2356",
+        "repo": "Hyprspace",
+        "rev": "5dd0e86df4213849253ee8b76ea307aee79b4970",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Arsalan2356",
+        "repo": "Hyprspace",
         "type": "github"
       }
     },
@@ -520,6 +541,7 @@
         "hy3": "hy3",
         "hyprland": "hyprland",
         "hyprland-contrib": "hyprland-contrib",
+        "hyprspace": "hyprspace",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-test": "nixpkgs-test"
       }
@@ -540,6 +562,21 @@
       }
     },
     "systems_2": {
+      "locked": {
+        "lastModified": 1689347949,
+        "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "rev": "31732fcf5e8fea42e59c2488ad31a0e651500f68",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "systems_3": {
       "locked": {
         "lastModified": 1689347949,
         "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
