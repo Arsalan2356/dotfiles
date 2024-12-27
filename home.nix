@@ -67,6 +67,7 @@ in
     playerctl
     nvd
     eza
+    odin
 
 
     # General
