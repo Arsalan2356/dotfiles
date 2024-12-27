@@ -113,6 +113,7 @@ in {
     yamllint
     zls
     nodejs_22
+    ols
   ];
 
   programs.neovim = {
