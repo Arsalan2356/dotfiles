@@ -272,7 +272,7 @@ in
       cpr = "rsync -aHAX --info=progress2 --no-inc-recursive";
       diff = "${pkgs.coreutils-full}/bin/ls -v1 /nix/var/nix/profiles | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nvd diff";
       update = "sudo nixos-rebuild switch --flake .#rc && diff";
-      setup = "cp ~/default/shell.nix . && chattr -i shell.nix && echo \"use nix\" >> .envrc && direnv allow && echo \"Setup directory with .envrc and default shell.nix\"";
+      setup = "cp ~/default/shell.nix . && chmod 644 ./shell.nix && echo \"use nix\" >> .envrc && direnv allow && echo \"Setup directory with .envrc and default shell.nix\"";
       startwaydroid = "sudo systemctl start waydroid-container && waydroid session start";
       stopwaydroid = "waydroid session stop && sudo systemctl stop waydroid-container";
     };
