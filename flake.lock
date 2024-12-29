@@ -463,11 +463,11 @@
     },
     "nixpkgs-test": {
       "locked": {
-        "lastModified": 1735034772,
-        "narHash": "sha256-9BreI2GSc9ld53d7GgyuTNCeIA6JLxk9G3KjUXvooDo=",
+        "lastModified": 1735391491,
+        "narHash": "sha256-NaKIJZxQFsvdPbI50atycR1hXhCYyc6d4Is6X2KHLGY=",
         "owner": "Arsalan2356",
         "repo": "nixpkgs",
-        "rev": "07c21b75ab7fd1641199cbc7c024a6eb7014bd40",
+        "rev": "25b794817ea71a355bd9669ecc43c3b6af2ae475",
         "type": "github"
       },
       "original": {
