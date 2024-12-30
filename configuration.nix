@@ -58,7 +58,6 @@
   # Add in other fileSystems
   fileSystems."/mnt/H" =
     { device = "/dev/disk/by-label/ssd";
-      # change to ntfs if windows
       fsType = "ext4";
       options = [ "relatime" ];
     };

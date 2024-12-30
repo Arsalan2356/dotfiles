@@ -2,8 +2,7 @@
   description = "Nixos config flake";
 
   inputs = {
-    # TODO: update to specific commit where rocm-llvm-libc still works
-    # maybe add bleeding edge nixpkgs (master)
+    # TODO: wait until nixpkgs where rocm-llvm-libc works
     nixpkgs = {
 	url = "github:nixos/nixpkgs/nixos-unstable";
     };
