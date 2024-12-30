@@ -14,6 +14,7 @@ let
     ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
     ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
   '';
+  csystem = pkgs.stdenv.hostPlatform.system;
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -79,7 +80,7 @@ in
     pinta
     xarchiver
     nwg-drawer
-    inputs.hyprland-contrib.packages.x86_64-linux.grimblast
+    inputs.hyprland-contrib.packages.${csystem}.grimblast
     pinta
     qbittorrent
     bitwarden-desktop
@@ -104,19 +105,20 @@ in
     winetricks
     lutris
     protonup-qt
-    inputs.aagl.packages.x86_64-linux.anime-game-launcher
-    inputs.aagl.packages.x86_64-linux.anime-games-launcher
-    inputs.aagl.packages.x86_64-linux.honkers-launcher
-    inputs.aagl.packages.x86_64-linux.honkers-railway-launcher
-    inputs.aagl.packages.x86_64-linux.sleepy-launcher
-    inputs.aagl.packages.x86_64-linux.wavey-launcher
-
 
     # Audio/Video
     obs-cli
     ffmpeg-full
     mpv
     spotify
+
+
+    inputs.aagl.packages.${csystem}.anime-game-launcher
+    inputs.aagl.packages.${csystem}.anime-games-launcher
+    inputs.aagl.packages.${csystem}.honkers-launcher
+    inputs.aagl.packages.${csystem}.honkers-railway-launcher
+    inputs.aagl.packages.${csystem}.sleepy-launcher
+    inputs.aagl.packages.${csystem}.wavey-launcher
   ];
 
 
@@ -292,12 +294,12 @@ eval "$(direnv export zsh 2> >(egrep -v -e '^(.*)direnv: export' >&2))"
   wayland.windowManager.hyprland = {
     enable = true;
 
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    package = inputs.hyprland.packages.${csystem}.hyprland;
     plugins = with inputs; [
       # TODO: disable until updated for 0.46.2
       # runs in 0.46.2 but renderer changed so it doesn't work correctly
-      # hyprspace.packages.${pkgs.stdenv.hostPlatform.system}.default
-      hy3.packages.${pkgs.stdenv.hostPlatform.system}.hy3
+      # hyprspace.packages.${csystem}.default
+      hy3.packages.${csystem}.hy3
     ];
 
     extraConfig = builtins.readFile ./hyprland.txt;

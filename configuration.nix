@@ -154,6 +154,7 @@
     papirus-icon-theme
     man-pages
     man-pages-posix
+    parsec-bin
 
     # Hyprland specific
     nwg-displays
@@ -235,16 +236,7 @@
     spice-gtk
 
 
-    # Custom Stuff
-    # (import ./grimblast.nix { inherit pkgs; })
-    # (import ./sysinfo.nix { inherit pkgs; })
-    # (import ./clients.nix { inherit pkgs; })
-    # (import ./clients2.nix { inherit pkgs; })
-    # (import ./bluetooth.nix {inherit pkgs; })
     (import ./ags {inherit pkgs; })
-    # (import ./iconfinder.nix { inherit lib pkgs; })
-    parsec-bin
-
   ];
   # Add dev outputs from packages as well (for development packages)
   environment.extraOutputsToInstall = [ "dev" ];
