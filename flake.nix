@@ -29,7 +29,7 @@
       url = "github:Arsalan2356/nixpkgs/custom";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.url = "github:hyprwm/Hyprland/v0.46.2-b";
 
     hyprspace = {
       url = "github:Arsalan2356/Hyprspace";
