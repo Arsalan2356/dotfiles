@@ -10,8 +10,8 @@ export default () => Widget.Label({
     else if (title.includes("vim")) {
       title = ` ${title.substring(title.indexOf("vim") + 3)}`
     }
-    else if (title.includes("Discord")) {
-      title = `  ${title.substring(title.indexOf("Discord") + 10)}`
+    else if (title.includes("Vesktop")) {
+      title = `  ${title}`
     }
     else if (title.includes("Thunar")) {
       title = ` ${title.substring(0, title.indexOf("Thunar") - 3)}`
