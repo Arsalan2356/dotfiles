@@ -77,7 +77,7 @@ return {
         hidden = true,
         no_ignore = true,
         no_ignore_parent = true,
-        search_dirs = { "/home/rc", "G:/Rnd/Coding Stuff" },
+        search_dirs = { "/home/rc", "G:/Rnd/Coding_Stuff" },
       })
     end, { desc = "[S]earch [A]ll Files" })
 
