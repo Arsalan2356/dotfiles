@@ -7,6 +7,10 @@
 	url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
+    nixpkgs-master = {
+	url = "github:nixos/nixpkgs/master";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,7 +29,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-test = {
+    nixpkgs-custom = {
       url = "github:Arsalan2356/nixpkgs/custom";
     };
 
@@ -53,7 +57,11 @@
 	"dotnet-sdk-6.0.428"
       ];
     };
-    pkgs-test = import inputs.nixpkgs-test {
+    pkgs-custom = import inputs.nixpkgs-custom {
+      inherit system;
+      config.allowUnfree = true;
+    };
+    pkgs-master = import inputs.nixpkgs-master {
       inherit system;
       config.allowUnfree = true;
     };
@@ -61,13 +69,13 @@
     nixosConfigurations = {
       rc = nixpkgs.lib.nixosSystem {
 	inherit system;
-	specialArgs = { inherit pkgs inputs pkgs-test; };
+	specialArgs = { inherit pkgs inputs pkgs-custom; };
 	modules = [
 	  ./configuration.nix
 	  home-manager.nixosModules.home-manager {
 	    home-manager.useGlobalPkgs = true;
 	    home-manager.useUserPackages = true;
-	    home-manager.extraSpecialArgs = { inherit pkgs inputs pkgs-test; };
+	    home-manager.extraSpecialArgs = { inherit pkgs pkgs-custom pkgs-master inputs; };
 	    home-manager.users.rc = import ./home.nix;
 	  }
 	  # inputs.stylix.nixosModules.stylix

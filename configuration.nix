@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgs-test, inputs, lib, ... }:
+{ config, pkgs, pkgs-custom, inputs, lib, ... }:
 {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = lib.mkForce true;
@@ -26,7 +26,7 @@
   # Kernel Packages
   # Switch to zen kernel (latest from fork)
   # boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs-test.linuxPackages_zen;
+  boot.kernelPackages = pkgs-custom.linuxPackages_zen;
 
 
   # Load amdgpu kernel module

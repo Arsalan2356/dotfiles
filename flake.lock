@@ -447,6 +447,38 @@
         "type": "github"
       }
     },
+    "nixpkgs-custom": {
+      "locked": {
+        "lastModified": 1735391491,
+        "narHash": "sha256-NaKIJZxQFsvdPbI50atycR1hXhCYyc6d4Is6X2KHLGY=",
+        "owner": "Arsalan2356",
+        "repo": "nixpkgs",
+        "rev": "25b794817ea71a355bd9669ecc43c3b6af2ae475",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Arsalan2356",
+        "ref": "custom",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1735897677,
+        "narHash": "sha256-rXGKcuK0r/EU7aDx0AC/GVixgg/U/dIxJkJtAW/j/No=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "b4e1c1f013a24039b6a9e9e80655e3bab96c90a5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1730741070,
@@ -459,22 +491,6 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixos-24.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-test": {
-      "locked": {
-        "lastModified": 1735391491,
-        "narHash": "sha256-NaKIJZxQFsvdPbI50atycR1hXhCYyc6d4Is6X2KHLGY=",
-        "owner": "Arsalan2356",
-        "repo": "nixpkgs",
-        "rev": "25b794817ea71a355bd9669ecc43c3b6af2ae475",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Arsalan2356",
-        "ref": "custom",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -545,7 +561,8 @@
         "hyprland-contrib": "hyprland-contrib",
         "hyprspace": "hyprspace",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-test": "nixpkgs-test"
+        "nixpkgs-custom": "nixpkgs-custom",
+        "nixpkgs-master": "nixpkgs-master"
       }
     },
     "systems": {

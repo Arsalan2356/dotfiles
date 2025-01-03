@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-test, inputs, ... }:
+{ config, pkgs, pkgs-custom, pkgs-master, inputs, ... }:
 let
   tokyonight = pkgs.tokyonight-gtk-theme.overrideAttrs (old : {
     src = pkgs.fetchFromGitHub {
@@ -68,7 +68,8 @@ in
     playerctl
     nvd
     eza
-    odin
+    (pkgs.callPackage ./odin/odin.nix {})
+    pkgs-master.raylib
 
 
     # General
