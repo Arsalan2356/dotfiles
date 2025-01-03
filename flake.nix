@@ -69,7 +69,7 @@
     nixosConfigurations = {
       rc = nixpkgs.lib.nixosSystem {
 	inherit system;
-	specialArgs = { inherit pkgs inputs pkgs-custom; };
+	specialArgs = { inherit pkgs pkgs-custom pkgs-master inputs; };
 	modules = [
 	  ./configuration.nix
 	  home-manager.nixosModules.home-manager {
