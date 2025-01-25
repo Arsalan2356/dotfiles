@@ -167,6 +167,7 @@
     # Browser
     firefox-devedition-bin
     inputs.zen-browser.packages.x86_64-linux.zen-browser
+    floorp
 
 
     # Rebind Caps Lock
