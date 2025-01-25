@@ -268,6 +268,12 @@ in
       theme = "lambdaf";
       custom = "${config.home.homeDirectory}/.oh-my-zsh/custom";
     };
+    history = {
+      expireDuplicatesFirst = true;
+      extended = true;
+      ignoreAllDups = true;
+      ignoreDups = true;
+    };
 
     shellAliases = {
       ls = "eza -aF";
@@ -287,6 +293,7 @@ eval "$(direnv hook zsh)"
 _direnv_hook() {
 eval "$(direnv export zsh 2> >(egrep -v -e '^(.*)direnv: export' >&2))"
 };
+zshaddhistory() { whence ''${''${(z)1}[1]} >| /dev/null || return 1 }
 '';
 
   };
