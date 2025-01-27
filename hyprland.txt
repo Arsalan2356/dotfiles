@@ -24,8 +24,8 @@
 ################
 
 # See https://wiki.hyprland.org/Configuring/Monitors/
-monitor=,preferred,auto,auto
-# source = ~/.config/hypr/monitors.conf
+# monitor=,preferred,auto,auto
+source = ~/.config/hypr/monitors.conf
 
 
 ###################
