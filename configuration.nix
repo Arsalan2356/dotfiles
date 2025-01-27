@@ -97,6 +97,8 @@
     ];
   };
 
+  hardware.opengl.enable = true;
+
 
   # Enable Nvidia Drivers
   # hardware.nvidia = {
@@ -162,7 +164,7 @@
     wlogout
     hyprcursor
     xcur2png
-    egl-wayland
+    # egl-wayland
 
     # Browser
     firefox-devedition-bin
