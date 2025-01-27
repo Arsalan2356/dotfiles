@@ -33,18 +33,6 @@
       url = "github:Arsalan2356/nixpkgs/custom";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.46.2-b";
-
-    hyprspace = {
-      url = "github:Arsalan2356/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    hy3 = {
-      url = "github:outfoxxed/hy3/f8a8458663fe2b61796a2f10264aa09e362fa6a5";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";

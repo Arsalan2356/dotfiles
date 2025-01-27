@@ -97,9 +97,6 @@
     ];
   };
 
-  hardware.opengl.enable = true;
-
-
   # Enable Nvidia Drivers
   # hardware.nvidia = {
   #   package = config.boot.kernelPackages.nvidiaPackages.beta;
@@ -292,7 +289,7 @@
     enable = true;
     settings = {
       default_session = {
-	command = "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks --time-format \"%A %d, %B %Y\" -r --remember-session --sessions ${pkgs.hyprland}/share/wayland-sessions";
+	command = "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks --time-format \"%A %d, %B %Y\" -r --remember-session --sessions ${pkgs-master.hyprland}/share/wayland-sessions";
 	user = "greeter";
       };
     };
@@ -362,7 +359,6 @@
   # XDG Portals
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [
-    pkgs.xdg-desktop-portal-hyprland
     pkgs.xdg-desktop-portal-gtk
     pkgs.xdg-desktop-portal-wlr
   ];
@@ -380,6 +376,7 @@
 
   # Enable hyprland
   programs.hyprland.enable = true;
+  programs.hyprland.portalPackage = pkgs-master.xdg-desktop-portal-hyprland;
 
   # Enable steam
   programs.steam = {

@@ -302,12 +302,9 @@ zshaddhistory() { whence ''${''${(z)1}[1]} >| /dev/null || return 1 }
   wayland.windowManager.hyprland = {
     enable = true;
 
-    package = inputs.hyprland.packages.${csystem}.hyprland;
-    plugins = with inputs; [
-      # TODO: disable until updated for 0.46.2
-      # runs in 0.46.2 but renderer changed so it doesn't work correctly
-      # hyprspace.packages.${csystem}.default
-      hy3.packages.${csystem}.hy3
+    package = pkgs-master.hyprland;
+    plugins = with pkgs-master.hyprlandPlugins; [
+      hy3
     ];
 
     extraConfig = builtins.readFile ./hyprland.txt;
