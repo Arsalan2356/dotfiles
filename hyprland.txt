@@ -25,7 +25,8 @@
 
 # See https://wiki.hyprland.org/Configuring/Monitors/
 # monitor=,preferred,auto,auto
-source = ~/.config/hypr/monitors.conf
+# source = ~/.config/hypr/monitors.conf
+monitor=DP-3,1920x1080@240.0,0x0,1.0
 
 
 ###################
