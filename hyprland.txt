@@ -59,6 +59,7 @@ exec-once = wl-paste --type image --watch cliphist store
 exec-once = nwg-drawer -r -fm $fileManager -ft -term $terminal -wm hyprland
 exec-once = sleep 3; vesktop --start-minimized
 exec-once = sleep 1; input-remapper-control --command autoload
+exec-once = sleep 3; obs --startreplaybuffer --minimize-to-tray
 
 
 #############################
@@ -237,6 +238,11 @@ plugin {
 # See https://wiki.hyprland.org/Configuring/Keywords/
 $mainMod = ALT
 bind = , Print, exec, grimBlast
+
+
+# OBS Global Shortcut
+bind = , F10, pass, class:^(com\.obsproject\.Studio)$
+
 
 
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
