@@ -241,7 +241,7 @@ bind = , Print, exec, grimBlast
 
 
 # OBS Global Shortcut
-bind = , F10, pass, class:^(com\.obsproject\.Studio)$
+bind = , F10, execr, obs-cmd replay save
 
 
 
