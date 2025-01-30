@@ -108,7 +108,7 @@ in
     protonup-qt
 
     # Audio/Video
-    obs-cli
+    obs-cmd
     ffmpeg-full
     mpv
     spotify
