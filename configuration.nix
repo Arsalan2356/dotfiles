@@ -3,7 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, pkgs-custom, pkgs-master, inputs, lib, ... }:
-{
+let
+  csystem = pkgs.stdenv.hostPlatform.system;
+in {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = lib.mkForce true;
 
@@ -165,7 +167,7 @@
 
     # Browser
     firefox-devedition-bin
-    inputs.zen-browser.packages.x86_64-linux.zen-browser
+    inputs.zen-browser.packages.${csystem}.zen-browser
     floorp
 
 
