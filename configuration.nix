@@ -212,8 +212,7 @@ in {
 
 
     # Installing wine here doesn't give conflicts for some reason
-    wineWowPackages.staging
-    wineWowPackages.waylandFull
+    wineWowPackages.stagingFull
 
 
     # Archive backends for thunar
