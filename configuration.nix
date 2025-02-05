@@ -168,7 +168,6 @@ in {
     # Browser
     firefox-devedition-bin
     inputs.zen-browser.packages.${csystem}.zen-browser
-    floorp
 
 
     # Rebind Caps Lock
