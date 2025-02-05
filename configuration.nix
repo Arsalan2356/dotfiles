@@ -280,10 +280,6 @@ in {
   # Udisks
   services.udisks2.enable = true;
 
-  # Enable input-remapper service (TODO: possibly remove this)
-  services.input-remapper.enable = true;
-  services.input-remapper.serviceWantedBy = lib.mkForce [];
-
   # Enable greetd for tuigreet
   services.greetd = {
     enable = true;
