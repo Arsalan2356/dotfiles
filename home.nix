@@ -106,6 +106,7 @@ in
     winetricks
     lutris
     protonup-qt
+    asdf-vm
 
     # Audio/Video
     obs-cmd
