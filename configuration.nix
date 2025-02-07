@@ -133,7 +133,7 @@ in {
   users.users.rc = {
     isNormalUser = true;
     description = "rc";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "input" "gamemode" ];
     useDefaultShell = true;
     shell = pkgs.zsh;
   };
