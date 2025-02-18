@@ -1,6 +1,11 @@
 @use "../color";
 
 
+* {
+  font-family: monospace;
+}
+
+
 .rbackground {
   background: #1a1b26;
   border-radius: 20px;
@@ -31,6 +36,7 @@
 
   label {
     font-size: 14pt;
+    letter-spacing: 3px;
     min-width: 14pt;
     min-height: 10pt;
     border-radius: 20px;
