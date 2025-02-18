@@ -73,6 +73,7 @@
 	  }
 	  # inputs.stylix.nixosModules.stylix
 	  # inputs.envfs.nixosModules.envfs
+	  inputs.aagl.nixosModules.default
 	];
       };
     };

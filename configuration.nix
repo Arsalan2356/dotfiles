@@ -252,7 +252,10 @@ in {
 
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
-    hack-font
+    nerd-fonts.hack
+    cantarell-fonts
+    noto-fonts
+    noto-fonts-cjk-sans
   ];
 
 
