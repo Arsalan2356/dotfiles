@@ -306,6 +306,7 @@ zshaddhistory() { whence ''${''${(z)1}[1]} >| /dev/null || return 1 }
     package = pkgs-master.hyprland;
     portalPackage = pkgs-master.xdg-desktop-portal-hyprland;
     plugins = with pkgs-master.hyprlandPlugins; [
+      hyprspace
       hy3
     ];
 
