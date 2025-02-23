@@ -38,6 +38,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    flatpaks.url = "github:GermanBread/declarative-flatpak/stable-v3";
+
 
   };
   outputs = inputs @ { nixpkgs, home-manager, ... }:
@@ -64,7 +66,6 @@
 	inherit system;
 	specialArgs = { inherit pkgs pkgs-custom pkgs-master inputs; };
 	modules = [
-	  ./configuration.nix
 	  home-manager.nixosModules.home-manager {
 	    home-manager.useGlobalPkgs = true;
 	    home-manager.useUserPackages = true;
@@ -74,6 +75,8 @@
 	  # inputs.stylix.nixosModules.stylix
 	  # inputs.envfs.nixosModules.envfs
 	  inputs.aagl.nixosModules.default
+	  inputs.flatpaks.nixosModules.declarative-flatpak
+	  ./configuration.nix
 	];
       };
     };

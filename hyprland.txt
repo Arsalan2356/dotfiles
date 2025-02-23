@@ -57,7 +57,7 @@ exec-once = hyprctl setcursor Volantes 24
 exec-once = wl-paste --type text --watch cliphist store
 exec-once = wl-paste --type image --watch cliphist store
 exec-once = nwg-drawer -r -fm $fileManager -ft -term $terminal -wm hyprland
-exec-once = sleep 3; vesktop --start-minimized
+exec-once = sleep 3; flatpak run dev.vencord.Vesktop --start-minimized
 exec-once = sleep 5; input-remapper-control --command autoload
 exec-once = sleep 3; obs --startreplaybuffer --minimize-to-tray --disable-shutdown-check
 

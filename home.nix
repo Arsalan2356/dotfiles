@@ -75,7 +75,6 @@ in
     # General
     bluetuith
     linux-wifi-hotspot
-    vesktop
     gedit
     fsearch
     pinta
@@ -404,7 +403,7 @@ pkgs.mkShell {
   xdg.desktopEntries = {
     "vesktop" = {
       categories = ["Network" "InstantMessaging" "Chat"];
-      exec = "vesktop %U --start-minimized --ozone-platform=x11";
+      exec = "flatpak run dev.vencord.Vesktop %U --start-minimized";
       genericName = "Internet Messenger";
       icon = "vesktop";
       settings = {

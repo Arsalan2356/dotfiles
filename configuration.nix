@@ -337,8 +337,17 @@ in {
   # Enable zram
   services.zram-generator.enable = true;
 
-  # Enable flatpaks
-  services.flatpak.enable = true;
+  # Enable flatpaks and add declaratively
+  services.flatpak = {
+    enable = true;
+    packages = [
+      "flathub:app/dev.vencord.Vesktop//stable"
+    ];
+    remotes = {
+    "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
+    "flathub-beta" = "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo";
+    };
+  };
 
 
   # Start input-remapper on startup with a delay
@@ -354,11 +363,16 @@ in {
 
 
   # XDG Portals
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [
-    pkgs.xdg-desktop-portal-gtk
-    pkgs.xdg-desktop-portal-wlr
-  ];
+  xdg.portal = {
+    enable = true;
+    config = {
+      hyprland.default = ["hyprland" "wlr" "gtk"];
+    };
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-wlr
+    ];
+  };
 
 
   # Enable Zsh (config in home.nix)
