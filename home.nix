@@ -180,6 +180,7 @@ in
       main = {
 	layer = "overlay";
 	prompt = "\"λ \"";
+	fields = "filename,name,exec,generic";
 	terminal = "foot -e";
 	match-counter = "yes";
 	line-height = "28";
