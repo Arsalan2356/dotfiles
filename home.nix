@@ -401,24 +401,6 @@ pkgs.mkShell {
     "$HOME/jdks/jdk/bin"
   ];
 
-  xdg.desktopEntries = {
-    "vesktop" = {
-      categories = ["Network" "InstantMessaging" "Chat"];
-      exec = "flatpak run dev.vencord.Vesktop %U --start-minimized";
-      genericName = "Internet Messenger";
-      icon = "vesktop";
-      settings = {
-	Keywords = "discord;vencord;electron;chat";
-	StartupWMClass = "Vesktop";
-	Version = "1.4";
-      };
-      name = "Vesktop";
-      type = "Application";
-    };
-  };
-
-
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
