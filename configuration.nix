@@ -164,7 +164,7 @@ in {
     # egl-wayland
 
     # Browser
-    firefox-devedition-bin
+    firefox-devedition
     inputs.zen-browser.packages.${csystem}.zen-browser
 
 
