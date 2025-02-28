@@ -369,8 +369,8 @@ in {
       hyprland.default = ["hyprland" "wlr" "gtk"];
     };
     extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-wlr
+      pkgs.xdg-desktop-portal-gtk
     ];
   };
 
