@@ -259,7 +259,7 @@ bind = $mainMod, E, exec, $fileManager
 bind = $mainMod, R, exec, $menu
 bind = $mainMod, V, togglefloating,
 
-bind = $mainMod, F, exec, firefox-developer-edition
+bind = $mainMod, F, exec, firefox-devedition
 
 bind = $mainMod, F9, tagwindow, immediate
 
