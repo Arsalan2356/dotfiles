@@ -165,7 +165,7 @@ in {
 
     # Browser
     firefox-devedition
-    inputs.zen-browser.packages.${csystem}.zen-browser
+    inputs.zen-twilight.packages.${csystem}.zen-browser
 
 
     # Rebind Caps Lock

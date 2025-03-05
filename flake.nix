@@ -33,12 +33,13 @@
       url = "github:Arsalan2356/nixpkgs/custom";
     };
 
-    zen-browser = {
-      url = "github:youwen5/zen-browser-flake";
+    zen-twilight = {
+      url = "github:Arsalan2356/zen-twilight-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     flatpaks.url = "github:GermanBread/declarative-flatpak/stable-v3";
+
 
 
   };
