@@ -366,10 +366,9 @@ in {
   xdg.portal = {
     enable = true;
     config = {
-      hyprland.default = ["hyprland" "wlr" "gtk"];
+      hyprland.default = ["hyprland" "gtk"];
     };
     extraPortals = [
-      pkgs.xdg-desktop-portal-wlr
       pkgs.xdg-desktop-portal-gtk
     ];
   };
