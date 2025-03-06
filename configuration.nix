@@ -340,8 +340,9 @@ in {
   services.flatpak = {
     enable = true;
     packages = [
-      "flathub:app/dev.vencord.Vesktop//stable"
-      "flathub:app/com.github.tchx84.Flatseal//stable"
+      # Keep this around just in case
+      # "flathub:app/dev.vencord.Vesktop//stable"
+      # "flathub:app/com.github.tchx84.Flatseal//stable"
     ];
     remotes = {
     "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
@@ -371,6 +372,7 @@ in {
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
     ];
+    xdgOpenUsePortal = true;
   };
 
 

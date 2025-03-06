@@ -75,6 +75,7 @@ in
     # General
     bluetuith
     linux-wifi-hotspot
+    vesktop
     gedit
     fsearch
     pinta
