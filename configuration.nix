@@ -164,7 +164,6 @@ in {
     # egl-wayland
 
     # Browser
-    firefox-devedition
     inputs.zen-twilight.packages.${csystem}.zen-browser
 
 
@@ -342,6 +341,7 @@ in {
     enable = true;
     packages = [
       "flathub:app/dev.vencord.Vesktop//stable"
+      "flathub:app/com.github.tchx84.Flatseal//stable"
     ];
     remotes = {
     "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
