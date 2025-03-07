@@ -9,11 +9,6 @@ in {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = lib.mkForce true;
 
-  nix.settings = {
-    substituters = ["https://cache.nixos.org/"];
-    trusted-public-keys = ["cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="];
-  };
-
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -26,7 +21,8 @@ in {
   # Kernel Packages
   # Switch to zen kernel (latest from fork)
   # boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelPackages = pkgs-custom.linuxPackages_zen;
+  # boot.kernelPackages = pkgs-custom.linuxPackages_zen;
+  boot.kernelPackages = inputs.nyx.legacyPackages.${csystem}.linuxPackages_cachyos;
 
 
   # Load amdgpu kernel module
