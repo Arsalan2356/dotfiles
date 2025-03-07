@@ -104,11 +104,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1741217763,
-        "narHash": "sha256-g/TrltIjFHIjtzKY5CJpoPANfHQWDD43G5U1a/v5oVg=",
+        "lastModified": 1741345870,
+        "narHash": "sha256-KTpoO4oaucdFr3oJJBYpGK+aWVVrLvtiT17EQE7Cf4Y=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "486b066025dccd8af7fbe5dd2cc79e46b88c80da",
+        "rev": "04c915bcf1a1eac3519372ff3185beef053fba7c",
         "type": "github"
       },
       "original": {
@@ -124,11 +124,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1740923452,
-        "narHash": "sha256-iQNkVG0368H3kiwSYSs1N6sU7GhHSmx0b9y+Z+eO1+c=",
+        "lastModified": 1741279209,
+        "narHash": "sha256-inSG4OUSdCHXSJZhLNcCUA1s0Ebomr5+v4x3FE/XQ3M=",
         "owner": "hyprwm",
         "repo": "contrib",
-        "rev": "6f0d5e16c534aeda47d99b4d20bb2a22bfc60c23",
+        "rev": "0e40ccfc2d6772f9b7d5e1b50c56fb5e468a18fb",
         "type": "github"
       },
       "original": {
@@ -171,11 +171,11 @@
     },
     "nixpkgs-master": {
       "locked": {
-        "lastModified": 1741256752,
-        "narHash": "sha256-DQ3SF7XxjTPjQ+lrZiA8a8uwxI+vqCVAMoi2u78Yfm0=",
+        "lastModified": 1741364660,
+        "narHash": "sha256-GY3e5lpr9Y5UBi+umhROn/I7hniQhiNue4GH3oCwkZY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "96467b34d9f19818fbb141d92c38e18d812ed640",
+        "rev": "3cf0517adc54889ac77d85998af01f1d048d41ff",
         "type": "github"
       },
       "original": {
@@ -219,11 +219,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1741173522,
-        "narHash": "sha256-k7VSqvv0r1r53nUI/IfPHCppkUAddeXn843YlAC5DR0=",
+        "lastModified": 1741246872,
+        "narHash": "sha256-Q6pMP4a9ed636qilcYX8XUguvKl/0/LGXhHcRI91p0U=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d69ab0d71b22fa1ce3dbeff666e6deb4917db049",
+        "rev": "10069ef4cf863633f57238f179a0297de84bd8d3",
         "type": "github"
       },
       "original": {
@@ -283,11 +283,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1741255688,
-        "narHash": "sha256-I4KUQ2RjPKTZcA/2ymFkRwTNpY5K5jIqfsvQeFKANDQ=",
+        "lastModified": 1741364943,
+        "narHash": "sha256-CvsWRgHROVD45aZ5uisPS9G8pKjh522q/bv7bgCajTA=",
         "owner": "Arsalan2356",
         "repo": "zen-twilight-flake",
-        "rev": "82afafc12484437a6b7a77cb1aa8be6e1fbb4d2b",
+        "rev": "d0b5fbb3ef506ebc51f0a3dec292fb777633da5c",
         "type": "github"
       },
       "original": {
