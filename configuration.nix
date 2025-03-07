@@ -32,6 +32,8 @@ in {
   # Load amdgpu kernel module
   boot.initrd.kernelModules = [ "amdgpu" ];
 
+  boot.kernelParams = [ "mitigations=off" ];
+
   # Load nvidia kernel module
   # boot.initrd.kernelModules = [ "nvidia" ];
   # boot.kernelParams = [ "module_blacklist=amdgpu" ];
@@ -349,6 +351,11 @@ in {
     "flathub-beta" = "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo";
     };
   };
+
+  services.irqbalance.enable = true;
+  # Fix irq#308 (wait for new release to remove)
+  systemd.services.irqbalance.serviceConfig.ProtectKernelTunables = "no";
+
 
 
   # Start input-remapper on startup with a delay
