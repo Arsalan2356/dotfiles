@@ -2,7 +2,6 @@
   description = "Nixos config flake";
 
   inputs = {
-    # TODO: wait until nixpkgs where rocm-llvm-libc works
     nixpkgs = {
 	url = "github:nixos/nixpkgs/nixos-unstable";
     };
