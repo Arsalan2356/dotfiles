@@ -1,92 +1,95 @@
 @use "../color";
 
-
 * {
-  font-family: monospace;
+    font-family: monospace;
 }
 
-
 .rbackground {
-  background: #1a1b26;
-  border-radius: 20px;
-  padding: 0 10px;
+    background: #1a1b26;
+    border-radius: 20px;
+    padding: 0 10px;
 
-  &.inactive {
-    background: transparent;
-  }
+    &.inactive {
+        background: transparent;
+    }
 }
 
 .custom_b {
-  background: none;
-  border: none;
-  outline: none;
-  color: color.$text;
+    background: none;
+    border: none;
+    outline: none;
+    color: color.$text;
 }
 
 .launcher {
-  padding-left: 10px;
-  padding-top: 4pt;
-  padding-bottom: 4pt;
-  color: color.$text;
+    padding-left: 10px;
+    padding-top: 4pt;
+    padding-bottom: 4pt;
+    color: color.$text;
 }
 
 .workspaces {
-  padding-left: 12px;
-  padding-top: 2px;
+    padding-left: 12px;
+    padding-top: 2px;
 
-  label {
-    font-size: 14pt;
-    letter-spacing: 3px;
-    min-width: 14pt;
-    min-height: 10pt;
-    border-radius: 20px;
-    padding: 1px 2px 0px;
-    margin: 0 2.5pt;
+    label {
+        font-size: 14pt;
+        letter-spacing: 3px;
+        min-width: 14pt;
+        min-height: 10pt;
+        border-radius: 20px;
+        padding: 1px 2px 0px;
+        margin: 0 2.5pt;
 
-    transition: all 0.4s ease-out;
+        transition: all 0.4s ease-out;
 
-    &.occupied {
-      background: linear-gradient(to top, #565f89 20%, color.$base);
-      min-width: 32px;
+        &.occupied {
+            background: linear-gradient(to top, #565f89 20%, color.$base);
+            min-width: 32px;
+        }
+
+        &.active {
+            background: linear-gradient(to top, #2ac3de 20%, color.$base);
+            min-width: 46px;
+        }
     }
-
-    &.active {
-      background: linear-gradient(to top, #2ac3de 20%, color.$base);
-      min-width: 46px;
-    }
-  }
 }
 
 .client-title {
-  padding: 2px 0 0 8pt;
-  font-size: 10pt;
+    padding: 2px 0 0 8pt;
+    font-size: 10pt;
 }
 
 .clients {
-  padding: 0 5px;
+    padding: 0 5px;
 }
 
 .clientchild {
-  border: none;
-  transition: all 0.2s ease-in-out;
-  padding-top: 3px;
-  border-radius: 25px;
+    border: none;
+    transition: all 0.2s ease-in-out;
+    padding-top: 3px;
+    border-radius: 25px;
 
-  &.active {
-    background: linear-gradient(to top, #2ac3de 20%, color.$base);
-    min-width: 42px;
-  }
+    &.active {
+        background: linear-gradient(to top, #2ac3de 20%, color.$base);
+        min-width: 42px;
+    }
+}
+
+.inline {
+    background-color: transparent;
+    padding: 0px;
 }
 
 .systray {
-  /* background-color: #171829; */
-  /* border: 2px solid #171829; */
-  /* border-radius: 20pt; */
-  padding: 0 5pt 0 5pt;
-  font-size: 1.2em;
+    /* background-color: #171829; */
+    /* border: 2px solid #171829; */
+    /* border-radius: 20pt; */
+    padding: 0 5pt 0 5pt;
+    font-size: 1.2em;
 }
 
 .time {
-  color: color.$text;
-  padding-right: 6px;
+    color: color.$text;
+    padding-right: 6px;
 }

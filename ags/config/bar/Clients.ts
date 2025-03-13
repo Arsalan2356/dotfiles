@@ -1,4 +1,3 @@
-
 const hyprland = await Service.import("hyprland");
 
 // Workspace changes -> reload all clients and get new ones
@@ -6,8 +5,14 @@ const hyprland = await Service.import("hyprland");
 // Active Window -> set a classname on the active window to give it some highlight or something
 // Urgent Window -> flickering on said window to indicate urgency
 // TODO: add middle click to override icon (add overrides to a config location so they're loaded on startup?)
-const events = ["workspacev2", "openwindow", "closewindow", "activewindowv2", "urgent", "movewindowv2"];
-
+const events = [
+  "workspacev2",
+  "openwindow",
+  "closewindow",
+  "activewindowv2",
+  "urgent",
+  "movewindowv2",
+];
 
 class Client {
   initialTitle: string;
@@ -16,7 +21,14 @@ class Client {
   title: any;
   windowClass: string;
   class_names: any;
-  constructor(initialTitle: string, id: string, focusHistory: string, title: any, cl: string, cnames: string) {
+  constructor(
+    initialTitle: string,
+    id: string,
+    focusHistory: string,
+    title: any,
+    cl: string,
+    cnames: string,
+  ) {
     this.initialTitle = initialTitle;
     this.id = parseInt(id);
     this.focus = parseInt(focusHistory);
@@ -25,10 +37,6 @@ class Client {
     this.class_names = Variable(cnames);
   }
 }
-
-
-
-
 
 var windows = Variable(new Map<String, Client>());
 export var inactive = Variable(false);
@@ -47,7 +55,17 @@ for (const q of out) {
     if (parseInt(vals[3]) == 0) {
       tempcname += ",active";
     }
-    startm.set(vals[0], new Client(vals[1], vals[2], vals[3], Variable(vals[4]), vals[5], tempcname));
+    startm.set(
+      vals[0],
+      new Client(
+        vals[1],
+        vals[2],
+        vals[3],
+        Variable(vals[4]),
+        vals[5],
+        tempcname,
+      ),
+    );
   }
 }
 windows.setValue(startm);
@@ -57,7 +75,6 @@ if (numWindows == 0) {
   inactive.setValue(true);
 }
 
-
 hyprland.connect("event", (__, v, _args) => {
   if (events.includes(v)) {
     if (v == "activewindowv2") {
@@ -66,16 +83,14 @@ hyprland.connect("event", (__, v, _args) => {
         const vals = q.split("<separator>");
         const w = windows.getValue().get(vals[0]);
         if (parseInt(vals[3]) == 0) {
-          if (w != undefined)
-            w.class_names.setValue("clientchild,active");
-        }
-        else {
+          if (w != undefined) w.class_names.setValue("clientchild,active");
+        } else {
           w?.class_names.setValue("clientchild");
         }
       }
-    }
-    else {
-      const active_workspace_stats = Utils.exec("hypractive").split("<separator>");
+    } else {
+      const active_workspace_stats =
+        Utils.exec("hypractive").split("<separator>");
       const active_workspace_id = parseInt(active_workspace_stats[0]);
       const newm = new Map();
       const out = Utils.exec("hyprclients").split("\n");
@@ -86,20 +101,28 @@ hyprland.connect("event", (__, v, _args) => {
           if (parseInt(vals[3]) == 0) {
             tempcname += ",active";
           }
-          newm.set(vals[0], new Client(vals[1], vals[2], vals[3], Variable(vals[4]), vals[5], tempcname));
+          newm.set(
+            vals[0],
+            new Client(
+              vals[1],
+              vals[2],
+              vals[3],
+              Variable(vals[4]),
+              vals[5],
+              tempcname,
+            ),
+          );
         }
       }
       const numWindows = parseInt(active_workspace_stats[1]);
       if (numWindows == 0) {
         inactive.setValue(true);
-      }
-      else {
+      } else {
         inactive.setValue(false);
       }
       windows.setValue(newm);
     }
-  }
-  else {
+  } else {
     if (v == "windowtitlev2") {
       const i = _args.indexOf(",");
       const addr = _args.substring(0, i);
@@ -110,39 +133,61 @@ hyprland.connect("event", (__, v, _args) => {
       }
     }
   }
-})
-
-
-export default () => Widget.Box({
-  class_name: "clients",
-  spacing: 8,
-  children: windows.bind().as(m => {
-    Utils.exec("iconfinderdb");
-    const q = Array.from(m.entries())
-      .map(e => {
-        const icon = Utils.exec(`iconfinder "${e[1].initialTitle}"`);
-        const i1 = (icon == "" || icon.includes(".svgz")) ? ["/home/rc/default/window-icon.svg", "0"] : icon.split("<separator>");
-        const icon2 = Utils.exec(`iconfinder "${e[1].windowClass}"`);
-        const i2 = (icon2 == "" || icon.includes(".svgz")) ? ["/home/rc/default/window-icon.svg", "0"] : icon2.split("<separator>");
-        // TODO: Wrap this in an event box and try to listen for events to maybe switch which window is active
-        return Widget.Icon({
-          class_names: e[1].class_names.bind().as((c: string | undefined) => {
-            if (c != undefined) {
-              return c.split(",")
-            }
-            else {
-              return ["clientchild"]
-            }
-          }),
-          icon: parseFloat(i2[1]) - parseFloat(i1[1]) > 0.2 ? i2[0] : i1[0],
-          css: 'font-size : 30px',
-          tooltip_text: e[1].title.bind(),
-        })
-      })
-    return q;
-  })
 });
 
+export default () =>
+  Widget.Box({
+    class_name: "clients",
+    spacing: 8,
+    children: windows.bind().as((m) => {
+      Utils.exec("iconfinderdb");
+      const q = Array.from(m.entries()).map((e) => {
+        const icon = Utils.exec(`iconfinder "${e[1].initialTitle}"`);
+        const i1 =
+          icon == "" || icon.includes(".svgz")
+            ? ["/home/rc/default/window-icon.svg", "0"]
+            : icon.split("<separator>");
+        const icon2 = Utils.exec(`iconfinder "${e[1].windowClass}"`);
+        const i2 =
+          icon2 == "" || icon.includes(".svgz")
+            ? ["/home/rc/default/window-icon.svg", "0"]
+            : icon2.split("<separator>");
+        // TODO: Wrap this in an event box and try to listen for events to maybe switch which window is active
 
+        const menu = Widget.Menu({
+          children: [
+            Widget.MenuItem({
+              child: Widget.Label("Test"),
+              onActivate: () => print("Hello"),
+            }),
+            Widget.MenuItem({
+              child: Widget.Label("Test 2"),
+              onActivate: () => print("Hello 2"),
+            }),
+          ],
+        });
 
+        const b = Widget.EventBox({
+          class_names: ["inline"],
+          child: Widget.Icon({
+            class_names: e[1].class_names.bind().as((c: string | undefined) => {
+              if (c != undefined) {
+                return c.split(",");
+              } else {
+                return ["clientchild"];
+              }
+            }),
+            icon: parseFloat(i2[1]) - parseFloat(i1[1]) > 0.2 ? i2[0] : i1[0],
+            css: "font-size : 30px",
+            tooltip_text: e[1].title.bind(),
+          }),
+          on_secondary_click: (_, event) => {
+            menu.popup_at_pointer(event);
+          },
+        });
+        return b;
+      });
 
+      return q;
+    }),
+  });
