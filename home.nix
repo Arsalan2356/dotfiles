@@ -70,6 +70,7 @@ in
     eza
     (pkgs.callPackage ./odin/odin.nix {})
     pkgs-master.raylib
+    pkgs-master.zed-editor
 
 
     # General
