@@ -192,6 +192,8 @@ in {
       python-pkgs.seaborn
       python-pkgs.tensorflow-bin
       python-pkgs.torch
+      python-pkgs.cvxpy
+      python-pkgs.python-lsp-server
     ]))
 
     # Dev Packages

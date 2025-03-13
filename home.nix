@@ -289,6 +289,7 @@ in
       setup = "cp ~/default/shell.nix . && chmod 644 ./shell.nix && echo \"use nix\" >> .envrc && direnv allow && echo \"Setup directory with .envrc and default shell.nix\"";
       startwaydroid = "sudo systemctl start waydroid-container && waydroid session start";
       stopwaydroid = "waydroid session stop && sudo systemctl stop waydroid-container";
+      zed = "zeditor -n";
     };
     initExtra = ''
 bindkey -s "^[[1;2D" 'cd ..\n'
