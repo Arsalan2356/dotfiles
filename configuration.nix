@@ -159,6 +159,7 @@ in {
     wlogout
     hyprcursor
     xcur2png
+    hyprpolkitagent
     # egl-wayland
 
     # Browser
