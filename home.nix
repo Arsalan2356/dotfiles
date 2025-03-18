@@ -299,6 +299,10 @@ _direnv_hook() {
 eval "$(direnv export zsh 2> >(egrep -v -e '^(.*)direnv: export' >&2))"
 };
 zshaddhistory() { whence ''${''${(z)1}[1]} >| /dev/null || return 1 }
+unalias l
+unalias la
+unalias ll
+unalias lsa
 '';
 
   };
