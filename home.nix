@@ -268,7 +268,7 @@ in
     };
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "direnv" ];
+      plugins = [ "direnv" ];
       theme = "lambdaf";
       custom = "${config.home.homeDirectory}/.oh-my-zsh/custom";
     };
