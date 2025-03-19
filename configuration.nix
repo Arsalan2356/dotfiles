@@ -358,6 +358,9 @@ in {
   systemd.services.irqbalance.serviceConfig.ProtectKernelTunables = "no";
 
 
+  services.tumbler.enable = true;
+  services.gvfs.enable = true;
+
 
   # Start input-remapper on startup with a delay
   systemd.services.input-remapper-sudo = {
@@ -468,7 +471,6 @@ in {
       thunar-archive-plugin
       thunar-volman
       thunar-media-tags-plugin
-      tumbler
     ];
   };
 
