@@ -212,6 +212,8 @@ in {
     wineWowPackages.stagingFull
 
 
+    # for thunar
+    gvfs
     # Archive backends for thunar
     binutils
     bzip2
