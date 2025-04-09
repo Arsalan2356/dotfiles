@@ -11,7 +11,8 @@ pkgs.rustPlatform.buildRustPackage rec {
     hash = "sha256-yaA6DGxJ350lauGevEUowDy//frN+xPBfb1PLvaREcw=";
   };
 
-  cargoHash = "sha256-8cvwIA3QKW9eusepPIfUUggSKWFqdvQxOixrnD1gFBY=";
+  useCargoFetchVendor = true;
+  cargoHash = "sha256-tFMSPHHUW0SM7eEpPqMa2+tp3Xy/hnywtMIcDE1Z3I4=";
 
   meta = {
     description = "Command-line Icon Finder";
