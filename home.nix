@@ -72,6 +72,7 @@ in
     pkgs-master.raylib
     pkgs-master.zed-editor
     nixd
+    vscode-fhs
 
 
     # General
