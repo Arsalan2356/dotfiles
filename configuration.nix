@@ -373,6 +373,8 @@ in {
     };
   };
 
+  systemd.services.systemd-vconsole-setup.unitConfig.After = "local-fs.target";
+
 
   # XDG Portals
   xdg.portal = {
