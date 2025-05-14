@@ -408,9 +408,9 @@ in {
     gamescopeSession.enable = true;
     extest.enable = true;
     protontricks.enable = true;
-    extraCompatPackages = [
-      inputs.nix-proton-cachyos.packages.${csystem}.proton-cachyos
-    ];
+    # extraCompatPackages = [
+    #   inputs.nix-proton-cachyos.packages.${csystem}.proton-cachyos
+    # ];
   };
 
   # Gamescope

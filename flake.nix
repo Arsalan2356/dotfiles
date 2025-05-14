@@ -41,7 +41,7 @@
 
     nyx.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
-    nix-proton-cachyos.url = "github:jbgi/nix-proton-cachyos/handle-build-number";
+    # nix-proton-cachyos.url = "github:jbgi/nix-proton-cachyos";
 
 
   };
