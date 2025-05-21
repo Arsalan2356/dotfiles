@@ -89,6 +89,7 @@ in
     qbittorrent
     bitwarden-desktop
     linux-wallpaperengine
+    prusa-slicer
 
 
     # File Stuff
