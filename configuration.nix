@@ -28,9 +28,10 @@ in {
 
   # Kernel Packages
   # Switch to zen kernel (latest from fork)
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.kernelPackages = pkgs-custom.linuxPackages_zen;
   # boot.kernelPackages = inputs.nyx.legacyPackages.${csystem}.linuxPackages_cachyos;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
 
 
   # Load amdgpu kernel module
