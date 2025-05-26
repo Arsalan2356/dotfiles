@@ -3,11 +3,15 @@
 
   inputs = {
     nixpkgs = {
-	url = "github:nixos/nixpkgs/nixos-unstable";
+      url = "github:nixos/nixpkgs/nixos-25.05";
+    };
+
+    nixpkgs-unstable = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
     nixpkgs-master = {
-	url = "github:nixos/nixpkgs/master";
+      url = "github:nixos/nixpkgs/master";
     };
 
     home-manager = {
@@ -45,41 +49,29 @@
 
 
   };
-  outputs = inputs @ { nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
   let
+    inherit (self) outputs;
     system = "x86_64-linux";
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-      config.permittedInsecurePackages = [
-	"dotnet-sdk-6.0.428"
-      ];
-    };
-    pkgs-custom = import inputs.nixpkgs-custom {
-      inherit system;
-      config.allowUnfree = true;
-    };
-    pkgs-master = import inputs.nixpkgs-master {
-      inherit system;
-      config.allowUnfree = true;
-    };
   in {
+    overlays = import ./overlays { inherit inputs; };
+
     nixosConfigurations = {
       rc = nixpkgs.lib.nixosSystem {
 	inherit system;
-	specialArgs = { inherit pkgs pkgs-custom pkgs-master inputs; };
+	specialArgs = { inherit inputs outputs system; };
 	modules = [
+	  ./configuration.nix
 	  home-manager.nixosModules.home-manager {
 	    home-manager.useGlobalPkgs = true;
 	    home-manager.useUserPackages = true;
-	    home-manager.extraSpecialArgs = { inherit pkgs pkgs-custom pkgs-master inputs; };
+	    home-manager.extraSpecialArgs = { inherit inputs outputs system; };
 	    home-manager.users.rc = import ./home.nix;
 	  }
 	  # inputs.stylix.nixosModules.stylix
 	  # inputs.envfs.nixosModules.envfs
 	  inputs.aagl.nixosModules.default
 	  inputs.flatpaks.nixosModules.declarative-flatpak
-	  ./configuration.nix
 	  inputs.nyx.nixosModules.default
 	];
       };

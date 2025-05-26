@@ -1,7 +1,7 @@
-{ config, pkgs, pkgs-custom, pkgs-master, inputs, ... }:
+{ inputs, outputs, config, pkgs, system, ... }:
 let
-  tokyonight = pkgs.tokyonight-gtk-theme.overrideAttrs (old : {
-    src = pkgs.fetchFromGitHub {
+  tokyonight = pkgs.unstable.tokyonight-gtk-theme.overrideAttrs (old : {
+    src = pkgs.unstable.fetchFromGitHub {
       owner = "Fausto-Korpsvart";
       repo = "Tokyonight-GTK-Theme";
       rev = "4dc45d60bf35f50ebd9ee41f16ab63783f80dd64";
@@ -14,7 +14,7 @@ let
     ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
     ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
   '';
-  csystem = pkgs.stdenv.hostPlatform.system;
+  csystem = system;
 in
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -33,20 +33,7 @@ in
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #    echo "Hello, ${config.home.username}!"
-    # '')
+  home.packages = with pkgs.unstable; [
 
     # Dev Packages
     progress
@@ -68,9 +55,9 @@ in
     playerctl
     nvd
     eza
-    (pkgs.callPackage ./odin/odin.nix {})
-    pkgs-master.raylib
-    pkgs-master.zed-editor
+    (pkgs.unstable.callPackage ./odin/odin.nix {})
+    pkgs.master.raylib
+    pkgs.master.zed-editor
     nixd
     vscode-fhs
 
@@ -131,7 +118,7 @@ in
   gtk = {
     enable = true;
     font.name = "Hack";
-    iconTheme.package = pkgs.papirus-icon-theme;
+    iconTheme.package = pkgs.unstable.papirus-icon-theme;
     iconTheme.name = "Papirus Dark";
     theme.package = tokyonight;
     theme.name = "Tokyonight-Dark";
@@ -146,7 +133,7 @@ in
   programs.ags = {
     enable = true;
     configDir = null;
-    extraPackages = with pkgs; [
+    extraPackages = with pkgs.unstable; [
       gtksourceview
       webkitgtk
     ];
@@ -220,7 +207,7 @@ in
   # OBS
   programs.obs-studio = {
     enable = true;
-    plugins = [ pkgs.obs-studio-plugins.wlrobs ];
+    plugins = [ pkgs.unstable.obs-studio-plugins.wlrobs ];
   };
 
   # Zoxide searching
@@ -286,14 +273,14 @@ in
       cd = "z";
       cdi = "zi";
       cpr = "rsync -aHAX --info=progress2 --no-inc-recursive";
-      diff = "${pkgs.coreutils-full}/bin/ls -v1 /nix/var/nix/profiles | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nvd diff";
+      diff = "${pkgs.unstable.coreutils-full}/bin/ls -v1 /nix/var/nix/profiles | tail -n 2 | awk '{print \"/nix/var/nix/profiles/\" $0}' - | xargs nvd diff";
       update = "sudo nixos-rebuild switch --flake .#rc && diff";
       setup = "cp ~/default/shell.nix . && chmod 644 ./shell.nix && echo \"use nix\" >> .envrc && direnv allow && echo \"Setup directory with .envrc and default shell.nix\"";
       startwaydroid = "sudo systemctl start waydroid-container && waydroid session start";
       stopwaydroid = "waydroid session stop && sudo systemctl stop waydroid-container";
       zed = "zeditor -n";
     };
-    initExtra = ''
+    initContent = ''
 bindkey -s "^[[1;2D" 'cd ..\n'
 export DIRENV_LOG_FORMAT="$(printf "\033[38;2;192;202;245mdirenv: %%s\033[0m")"
 eval "$(direnv hook zsh)"
@@ -312,10 +299,9 @@ unalias lsa
   # Enable hyprland
   wayland.windowManager.hyprland = {
     enable = true;
-
-    package = pkgs-master.hyprland;
-    portalPackage = pkgs-master.xdg-desktop-portal-hyprland;
-    plugins = with pkgs-master.hyprlandPlugins; [
+    package = pkgs.master.hyprland;
+    portalPackage = pkgs.master.xdg-desktop-portal-hyprland;
+    plugins = with pkgs.master.hyprlandPlugins; [
       hyprspace
       hy3
     ];
@@ -365,9 +351,9 @@ unalias lsa
   # plain files is through 'home.file'.
   home.file = {
     # Multiple jdks on system
-    "jdks/jdk8".source = pkgs.zulu8;
-    "jdks/jdk17".source = pkgs.zulu17;
-    "jdks/jdk".source = pkgs.zulu;
+    "jdks/jdk8".source = pkgs.unstable.zulu8;
+    "jdks/jdk17".source = pkgs.unstable.zulu17;
+    "jdks/jdk".source = pkgs.unstable.zulu;
 
     ".oh-my-zsh/custom/themes/lambdaf.zsh-theme".text = customOhMyZshTheme;
     ".local/share/icons/hicolor/256x256/apps/vesktop.png".source = builtins.fetchurl {

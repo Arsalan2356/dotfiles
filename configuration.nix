@@ -2,12 +2,20 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgs-custom, pkgs-master, inputs, lib, ... }:
+{ inputs, outputs, lib, config, pkgs, system, ... }:
 let
-  csystem = pkgs.stdenv.hostPlatform.system;
+  csystem = system;
 in {
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = lib.mkForce true;
+  nixpkgs = {
+    overlays = [
+      outputs.overlays.unstable-packages
+      outputs.overlays.custom-packages
+      outputs.overlays.master-packages
+    ];
+    config = {
+      allowUnfree = true;
+    };
+  };
 
   imports =
     [ # Include the results of the hardware scan.
@@ -20,19 +28,19 @@ in {
 
   # Kernel Packages
   # Switch to zen kernel (latest from fork)
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.kernelPackages = pkgs-custom.linuxPackages_zen;
-  boot.kernelPackages = inputs.nyx.legacyPackages.${csystem}.linuxPackages_cachyos;
+  # boot.kernelPackages = inputs.nyx.legacyPackages.${csystem}.linuxPackages_cachyos;
 
 
   # Load amdgpu kernel module
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  # boot.initrd.kernelModules = [ "amdgpu" ];
 
-  boot.kernelParams = [ "mitigations=off" ];
+  # boot.kernelParams = [ "mitigations=off" ];
 
   # Load nvidia kernel module
-  # boot.initrd.kernelModules = [ "nvidia" ];
-  # boot.kernelParams = [ "module_blacklist=amdgpu" ];
+  boot.initrd.kernelModules = [ "nvidia" ];
+  boot.kernelParams = [ "module_blacklist=amdgpu" "mitigations=off" ];
 
 
   # Bootloader
@@ -89,26 +97,26 @@ in {
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    extraPackages = with pkgs; [
-      rocmPackages.clr.icd
-      # nvidia-vaapi-driver
+    extraPackages = with pkgs.unstable; [
+      # rocmPackages.clr.icd
+      nvidia-vaapi-driver
     ];
   };
 
   # Enable Nvidia Drivers
-  # hardware.nvidia = {
-  #   package = config.boot.kernelPackages.nvidiaPackages.beta;
-  #   modesetting.enable = true;
-  #   powerManagement.enable = true;
-  #   powerManagement.finegrained = false;
-  #   open = true;
-  #   nvidiaSettings = true;
-  # };
+  hardware.nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = false;
+    open = true;
+    nvidiaSettings = true;
+  };
 
 
   # Set your time zone.
-  time.timeZone = "America/New_York";
-  # time.timeZone = "Asia/Dubai";
+  # time.timeZone = "America/New_York";
+  time.timeZone = "Asia/Dubai";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -131,12 +139,12 @@ in {
     description = "rc";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "input" "gamemode" ];
     useDefaultShell = true;
-    shell = pkgs.zsh;
+    shell = pkgs.unstable.zsh;
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs.unstable; [
 
     # General Purpose
     vim
@@ -237,7 +245,7 @@ in {
     spice-gtk
 
 
-    (import ./ags {inherit pkgs; })
+    (import ./ags { pkgs = pkgs.unstable; })
   ];
   # Add dev outputs from packages as well (for development packages)
   environment.extraOutputsToInstall = [ "dev" ];
@@ -250,7 +258,7 @@ in {
 	"Hack"
   ];
 
-  fonts.packages = with pkgs; [
+  fonts.packages = with pkgs.unstable; [
     nerd-fonts.fira-code
     nerd-fonts.hack
     cantarell-fonts
@@ -262,7 +270,7 @@ in {
 
   # Enable flakes
   nix = {
-    package = pkgs.nix;
+    package = pkgs.unstable.nix;
     extraOptions = "
       experimental-features = nix-command flakes
       trusted-users = root rc
@@ -288,7 +296,7 @@ in {
     enable = true;
     settings = {
       default_session = {
-	command = "${pkgs.greetd.tuigreet}/bin/tuigreet --asterisks --time-format \"%A %d, %B %Y\" -r --remember-session --sessions ${pkgs-master.hyprland}/share/wayland-sessions";
+	command = "${pkgs.unstable.greetd.tuigreet}/bin/tuigreet --asterisks --time-format \"%A %d, %B %Y\" -r --remember-session --sessions ${pkgs.master.hyprland}/share/wayland-sessions";
 	user = "greeter";
       };
     };
@@ -332,8 +340,8 @@ in {
 
   # Enable multiple video drivers (automatically uses the correct one)
   services.xserver.videoDrivers = [
-    "amdgpu"
-    # "nvidia"
+    # "amdgpu"
+    "nvidia"
   ];
 
   # Enable zram
@@ -368,8 +376,8 @@ in {
     wantedBy = ["default.target"];
 
     serviceConfig = {
-      ExecStartPre = "${pkgs.coreutils-full}/bin/sleep 3";
-      ExecStart = "${pkgs.sudo}/bin/sudo ${pkgs.input-remapper}/bin/input-remapper-service";
+      ExecStartPre = "${pkgs.unstable.coreutils-full}/bin/sleep 3";
+      ExecStart = "${pkgs.unstable.sudo}/bin/sudo ${pkgs.unstable.input-remapper}/bin/input-remapper-service";
     };
   };
 
@@ -380,7 +388,7 @@ in {
   xdg.portal = {
     enable = true;
     extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
+      pkgs.unstable.xdg-desktop-portal-gtk
     ];
     xdgOpenUsePortal = true;
   };
@@ -398,7 +406,7 @@ in {
 
   # Enable hyprland
   programs.hyprland.enable = true;
-  programs.hyprland.portalPackage = pkgs-master.xdg-desktop-portal-hyprland;
+  programs.hyprland.portalPackage = pkgs.master.xdg-desktop-portal-hyprland;
 
   # Enable steam
   programs.steam = {
@@ -451,7 +459,7 @@ in {
   # Fixes unpatched packages
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [
+    libraries = with pkgs.unstable; [
       stdenv.cc.cc
     ];
   };
@@ -469,7 +477,7 @@ in {
   # Use thunar file manager
   programs.thunar = {
     enable = true;
-    plugins = with pkgs.xfce; [
+    plugins = with pkgs.unstable.xfce; [
       thunar-archive-plugin
       thunar-volman
       thunar-media-tags-plugin
