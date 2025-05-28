@@ -397,6 +397,21 @@ pkgs.mkShell {
     "$HOME/jdks/jdk/bin"
   ];
 
+
+  xdg.desktopEntries = {
+    code = {
+      name = "Visual Studio Code";
+      genericName = "Text Editor";
+      exec = "code --disable-gpu %F";
+      terminal = false;
+      categories = ["Utility" "TextEditor" "Development" "IDE"];
+    };
+
+  };
+
+
+
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
