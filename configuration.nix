@@ -355,6 +355,7 @@ in {
       # Keep this around just in case
       # "flathub:app/dev.vencord.Vesktop//stable"
       # "flathub:app/com.github.tchx84.Flatseal//stable"
+      "flathub:app/com.usebottles.bottles//stable"
     ];
     remotes = {
     "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
