@@ -334,6 +334,29 @@ in {
   # Things now show up in bin properly
   services.envfs.enable = true;
 
+  # Enable NFS
+  services.nfs.server = {
+    enable = true;
+    exports = ''
+    /export		    192.168.1.15(fsid=0,nohide,insecure,no_subtree_check)
+    /export/Media	    192.168.1.15(fsid=0,nohide,insecure,no_subtree_check)
+    /export/Media/TV	    192.168.1.15(fsid=0,nohide,insecure,no_subtree_check)
+    /export/Media/Movies    192.168.1.15(fsid=0,nohide,insecure,no_subtree_check)
+    '';
+    lockdPort = 4001;
+    mountdPort = 4002;
+    statdPort = 4000;
+  };
+
+  # Enable Plex
+  services.plex = {
+    enable = true;
+    openFirewall = true;
+  };
+
+
+
+
   # Configure Display Server (xserver seems to be an old name)
   services.xserver.xkb = {
     layout = "us";
@@ -497,6 +520,11 @@ in {
 
   # VM
   virtualisation.libvirtd.enable = true;
+
+
+  # Firewall for NFS
+  networking.firewall.allowedTCPPorts = [ 111 2049 4000 4001 4002 20048 ];
+  networking.firewall.allowedUDPPorts = [ 111 2049 4000 4001 4002 20048 ];
 
 
   # List services that you want to enable:
