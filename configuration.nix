@@ -78,6 +78,20 @@ in {
       fsType = "ext4";
       options = [ "relatime" ];
     };
+  fileSystems."/export/Media/Movies" =
+    { device = "/mnt/G/Plex/Media/Movies";
+      depends = [
+      "/mnt/G"
+      ];
+      options = [ "bind" ];
+    };
+  fileSystems."/export/Media/TV" =
+    { device = "/mnt/G/Plex/Media/TV";
+      depends = [
+      "/mnt/G"
+      ];
+      options = [ "bind" ];
+    };
 
   # Define your hostname.
   networking.hostName = "nixos";
