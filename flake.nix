@@ -41,7 +41,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flatpaks.url = "github:GermanBread/declarative-flatpak/stable-v3";
+    flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/stable-v3";
 
     nyx.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
@@ -71,7 +71,7 @@
 	  # inputs.stylix.nixosModules.stylix
 	  # inputs.envfs.nixosModules.envfs
 	  inputs.aagl.nixosModules.default
-	  inputs.flatpaks.nixosModules.declarative-flatpak
+	  inputs.flatpaks.nixosModule
 	  inputs.nyx.nixosModules.default
 	];
       };
