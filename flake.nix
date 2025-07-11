@@ -15,7 +15,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -26,11 +26,6 @@
     # stylix.url = "github:danth/stylix";
 
     ags.url = "github:Aylur/ags/67b0e31ded361934d78bddcfc01f8c3fcf781aad";
-
-    aagl = {
-      url = "github:ezKEa/aagl-gtk-on-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     nixpkgs-custom = {
       url = "github:Arsalan2356/nixpkgs/custom";
@@ -70,7 +65,6 @@
 	  }
 	  # inputs.stylix.nixosModules.stylix
 	  # inputs.envfs.nixosModules.envfs
-	  inputs.aagl.nixosModules.default
 	  inputs.flatpaks.nixosModule
 	  inputs.nyx.nixosModules.default
 	];

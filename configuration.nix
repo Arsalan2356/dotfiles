@@ -114,7 +114,7 @@ in {
     enable32Bit = true;
     extraPackages = with pkgs.unstable; [
       # rocmPackages.clr.icd
-      nvidia-vaapi-driver
+      libvdpau-va-gl
     ];
   };
 
@@ -437,7 +437,7 @@ in {
   xdg.portal = {
     enable = true;
     extraPortals = [
-      pkgs.unstable.xdg-desktop-portal-gtk
+      pkgs.unstable.kdePackages.xdg-desktop-portal-kde
     ];
     xdgOpenUsePortal = true;
   };

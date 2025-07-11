@@ -104,14 +104,6 @@ in
     ffmpeg-full
     mpv
     spotify
-
-
-    inputs.aagl.packages.${csystem}.anime-game-launcher
-    inputs.aagl.packages.${csystem}.anime-games-launcher
-    inputs.aagl.packages.${csystem}.honkers-launcher
-    inputs.aagl.packages.${csystem}.honkers-railway-launcher
-    inputs.aagl.packages.${csystem}.sleepy-launcher
-    inputs.aagl.packages.${csystem}.wavey-launcher
   ];
 
 
@@ -135,7 +127,7 @@ in
     configDir = null;
     extraPackages = with pkgs.unstable; [
       gtksourceview
-      webkitgtk
+      webkitgtk_4_0
     ];
   };
 
