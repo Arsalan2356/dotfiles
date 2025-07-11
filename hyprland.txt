@@ -59,7 +59,7 @@ exec-once = nwg-drawer -r -fm $fileManager -ft -term $terminal -wm hyprland
 exec-once = sleep 3; vesktop --start-minimized
 exec-once = sleep 4; steam -silent -nofriendsui -console
 exec-once = sleep 5; input-remapper-control --command autoload
-exec-once = sleep 3; obs --startreplaybuffer --minimize-to-tray --disable-shutdown-check
+# exec-once = sleep 3; obs --startreplaybuffer --minimize-to-tray --disable-shutdown-check
 
 
 #############################
