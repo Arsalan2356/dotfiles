@@ -100,10 +100,10 @@ in
     asdf-vm
 
     # Audio/Video
-    obs-cmd
     ffmpeg-full
     mpv
     spotify
+    gpu-screen-recorder
   ];
 
 
@@ -195,12 +195,6 @@ in
   # fuzzy finder
   programs.fzf.enable = true;
 
-
-  # OBS
-  programs.obs-studio = {
-    enable = true;
-    plugins = [ pkgs.unstable.obs-studio-plugins.wlrobs ];
-  };
 
   # Zoxide searching
   programs.zoxide = {

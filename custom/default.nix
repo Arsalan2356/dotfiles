@@ -8,6 +8,7 @@
     (import ./active.nix { inherit pkgs; })
     (import ./bluetooth.nix { inherit pkgs; })
     (import ./iconfinder.nix { inherit lib pkgs; })
+    (import ./audiomonitor.nix { inherit pkgs; })
     (pkgs.callPackage ./audiorelay.nix {})
   ];
 }

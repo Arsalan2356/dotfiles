@@ -175,6 +175,7 @@ in {
     man-pages
     man-pages-posix
     parsec-bin
+    pulseaudio
 
     # Hyprland specific
     nwg-displays
@@ -481,6 +482,9 @@ in {
     enable = true;
     enableRenice = true;
   };
+
+  # GPU Screen Recorder
+  programs.gpu-screen-recorder.enable = true;
 
   # Git
   programs.git.enable = true;

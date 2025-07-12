@@ -59,7 +59,8 @@ exec-once = nwg-drawer -r -fm $fileManager -ft -term $terminal -wm hyprland
 exec-once = sleep 3; vesktop --start-minimized
 exec-once = sleep 4; steam -silent -nofriendsui -console
 exec-once = sleep 5; input-remapper-control --command autoload
-# exec-once = sleep 3; obs --startreplaybuffer --minimize-to-tray --disable-shutdown-check
+exec-once = sleep 5; hyprctl notify -1 3000 "rgb(9889ff)" "fontsize:23 Started Replay Buffer"; gpu-screen-recorder -w screen -f 60 -r 180 -c mp4 -o /mnt/G/Rnd/Clips
+exec-once = sleep 9; hyprctl dispatch exec audiomonitor
 
 
 #############################
@@ -242,8 +243,9 @@ $mainMod = ALT
 bind = , Print, exec, grimBlast
 
 
-# OBS Global Shortcut
-bind = , F10, execr, obs-cmd replay save
+# GPU Screen Recorder Shortcut
+bind = , F10, execr, killall -SIGUSR1 gpu-screen-recorder
+bind = , F10, execr, hyprctl notify -1 4000 "rgb(9889ff)" "fontsize:23 Replay Saved"
 
 
 
