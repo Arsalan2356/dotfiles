@@ -404,10 +404,13 @@ in {
       # "flathub:app/dev.vencord.Vesktop//stable"
       # "flathub:app/com.github.tchx84.Flatseal//stable"
       "flathub:app/com.usebottles.bottles//stable"
+      "flathub:app/org.gnome.Platform//45"
+      "lm:app/moe.launcher.an-anime-game-launcher//stable"
     ];
     remotes = {
     "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
     "flathub-beta" = "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo";
+    "lm" = "https://gol.launcher.moe/gol.launcher.moe.flatpakrepo";
     };
   };
 
