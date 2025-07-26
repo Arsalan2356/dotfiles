@@ -400,17 +400,18 @@ in {
   services.flatpak = {
     enable = true;
     packages = [
-      # Keep this around just in case
-      # "flathub:app/dev.vencord.Vesktop//stable"
-      # "flathub:app/com.github.tchx84.Flatseal//stable"
-      "flathub:app/com.usebottles.bottles//stable"
-      "flathub:app/org.gnome.Platform//45"
-      "lm:app/moe.launcher.an-anime-game-launcher//stable"
+      { appId = "com.usebottles.bottles//stable"; origin = "flathub";}
+      { appId = "org.gnome.Platform//45"; origin = "flathub";}
+      { appId = "moe.launcher.an-anime-game-launcher"; origin = "lm";}
     ];
-    remotes = {
-    "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
-    "flathub-beta" = "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo";
-    "lm" = "https://gol.launcher.moe/gol.launcher.moe.flatpakrepo";
+    remotes = [
+    { name = "flathub"; location = "https://dl.flathub.org/repo/flathub.flatpakrepo"; }
+    { name = "flathub-beta"; location = "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo"; }
+    { name = "lm"; location = "https://gol.launcher.moe/gol.launcher.moe.flatpakrepo"; }
+    ];
+    update.auto = {
+      enable = true;
+      onCalendar = "weekly";
     };
   };
 
