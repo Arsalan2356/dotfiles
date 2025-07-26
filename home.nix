@@ -77,6 +77,7 @@ in
     bitwarden-desktop
     linux-wallpaperengine
     prusa-slicer
+    zoom-us
 
 
     # File Stuff
