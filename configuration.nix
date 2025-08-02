@@ -5,6 +5,7 @@
 { inputs, outputs, lib, config, pkgs, system, ... }:
 let
   csystem = system;
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
 in {
   nixpkgs = {
     overlays = [
@@ -540,6 +541,19 @@ in {
       thunar-media-tags-plugin
     ];
   };
+
+  programs.spicetify = {
+    enable = true;
+    enabledExtensions = with spicePkgs.extensions; [
+      hidePodcasts
+    ];
+    theme = spicePkgs.themes.text;
+    colorScheme = "TokyoNight";
+  };
+
+
+
+
 
   # Xwayland
   programs.xwayland.enable = true;

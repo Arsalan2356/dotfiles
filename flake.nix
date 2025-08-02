@@ -42,7 +42,7 @@
 
     # nix-proton-cachyos.url = "github:jbgi/nix-proton-cachyos";
 
-
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
   let
@@ -67,6 +67,7 @@
 	  # inputs.envfs.nixosModules.envfs
 	  inputs.flatpaks.nixosModules.nix-flatpak
 	  inputs.nyx.nixosModules.default
+	  inputs.spicetify-nix.nixosModules.spicetify
 	];
       };
     };

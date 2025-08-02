@@ -103,7 +103,6 @@ in
     # Audio/Video
     ffmpeg-full
     mpv
-    spotify
     gpu-screen-recorder
   ];
 
