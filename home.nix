@@ -128,7 +128,7 @@ in
     configDir = null;
     extraPackages = with pkgs.unstable; [
       gtksourceview
-      webkitgtk_4_0
+      webkitgtk_4_1
     ];
   };
 
