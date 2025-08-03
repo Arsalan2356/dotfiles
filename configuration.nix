@@ -370,19 +370,6 @@ in {
     openFirewall = true;
   };
 
-  services.create_ap = {
-    enable = true;
-    settings = {
-      INTERNET_IFACE = "enp42s0";
-      WIFI_IFACE = "wlo1";
-      SSID = "MyHotspot";
-      PASSPHRASE = "23562356";
-    };
-  };
-
-
-
-
   # Configure Display Server (xserver seems to be an old name)
   services.xserver.xkb = {
     layout = "us";
