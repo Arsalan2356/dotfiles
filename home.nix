@@ -383,16 +383,16 @@ pkgs.mkShell {
   ];
 
 
-  xdg.desktopEntries = {
-    code = {
-      name = "Visual Studio Code";
-      genericName = "Text Editor";
-      exec = "code --disable-gpu %F";
-      terminal = false;
-      categories = ["Utility" "TextEditor" "Development" "IDE"];
-    };
-
-  };
+  # xdg.desktopEntries = {
+  #   code = {
+  #     name = "Visual Studio Code";
+  #     genericName = "Text Editor";
+  #     exec = "code --disable-gpu %F";
+  #     terminal = false;
+  #     categories = ["Utility" "TextEditor" "Development" "IDE"];
+  #   };
+  #
+  # };
 
 
 

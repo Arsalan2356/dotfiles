@@ -36,13 +36,13 @@ in {
 
 
   # Load amdgpu kernel module
-  # boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   # boot.kernelParams = [ "mitigations=off" ];
 
   # Load nvidia kernel module
-  boot.initrd.kernelModules = [ "nvidia" ];
-  boot.kernelParams = [ "module_blacklist=amdgpu" "mitigations=off" ];
+  # boot.initrd.kernelModules = [ "nvidia" ];
+  # boot.kernelParams = [ "module_blacklist=amdgpu" "mitigations=off" ];
 
 
   # Bootloader
@@ -131,8 +131,8 @@ in {
 
 
   # Set your time zone.
-  # time.timeZone = "America/New_York";
-  time.timeZone = "Asia/Dubai";
+  time.timeZone = "America/New_York";
+  # time.timeZone = "Asia/Dubai";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -377,8 +377,8 @@ in {
 
   # Enable multiple video drivers (automatically uses the correct one)
   services.xserver.videoDrivers = [
-    # "amdgpu"
-    "nvidia"
+    "amdgpu"
+    # "nvidia"
   ];
 
   # Enable zram
