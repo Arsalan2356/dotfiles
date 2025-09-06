@@ -57,7 +57,7 @@ in
     eza
     (pkgs.unstable.callPackage ./odin/odin.nix {})
     pkgs.master.raylib
-    pkgs.master.zed-editor
+    pkgs.zed-editor_git
     nixd
     vscode-fhs
 

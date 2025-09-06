@@ -33,7 +33,7 @@ in {
   # boot.kernelPackages = pkgs-custom.linuxPackages_zen;
   # boot.kernelPackages = inputs.nyx.legacyPackages.${csystem}.linuxPackages_cachyos;
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
-
+  system.modulesTree = [ (lib.getOutput "modules" pkgs.linuxPackages_cachyos.kernel) ];
 
   # Load amdgpu kernel module
   boot.initrd.kernelModules = [ "amdgpu" ];
@@ -179,7 +179,7 @@ in {
     pulseaudio
 
     # Hyprland specific
-    nwg-displays
+    pkgs.master.nwg-displays
     networkmanagerapplet
     wlogout
     hyprcursor
@@ -313,7 +313,7 @@ in {
     enable = true;
     settings = {
       default_session = {
-	command = "${pkgs.unstable.greetd.tuigreet}/bin/tuigreet --asterisks --time-format \"%A %d, %B %Y\" -r --remember-session --sessions ${pkgs.master.hyprland}/share/wayland-sessions";
+	command = "${pkgs.unstable.tuigreet}/bin/tuigreet --asterisks --time-format \"%A %d, %B %Y\" -r --remember-session --sessions ${pkgs.master.hyprland}/share/wayland-sessions";
 	user = "greeter";
       };
     };
