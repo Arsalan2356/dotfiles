@@ -189,6 +189,7 @@ in {
 
     # Browser
     inputs.zen-twilight.packages.${csystem}.zen-browser
+    google-chrome
 
 
     # Rebind Caps Lock
