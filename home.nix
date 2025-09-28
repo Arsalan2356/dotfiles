@@ -287,7 +287,6 @@ unalias lsa
     package = pkgs.master.hyprland;
     portalPackage = pkgs.master.xdg-desktop-portal-hyprland;
     plugins = with pkgs.master.hyprlandPlugins; [
-      hyprspace
       hy3
     ];
 

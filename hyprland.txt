@@ -331,7 +331,6 @@ bind = $mainMod SHIFT, M, fullscreen, 0
 # Scroll through existing workspaces with mainMod + scroll
 bind = $mainMod, right, workspace, +1
 bind = $mainMod, left, workspace, -1
-bind = $mainMod, Tab, overview:toggle
 
 
 bind = SUPER, V, exec, nwg-clipman
