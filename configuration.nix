@@ -44,6 +44,8 @@ in {
   # boot.initrd.kernelModules = [ "nvidia" ];
   # boot.kernelParams = [ "module_blacklist=amdgpu" "mitigations=off" ];
 
+  boot.kernelModules = [ "ntsync" ];
+
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
