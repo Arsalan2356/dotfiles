@@ -55,7 +55,6 @@ in
     playerctl
     nvd
     eza
-    (pkgs.unstable.callPackage ./odin/odin.nix {})
     pkgs.master.raylib
     pkgs.zed-editor_git
     nixd

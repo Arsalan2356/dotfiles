@@ -116,8 +116,7 @@ in {
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs.unstable; [
-      # rocmPackages.clr.icd
-      libvdpau-va-gl
+      rocmPackages.clr.icd
     ];
   };
 
