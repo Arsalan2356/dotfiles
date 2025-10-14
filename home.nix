@@ -97,6 +97,7 @@ in
     lutris
     protonup-qt
     asdf-vm
+    r2modman
 
     # Audio/Video
     ffmpeg-full
