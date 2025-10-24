@@ -169,7 +169,7 @@ in {
     foot
     gparted
     pavucontrol
-    lxqt.lxqt-policykit
+    hyprpolkitagent
     appimage-run
     rsync
     busybox
@@ -203,7 +203,6 @@ in {
     kdePackages.qtwayland
     kdePackages.qtsvg
     kdePackages.kolourpaint
-    kdePackages.xwaylandvideobridge
     kdePackages.gwenview
 
 
