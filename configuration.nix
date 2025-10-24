@@ -155,7 +155,7 @@ in {
   users.users.rc = {
     isNormalUser = true;
     description = "rc";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "input" "gamemode" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "input" "gamemode" "docker" ];
     useDefaultShell = true;
     shell = pkgs.unstable.zsh;
   };
@@ -235,7 +235,8 @@ in {
     scanmem
     git-lfs
     nix-prefetch-git
-
+    ## 610
+    gh
 
     # Installing wine here doesn't give conflicts for some reason
     wineWowPackages.stagingFull
@@ -557,6 +558,9 @@ in {
 
   # VM
   virtualisation.libvirtd.enable = true;
+
+  # 610 docker
+  virtualisation.docker.enable = true;
 
 
   # Firewall for NFS
