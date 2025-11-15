@@ -61,6 +61,7 @@ exec-once = sleep 4; steam -silent -nofriendsui -console
 exec-once = sleep 5; input-remapper-control --command autoload
 exec-once = sleep 5; hyprctl notify -1 3000 "rgb(9889ff)" "fontsize:23 Started Replay Buffer"; gpu-screen-recorder -w screen -f 60 -r 180 -c mp4 -o /mnt/G/Rnd/Clips
 exec-once = sleep 9; hyprctl dispatch exec audiomonitor
+exec-once = sleep 6; wallpaperengine-gui -m
 
 
 #############################
