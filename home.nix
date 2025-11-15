@@ -74,6 +74,7 @@ in
     qbittorrent
     bitwarden-desktop
     linux-wallpaperengine
+    inputs.wallpaperengine-gui.packages.x86_64-linux.default
     prusa-slicer
     zoom-us
 

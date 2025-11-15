@@ -304,6 +304,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nyx": "nyx",
         "spicetify-nix": "spicetify-nix",
+        "wallpaperengine-gui": "wallpaperengine-gui",
         "zen-twilight": "zen-twilight"
       }
     },
@@ -374,6 +375,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "wallpaperengine-gui": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1763110787,
+        "narHash": "sha256-BG/e+iWAJYmzdZ8PKyPPIGBNzumuXq0ZaI4fDrLH8/I=",
+        "owner": "Arsalan2356",
+        "repo": "wallpaperengine-gui-flake",
+        "rev": "ef9d6e95bade6a84be420224c3dcb76961e5941d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Arsalan2356",
+        "repo": "wallpaperengine-gui-flake",
         "type": "github"
       }
     },
