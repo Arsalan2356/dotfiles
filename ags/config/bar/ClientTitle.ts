@@ -16,6 +16,6 @@ export default () => Widget.Label({
     else if (title.includes("Thunar")) {
       title = ` ${title.substring(0, title.indexOf("Thunar") - 3)}`
     }
-    return title.length <= 60 ? title : title.substring(0, 60) + " ..."
+    return title.length <= 35 ? title : title.substring(0, 35) + " ..."
   })
 })
