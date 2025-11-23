@@ -84,6 +84,8 @@ in
     ncdu
     qdirstat
     gsmartcontrol
+    mission-center
+    smartmontools
 
 
     # Clipboard

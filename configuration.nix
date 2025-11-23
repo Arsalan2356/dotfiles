@@ -169,7 +169,6 @@ in {
     foot
     gparted
     pavucontrol
-    hyprpolkitagent
     appimage-run
     rsync
     busybox
@@ -188,7 +187,6 @@ in {
     hyprcursor
     xcur2png
     hyprpolkitagent
-    # egl-wayland
 
     # Browser
     inputs.zen-twilight.packages.${csystem}.zen-browser
@@ -259,12 +257,6 @@ in {
     xz
     zip
     zstd
-
-    # VM Stuff
-    qemu
-    virt-manager
-    spice-gtk
-
 
     (import ./ags { pkgs = pkgs.unstable; })
   ];
