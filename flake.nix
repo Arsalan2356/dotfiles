@@ -40,8 +40,6 @@
 
     nyx.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
-    # nix-proton-cachyos.url = "github:jbgi/nix-proton-cachyos";
-
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     wallpaperengine-gui = {

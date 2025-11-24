@@ -70,20 +70,16 @@ in
     xarchiver
     nwg-drawer
     inputs.hyprland-contrib.packages.${csystem}.grimblast
-    pinta
     qbittorrent
     bitwarden-desktop
     linux-wallpaperengine
     inputs.wallpaperengine-gui.packages.x86_64-linux.default
-    prusa-slicer
-    zoom-us
 
 
     # File Stuff
     nnn
     ncdu
     qdirstat
-    gsmartcontrol
     mission-center
     smartmontools
 
@@ -245,7 +241,7 @@ in
     };
     oh-my-zsh = {
       enable = true;
-      plugins = [ "direnv" ];
+      plugins = [ "direnv" "virtualenv" "dirhistory" "history-substring-search" ];
       theme = "lambdaf";
       custom = "${config.home.homeDirectory}/.oh-my-zsh/custom";
     };
@@ -323,17 +319,6 @@ unalias lsa
     };
   };
 
-  # Change dconf settings just in case
-  dconf.settings = {
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = [ "qemu:///system" ];
-      uris = [ "qemu:///system" ];
-    };
-
-  };
-
-
-
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -383,19 +368,6 @@ pkgs.mkShell {
   home.sessionPath = [
     "$HOME/jdks/jdk/bin"
   ];
-
-
-  # xdg.desktopEntries = {
-  #   code = {
-  #     name = "Visual Studio Code";
-  #     genericName = "Text Editor";
-  #     exec = "code --disable-gpu %F";
-  #     terminal = false;
-  #     categories = ["Utility" "TextEditor" "Development" "IDE"];
-  #   };
-  #
-  # };
-
 
 
 

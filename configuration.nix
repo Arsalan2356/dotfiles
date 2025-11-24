@@ -155,7 +155,7 @@ in {
   users.users.rc = {
     isNormalUser = true;
     description = "rc";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "kvm" "input" "gamemode" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "kvm" "input" "gamemode" "docker" ];
     useDefaultShell = true;
     shell = pkgs.unstable.zsh;
   };
@@ -174,8 +174,6 @@ in {
     busybox
     btop
     papirus-icon-theme
-    man-pages
-    man-pages-posix
     parsec-bin
     pulseaudio
     nethogs
@@ -294,6 +292,7 @@ in {
 
   # Set performance mode
   powerManagement.cpuFreqGovernor = "performance";
+  powerManagement.powertop.enable = true;
 
 
   # Security
@@ -330,11 +329,6 @@ in {
     jack.enable = true;
     wireplumber = {
       enable = true;
-      extraConfig."11-bluetooth-policy" = {
-	"wireplumber.settings" = {
-	"bluetooth.autoswitch-to-headset-profile" = false;
-	};
-      };
     };
     extraConfig.pipewire = {
       context.properties = {
@@ -426,7 +420,7 @@ in {
   xdg.portal = {
     enable = true;
     extraPortals = [
-      pkgs.unstable.kdePackages.xdg-desktop-portal-kde
+      pkgs.master.kdePackages.xdg-desktop-portal-kde
     ];
     xdgOpenUsePortal = true;
   };
@@ -434,7 +428,7 @@ in {
 
   # Enable Zsh (config in home.nix)
   environment.pathsToLink = [ "/share/zsh" ];
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.unstable.zsh;
   programs.zsh.enable = true;
 
 
@@ -454,9 +448,6 @@ in {
     gamescopeSession.enable = true;
     extest.enable = true;
     protontricks.enable = true;
-    # extraCompatPackages = [
-    #   inputs.nix-proton-cachyos.packages.${csystem}.proton-cachyos
-    # ];
   };
 
   # Gamescope
@@ -541,14 +532,8 @@ in {
   # Xwayland
   programs.xwayland.enable = true;
 
-  # Virt-Manager
-  programs.virt-manager.enable = true;
-
   # Waydroid
   virtualisation.waydroid.enable = true;
-
-  # VM
-  virtualisation.libvirtd.enable = true;
 
   # 610 docker
   virtualisation.docker.enable = true;
