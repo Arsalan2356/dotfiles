@@ -9,7 +9,7 @@ let
     };
   });
   customOhMyZshTheme = ''
-    PROMPT='%F{#c0caf5}λ %~%{$reset_color%} $(git_prompt_info)%{$reset_color%}'
+    PROMPT='%{$fg[yellow]%}$(venv_info)%{$reset_color%}% %F{#c0caf5}λ %~%{$reset_color%} $(git_prompt_info)%{$reset_color%}'
     RPROMPT="%F{#c0caf5} %D{%d/%m/%Y | %H:%M:%S}%{$reset_color%}"
     ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
     ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
@@ -276,6 +276,11 @@ unalias l
 unalias la
 unalias ll
 unalias lsa
+
+function venv_info {
+  [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+}
+
 '';
 
   };
