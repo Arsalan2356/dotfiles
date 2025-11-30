@@ -292,6 +292,26 @@
         "type": "github"
       }
     },
+    "proton-cachyos": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764134134,
+        "narHash": "sha256-e89y+SFa0XQrgKKZGvcp5TUz/l/IYInk98IG/aA6tDY=",
+        "owner": "Arsalan2356",
+        "repo": "proton-cachyos-flake",
+        "rev": "2c8baeb39e13663ed611250592e2e7056845e819",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Arsalan2356",
+        "repo": "proton-cachyos-flake",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "ags": "ags",
@@ -303,6 +323,7 @@
         "nixpkgs-master": "nixpkgs-master",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nyx": "nyx",
+        "proton-cachyos": "proton-cachyos",
         "spicetify-nix": "spicetify-nix",
         "wallpaperengine-gui": "wallpaperengine-gui",
         "zen-twilight": "zen-twilight"

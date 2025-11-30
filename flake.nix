@@ -47,6 +47,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    proton-cachyos = {
+      url = "github:Arsalan2356/proton-cachyos-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
   let

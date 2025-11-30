@@ -448,6 +448,9 @@ in {
     gamescopeSession.enable = true;
     extest.enable = true;
     protontricks.enable = true;
+    extraCompatPackages = [
+      inputs.proton-cachyos.packages.${csystem}.default
+    ];
   };
 
   # Gamescope
