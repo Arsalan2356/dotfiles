@@ -33,8 +33,8 @@ in {
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.kernelPackages = pkgs-custom.linuxPackages_zen;
   # boot.kernelPackages = inputs.nyx.legacyPackages.${csystem}.linuxPackages_cachyos;
-  boot.kernelPackages = pkgs.linuxPackages_cachyos;
-  system.modulesTree = [ (lib.getOutput "modules" pkgs.linuxPackages_cachyos.kernel) ];
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
+  system.modulesTree = [ (lib.getOutput "modules" pkgs.linuxPackages_cachyos-lto.kernel) ];
 
   # Load amdgpu kernel module
   boot.initrd.kernelModules = [ "amdgpu" ];
