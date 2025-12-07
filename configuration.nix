@@ -39,11 +39,11 @@ in {
   # Load amdgpu kernel module
   boot.initrd.kernelModules = [ "amdgpu" ];
 
-  # boot.kernelParams = [ "mitigations=off" ];
+  boot.kernelParams = [ "usbcore.autosuspend=-1" ];
 
   # Load nvidia kernel module
   # boot.initrd.kernelModules = [ "nvidia" ];
-  # boot.kernelParams = [ "module_blacklist=amdgpu" "mitigations=off" ];
+  # boot.kernelParams = [ "module_blacklist=amdgpu" "usbcore.autosuspend=-1" ];
 
   boot.kernelModules = [ "ntsync" ];
 
