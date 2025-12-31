@@ -77,25 +77,25 @@ in {
       fsType = "ext4";
       options = [ "relatime" ];
     };
-  fileSystems."/mnt/G" =
-    { device = "/dev/disk/by-label/bhdd";
-      fsType = "ext4";
-      options = [ "relatime" ];
-    };
-  fileSystems."/export/Media/Movies" =
-    { device = "/mnt/G/Plex/Media/Movies";
-      depends = [
-      "/mnt/G"
-      ];
-      options = [ "bind" ];
-    };
-  fileSystems."/export/Media/TV" =
-    { device = "/mnt/G/Plex/Media/TV";
-      depends = [
-      "/mnt/G"
-      ];
-      options = [ "bind" ];
-    };
+  # fileSystems."/mnt/G" =
+  #  { device = "/dev/disk/by-label/bhdd";
+  #    fsType = "ext4";
+  #    options = [ "relatime" ];
+  #  };
+  # fileSystems."/export/Media/Movies" =
+  #  { device = "/mnt/G/Plex/Media/Movies";
+  #    depends = [
+  #    "/mnt/G"
+  #    ];
+  #    options = [ "bind" ];
+  #  };
+  #fileSystems."/export/Media/TV" =
+  #  { device = "/mnt/G/Plex/Media/TV";
+  #    depends = [
+  #    "/mnt/G"
+  #    ];
+  #    options = [ "bind" ];
+  #  };
 
   # Define your hostname.
   networking.hostName = "nixos";
@@ -308,7 +308,7 @@ in {
     enable = true;
     settings = {
       default_session = {
-	command = "${pkgs.unstable.tuigreet}/bin/tuigreet --asterisks --time-format \"%A %d, %B %Y\" -r --remember-session --sessions ${pkgs.master.hyprland}/share/wayland-sessions";
+	command = "${pkgs.unstable.tuigreet}/bin/tuigreet --asterisks --time-format \"%A %d, %B %Y\" -r --remember-session --sessions ${pkgs.unstable.hyprland}/share/wayland-sessions";
 	user = "greeter";
       };
     };
