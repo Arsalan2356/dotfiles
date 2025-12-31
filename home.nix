@@ -288,9 +288,9 @@ function venv_info {
   # Enable hyprland
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.master.hyprland;
-    portalPackage = pkgs.master.xdg-desktop-portal-hyprland;
-    plugins = with pkgs.master.hyprlandPlugins; [
+    package = pkgs.unstable.hyprland;
+    portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
+    plugins = with pkgs.unstable.hyprlandPlugins; [
       hy3
     ];
 
@@ -334,8 +334,8 @@ function venv_info {
 
     ".oh-my-zsh/custom/themes/lambdaf.zsh-theme".text = customOhMyZshTheme;
     ".local/share/icons/hicolor/256x256/apps/vesktop.png".source = builtins.fetchurl {
-      url = "https://raw.githubusercontent.com/Vencord/Vesktop/refs/heads/main/static/icon.png";
-      sha256 = "087r0fr6crj1m9248lj70b2ppmh33lnh8szgjyjm2jv229k7rm0j";
+      url = "https://raw.githubusercontent.com/Vencord/Vesktop/refs/heads/main/static/tray.png";
+      sha256 = "08l8q67pwp7f74miq86rdxy4k4vhys85s7w9fm5b5z3jj3ygj0zj";
     };
 
     "default/assets" = {
