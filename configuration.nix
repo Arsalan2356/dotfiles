@@ -1,5 +1,4 @@
 # Edit this configuration file to define what should be installed on
-
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
@@ -70,12 +69,12 @@ in {
   fileSystems."/mnt/H" =
     { device = "/dev/disk/by-label/ssd";
       fsType = "ext4";
-      options = [ "relatime" ];
+      options = [ "relatime" "nofail" ];
     };
   fileSystems."/mnt/D" =
     { device = "/dev/disk/by-label/hdd";
       fsType = "ext4";
-      options = [ "relatime" ];
+      options = [ "relatime" "nofail" ];
     };
   # fileSystems."/mnt/G" =
   #  { device = "/dev/disk/by-label/bhdd";
