@@ -511,7 +511,7 @@ in {
   # Use thunar file manager
   programs.thunar = {
     enable = true;
-    plugins = with pkgs.unstable.xfce; [
+    plugins = with pkgs.unstable; [
       thunar-archive-plugin
       thunar-volman
       thunar-media-tags-plugin
