@@ -98,6 +98,9 @@ in {
 
   # Define your hostname.
   networking.hostName = "nixos";
+  networking.extraHosts = "0.0.0.0 paradise-s1.battleye.com
+0.0.0.0 test-s1.battleye.com
+0.0.0.0 paradiseenhanced-s1.battleye.com";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -378,13 +381,12 @@ in {
     enable = true;
     packages = [
       { appId = "com.usebottles.bottles//stable"; origin = "flathub";}
-      { appId = "org.gnome.Platform//45"; origin = "flathub";}
-      { appId = "moe.launcher.an-anime-game-launcher"; origin = "lm";}
+      { appId = "org.gnome.Platform//46"; origin = "flathub";}
+      { appId = "moe.launcher.an-anime-game-launcher"; origin = "flathub";}
     ];
     remotes = [
     { name = "flathub"; location = "https://dl.flathub.org/repo/flathub.flatpakrepo"; }
     { name = "flathub-beta"; location = "https://dl.flathub.org/beta-repo/flathub-beta.flatpakrepo"; }
-    { name = "lm"; location = "https://gol.launcher.moe/gol.launcher.moe.flatpakrepo"; }
     ];
     update.auto = {
       enable = true;
