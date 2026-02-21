@@ -7,8 +7,8 @@ const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', '
 const tooltip_text = Variable("");
 
 
-const update_tooltip_text = (d: Date) => {
-  const v = Utils.exec(`cal -m ${month[d.getMonth()]} ${d.getFullYear()}`)
+const update_tooltip_text = () => {
+  const v = Utils.exec(`cal -s`)
   // TODO: add second portion where we highlight the current day via some math to find it's pos in the text
   tooltip_text.setValue(v);
 }
@@ -26,13 +26,7 @@ const time = Variable("", {
       else {
         t = `${day[d.getDay()]} ${pad(date)}, ${month[d.getMonth()]} ${d.getFullYear()}`;
       }
-      if (prev_date == -1) {
-        prev_date = date;
-        update_tooltip_text(d)
-      }
-      else if (prev_date != date) {
-        update_tooltip_text(d)
-      }
+      update_tooltip_text();
 
       return t
     },
