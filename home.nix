@@ -92,7 +92,6 @@ in
 
     # Game Stuff
     heroic
-    winetricks
     lutris
     protonup-qt
     asdf-vm

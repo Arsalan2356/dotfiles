@@ -236,7 +236,12 @@ in {
     gh
 
     # Installing wine here doesn't give conflicts for some reason
-    wineWowPackages.stagingFull
+    wineWow64Packages.stableFull
+    winetricks
+
+    (pkgs.writeShellScriptBin "wine64" ''
+      exec ${pkgs.unstable.wineWow64Packages.stableFull}/bin/wine "$@"
+    '')
 
 
     # for thunar
@@ -449,6 +454,7 @@ in {
     gamescopeSession.enable = true;
     extest.enable = true;
     protontricks.enable = true;
+    protontricks.package = pkgs.unstable.protontricks;
     extraCompatPackages = [
       inputs.proton-cachyos.packages.${csystem}.default
     ];
