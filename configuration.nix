@@ -200,8 +200,6 @@ in {
     # Useful KDE Packages
     kdePackages.qtwayland
     kdePackages.qtsvg
-    kdePackages.kolourpaint
-    kdePackages.gwenview
 
 
     (python312.withPackages (python-pkgs: [
@@ -227,13 +225,11 @@ in {
     valgrind
     kdbg
     gnumake
-    gcc14
+    gcc
     gdb
     scanmem
     git-lfs
     nix-prefetch-git
-    ## 610
-    gh
 
     # Installing wine here doesn't give conflicts for some reason
     wineWow64Packages.stableFull
@@ -328,6 +324,7 @@ in {
 
   # Audio
   services.pipewire = {
+    package = pkgs.unstable.pipewire;
     enable = true;
     audio.enable = true;
     alsa.enable = true;
@@ -336,6 +333,7 @@ in {
     jack.enable = true;
     wireplumber = {
       enable = true;
+      package = pkgs.unstable.wireplumber;
     };
     extraConfig.pipewire = {
       context.properties = {
@@ -400,10 +398,6 @@ in {
   };
 
   services.irqbalance.enable = true;
-  # Fix irq#308 (wait for new release to remove)
-  systemd.services.irqbalance.serviceConfig.ProtectKernelTunables = "no";
-
-
   services.tumbler.enable = true;
   services.gvfs.enable = true;
 
