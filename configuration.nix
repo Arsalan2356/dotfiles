@@ -425,9 +425,6 @@ in {
   # XDG Portals
   xdg.portal = {
     enable = true;
-    extraPortals = [
-      pkgs.master.kdePackages.xdg-desktop-portal-kde
-    ];
     xdgOpenUsePortal = true;
   };
 
