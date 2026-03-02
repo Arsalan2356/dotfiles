@@ -202,7 +202,7 @@ in {
     kdePackages.qtsvg
 
 
-    (python312.withPackages (python-pkgs: [
+    (python313.withPackages (python-pkgs: [
       python-pkgs.pip
       python-pkgs.pandas
       python-pkgs.numpy
@@ -215,7 +215,7 @@ in {
       python-pkgs.pyqtdarktheme
       python-pkgs.scikit-learn
       python-pkgs.seaborn
-      python-pkgs.tensorflow-bin
+      python-pkgs.tensorflow
       python-pkgs.torch
       python-pkgs.cvxpy
       python-pkgs.python-lsp-server
