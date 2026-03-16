@@ -339,6 +339,11 @@ in {
       context.properties = {
       default.clock.rate = 48000;
       };
+      extraConfig."11-bluetooth-policy" = {
+	"wireplumber.settings" = {
+	"bluetooth.autoswitch-to-headset-profile" = false;
+	};
+      };
     };
   };
 
