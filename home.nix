@@ -71,7 +71,7 @@ in
     nwg-drawer
     inputs.hyprland-contrib.packages.${csystem}.grimblast
     qbittorrent
-    bitwarden-desktop
+    pkgs.master.bitwarden-desktop
     linux-wallpaperengine
     inputs.wallpaperengine-gui.packages.x86_64-linux.default
 
@@ -91,7 +91,7 @@ in
 
 
     # Game Stuff
-    heroic
+    pkgs.master.heroic
     lutris
     protonup-qt
     asdf-vm
