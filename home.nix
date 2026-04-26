@@ -92,7 +92,6 @@ in
 
     # Game Stuff
     pkgs.master.heroic
-    lutris
     protonup-qt
     asdf-vm
     r2modman
