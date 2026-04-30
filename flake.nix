@@ -38,7 +38,7 @@
 
     flatpaks.url = "github:gmodena/nix-flatpak/?ref=latest";
 
-    nyx.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    cachy-kernel.url = "github:xddxdd/nix-cachyos-kernel";
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
@@ -75,7 +75,6 @@
 	  # inputs.stylix.nixosModules.stylix
 	  # inputs.envfs.nixosModules.envfs
 	  inputs.flatpaks.nixosModules.nix-flatpak
-	  inputs.nyx.nixosModules.default
 	  inputs.spicetify-nix.nixosModules.spicetify
 	];
       };

@@ -12,6 +12,7 @@ in {
       outputs.overlays.unstable-packages
       outputs.overlays.custom-packages
       outputs.overlays.master-packages
+      inputs.cachy-kernel.overlays.default
     ];
     config = {
       allowUnfree = true;
@@ -28,12 +29,8 @@ in {
   boot.kernel.sysctl = { "vm.swappiness" = 134; };
 
   # Kernel Packages
-  # Switch to zen kernel (latest from fork)
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.kernelPackages = pkgs-custom.linuxPackages_zen;
-  # boot.kernelPackages = inputs.nyx.legacyPackages.${csystem}.linuxPackages_cachyos;
-  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
-  system.modulesTree = [ (lib.getOutput "modules" pkgs.linuxPackages_cachyos-lto.kernel) ];
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto;
+  system.modulesTree = [ (lib.getOutput "modules" pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto.kernel) ];
 
   # Load amdgpu kernel module
   boot.initrd.kernelModules = [ "amdgpu" ];
