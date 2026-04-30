@@ -56,7 +56,7 @@ in
     nvd
     eza
     pkgs.master.raylib
-    pkgs.zed-editor_git
+    pkgs.zed-editor-fhs
     nixd
     vscode-fhs
 
