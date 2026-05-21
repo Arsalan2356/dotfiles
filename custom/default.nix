@@ -9,6 +9,7 @@
     (import ./bluetooth.nix { inherit pkgs; })
     (import ./iconfinder.nix { inherit lib pkgs; })
     (import ./audiomonitor.nix { inherit pkgs; })
+    (import ./rcshell.nix { inherit lib pkgs; })
     (pkgs.callPackage ./audiorelay.nix {})
   ];
 }
