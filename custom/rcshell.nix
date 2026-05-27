@@ -7,9 +7,13 @@ pkgs.master.rustPlatform.buildRustPackage rec {
   src = pkgs.fetchFromGitHub {
     owner = "Arsalan2356";
     repo = "rcshell";
-    rev = "b445fce5711416cda3e4de7389157c99bf22c647";
-    hash = "sha256-rb+agq3QVVrjJUyQrRwgZxWwMs1DvcJzczcn5TNTuCg=";
+    rev = "eb09f8b09747dce78b5b369f2fb51696e3f09bad";
+    hash = "sha256-e8ksz2u6vWNzh4ZhMS7+569y92iYiOuti/zeuShmbeg=";
   };
+
+  # src = builtins.fetchGit {
+  #   url = "file:///home/rc/newshell/rust/rcshell/";
+  # };
 
   nativeBuildInputs = with pkgs.master; [
     pkg-config
