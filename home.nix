@@ -288,7 +288,7 @@ function venv_info {
     enable = true;
     package = pkgs.unstable.hyprland;
     portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
-    plugins = with pkgs.unstable.hyprlandPlugins; [
+    plugins = with pkgs.master.hyprlandPlugins; [
       hy3
     ];
 
