@@ -71,7 +71,6 @@ in
     nwg-drawer
     inputs.hyprland-contrib.packages.${csystem}.grimblast
     qbittorrent
-    pkgs.master.bitwarden-desktop
     linux-wallpaperengine
     inputs.wallpaperengine-gui.packages.x86_64-linux.default
 
