@@ -285,7 +285,7 @@ function venv_info {
   # Enable hyprland
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.unstable.hyprland;
+    package = pkgs.master.hyprland;
     portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
     plugins = with pkgs.master.hyprlandPlugins; [
       hy3
