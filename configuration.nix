@@ -270,6 +270,11 @@ in {
 
     # Nvidia specific
     egl-wayland
+
+    # AI
+    (llama-cpp.override {
+      cudaSupport = true;
+    })
   ];
   # Add dev outputs from packages as well (for development packages)
   environment.extraOutputsToInstall = [ "dev" ];
