@@ -94,6 +94,7 @@ in
     protonup-qt
     asdf-vm
     r2modman
+    sqlite
 
     # Audio/Video
     ffmpeg-full
