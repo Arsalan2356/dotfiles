@@ -435,6 +435,17 @@ in {
 
   systemd.services.systemd-vconsole-setup.unitConfig.After = "local-fs.target";
 
+  systemd.services.game-index = {
+    enable = true;
+    wantedBy = ["default.target"];
+
+    serviceConfig = {
+      WorkingDirectory = "/home/rc/gameindex/";
+      ExecStartPre = "${pkgs.unstable.coreutils-full}/bin/sleep 3";
+      ExecStart = "${pkgs.bash}/bin/bash -c 'source .venv/bin/activate && python sync.py'";
+    };
+  };
+
 
   # XDG Portals
   xdg.portal = {
