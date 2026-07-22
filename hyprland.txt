@@ -257,6 +257,8 @@ bind = $mainMod, V, togglefloating,
 
 bind = $mainMod, F, exec, zen
 
+bind = $mainMod, G, exec, foot --app-id=game-finder --working-directory=/home/rc/gameindex -e ~/gameindex/finder.sh
+
 bind = $mainMod, F9, tagwindow, immediate
 
 
@@ -395,3 +397,11 @@ windowrule {
   border_size = 0
 }
 
+windowrule {
+    name = windowrule-6
+    match:class = game-finder
+    float = on
+    size = 600 300
+    center = on
+    border_size = 0
+}
