@@ -104,6 +104,7 @@ in
 
 
   gtk = {
+    gtk4.theme = config.gtk.theme;
     enable = true;
     font.name = "Hack";
     iconTheme.package = pkgs.unstable.papirus-icon-theme;
@@ -144,7 +145,7 @@ in
       main = {
 	font = "monospace:size=11";
       };
-      colors = {
+      colors-dark = {
 	background = "1a1b26";
 	regular0 = "1a1b26";
 	selection-background = "c0caf5";
@@ -286,13 +287,15 @@ function venv_info {
   # Enable hyprland
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.master.hyprland;
-    portalPackage = pkgs.unstable.xdg-desktop-portal-hyprland;
-    plugins = with pkgs.master.hyprlandPlugins; [
+    package = pkgs.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    plugins = with pkgs.hyprlandPlugins; [
       hy3
     ];
 
-    extraConfig = builtins.readFile ./hyprland.txt;
+    configType = "lua";
+
+    extraConfig = builtins.readFile ./hyprland.lua;
   };
 
   # Dunst Notifications

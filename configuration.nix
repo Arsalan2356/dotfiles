@@ -83,6 +83,7 @@ in {
      depends = [
      "/mnt/G"
      ];
+     fsType = "none";
      options = [ "bind" ];
    };
   fileSystems."/export/Media/TV" =
@@ -90,6 +91,7 @@ in {
      depends = [
      "/mnt/G"
      ];
+     fsType = "none";
      options = [ "bind" ];
    };
 
@@ -201,7 +203,7 @@ in {
 
 
     # Rebind Caps Lock
-    pkgs.custom.input-remapper
+    pkgs.unstable.input-remapper
 
 
     # Useful KDE Packages
@@ -429,7 +431,7 @@ in {
 
     serviceConfig = {
       ExecStartPre = "${pkgs.unstable.coreutils-full}/bin/sleep 3";
-      ExecStart = "${pkgs.unstable.sudo}/bin/sudo ${pkgs.custom.input-remapper}/bin/input-remapper-service";
+      ExecStart = "${pkgs.unstable.sudo}/bin/sudo ${pkgs.unstable.input-remapper}/bin/input-remapper-service";
     };
   };
 

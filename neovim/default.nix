@@ -128,6 +128,8 @@ in {
     plugins = [
 	    treesitterWithGrammars
     ];
+    withRuby = true;
+    withPython3 = true;
   };
 
   home.file."./.config/nvim/" = {
