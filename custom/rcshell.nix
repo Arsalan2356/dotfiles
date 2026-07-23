@@ -2,13 +2,13 @@
 
 pkgs.master.rustPlatform.buildRustPackage rec {
   pname = "rcshell";
-  version = "0.1.1";
+  version = "0.1.2";
 
   src = pkgs.fetchFromGitHub {
     owner = "Arsalan2356";
     repo = "rcshell";
-    rev = "044bd5a67d4d48ffdac38c643438bb94c10f87f0";
-    hash = "sha256-r5KelGlkBFPNR2+JuIuI4BRBTXx33trkvOwqcHidR0Q=";
+    rev = "6907312c5e4bd55d6bdd137b01cb494e7ccf6439";
+    hash = "sha256-1xE8Of5OxRn2XrjNIx4bIsP1u6r6f89xO2RbAoAhy70=";
   };
 
   # src = builtins.fetchGit {
@@ -29,7 +29,7 @@ pkgs.master.rustPlatform.buildRustPackage rec {
   ];
 
   useCargoFetchVendor = true;
-  cargoHash = "sha256-sRwHTSnBGEKyEpiTyIYUVfMvpGzROQba/+tqaMbLssM=";
+  cargoHash = "sha256-DHGhp0rzTKjJuSgpctfxCzV601ovFQny+ip35MFCEbY=";
 
   meta = {
     description = "Custom Hyprland Layer Shell";
