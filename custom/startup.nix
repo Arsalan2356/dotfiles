@@ -19,7 +19,7 @@ echo "Autostarting background apps"
 
 
 echo "Starting shell"
-hlrun "ags-wrapped"
+hlrun "rcshell"
 
 echo "Starting notification daemon"
 hlrun "dunst"

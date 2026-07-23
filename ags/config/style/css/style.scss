@@ -1,9 +1,0 @@
-@use "color";
-
-@use "bar/bar";
-
-
-window.bar {
-  background-color: transparent;
-  color: color.$text;
-}

@@ -25,8 +25,6 @@
     };
     # stylix.url = "github:danth/stylix";
 
-    ags.url = "github:Aylur/ags/67b0e31ded361934d78bddcfc01f8c3fcf781aad";
-
     nixpkgs-custom = {
       url = "github:Arsalan2356/nixpkgs/custom";
     };

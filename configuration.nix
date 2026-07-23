@@ -268,8 +268,6 @@ in {
     zip
     zstd
 
-    (import ./ags { pkgs = pkgs.unstable; })
-
     # Nvidia specific
     egl-wayland
 

@@ -115,18 +115,7 @@ in
 
   imports = [
     ./neovim
-    inputs.ags.homeManagerModules.default
   ];
-
-  # AGS 1.9.0 bar
-  programs.ags = {
-    enable = true;
-    configDir = null;
-    extraPackages = with pkgs.unstable; [
-      gtksourceview
-      webkitgtk_4_1
-    ];
-  };
 
   # Enable direnv and nix-direnv
   programs.direnv = {
@@ -340,7 +329,7 @@ function venv_info {
     };
 
     "default/assets" = {
-      source = ./ags/config/style/assets;
+      source = ./assets;
       recursive = true;
     };
 
