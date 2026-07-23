@@ -1,5 +1,11 @@
 ---@module 'hl'
 
+-- Autostart
+hl.on("hyprland.start", function()
+    hl.exec_cmd("sleep 1 && startup")
+    hl.exec_cmd("hyprctl notify -1 6000 \"rgb(9889ff)\" \"fontsize:23 Starting Background Processes\"")
+end)
+
 hl.monitor({
     output   = "DP-3",
     mode     = "1920x1080@240.0",
@@ -338,19 +344,3 @@ hl.window_rule({
     border_size = 0,
 })
 
--- Autostart
-hl.on("hyprland.start", function()
-    hl.exec_cmd("ags-wrapped")
-    hl.exec_cmd("dunst")
-    hl.exec_cmd("nm-applet &")
-    hl.exec_cmd("hyprctl setcursor Volantes 24")
-    hl.exec_cmd("wl-paste --type text --watch cliphist store")
-    hl.exec_cmd("wl-paste --type image --watch cliphist store")
-    hl.exec_cmd("nwg-drawer -r -fm thunar -ft -term foot -wm hyprland")
-    hl.exec_cmd("sleep 3; vesktop --start-minimized")
-    hl.exec_cmd("sleep 4; steam -silent -nofriendsui -console")
-    hl.exec_cmd("sleep 5; input-remapper-control --command autoload")
-    hl.exec_cmd("sleep 5; hyprctl notify -1 3000 rgb(9889ff) fontsize:23 Started Replay Buffer ; gpu-screen-recorder -w screen -f 60 -r 180 -c mp4 -o /mnt/G/Clips")
-    hl.exec_cmd("sleep 9; hyprctl dispatch exec audiomonitor")
-    hl.exec_cmd("sleep 6; wallpaperengine-gui -m")
-end)
