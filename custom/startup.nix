@@ -62,5 +62,9 @@ sleep 3
 echo "Starting Audio Monitor"
 hlrun "audiomonitor"
 
+sleep 1
+echo "Checking games database"
+cd gameindex && source .venv/bin/activate && python sync.py
+
 echo "Started All Processes"
 ''
