@@ -14,9 +14,9 @@ hlexec () {
   hyprctl dispatch 'hl.dsp.exec_cmd("$1")'
 }
 
+sleep 5
 
 echo "Autostarting background apps"
-
 
 echo "Starting shell"
 hlrun "rcshell"
