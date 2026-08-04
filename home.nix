@@ -1,13 +1,6 @@
 { inputs, outputs, config, pkgs, system, ... }:
 let
-  tokyonight = pkgs.unstable.tokyonight-gtk-theme.overrideAttrs (old : {
-    src = pkgs.unstable.fetchFromGitHub {
-      owner = "Fausto-Korpsvart";
-      repo = "Tokyonight-GTK-Theme";
-      rev = "4dc45d60bf35f50ebd9ee41f16ab63783f80dd64";
-      hash = "sha256-AKZA+WCcfxDeNrNrq3XYw+SFoWd1VV2T9+CwK2y6+jA=";
-    };
-  });
+  tokyonight = pkgs.callPackage ./custom/tokyonight.nix {};
   customOhMyZshTheme = ''
     PROMPT='%{$fg[yellow]%}$(venv_info)%{$reset_color%}% %F{#c0caf5}λ %~%{$reset_color%} $(git_prompt_info)%{$reset_color%}'
     RPROMPT="%F{#c0caf5} %D{%d/%m/%Y | %H:%M:%S}%{$reset_color%}"

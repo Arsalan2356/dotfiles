@@ -26,7 +26,7 @@
     # stylix.url = "github:danth/stylix";
 
     nixpkgs-custom = {
-      url = "github:Arsalan2356/nixpkgs/custom";
+      url = "github:Arsalan2356/nixpkgs/nixos-26.05";
     };
 
     zen-twilight = {
