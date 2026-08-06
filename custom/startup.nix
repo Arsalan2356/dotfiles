@@ -1,3 +1,6 @@
+# TODO Add a check here for ensuring that the process exists after running it, otherwise
+# rerun it until it shows up in the process list, only do this for some processes like the shell, network-manager and others
+
 { pkgs }:
 
 pkgs.writeShellScriptBin "startup" ''

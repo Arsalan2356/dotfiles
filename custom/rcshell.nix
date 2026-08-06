@@ -7,8 +7,8 @@ pkgs.master.rustPlatform.buildRustPackage rec {
   src = pkgs.fetchFromGitHub {
     owner = "Arsalan2356";
     repo = "rcshell";
-    rev = "3918f48f72739619b48777e1797c3703cc215923";
-    hash = "sha256-eJN0M659tAyfWw0+6Wc/SCkHMOogWYPQshQmx1j/XyY=";
+    rev = "16c340b18cbc89d8f330167c35da603efa90fd67";
+    hash = "sha256-5HNZGC9v/aKmcFx+Lzy3bmeu7TrkszyrBFBI1oZZlZQ=";
   };
 
   nativeBuildInputs = with pkgs.master; [
@@ -25,7 +25,7 @@ pkgs.master.rustPlatform.buildRustPackage rec {
   ];
 
   useCargoFetchVendor = true;
-  cargoHash = "sha256-8dYH8y9P5AaPD5MRHYJZWSqfibBuOlyPrenQ3698KGg=";
+  cargoHash = "sha256-hlS+d4TDTq/1BdS+xA1lh32QQhv4SdACp7a7enys1Dg=";
   doCheck = false;
 
   cargoBuildType = "prod";
