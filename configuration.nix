@@ -33,13 +33,13 @@ in {
   system.modulesTree = [ (lib.getOutput "modules" pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto.kernel) ];
 
   # Load amdgpu kernel module
-  # boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   #
-  # boot.kernelParams = [ "usbcore.autosuspend=-1" ];
+  boot.kernelParams = [ "usbcore.autosuspend=-1" ];
 
   # Load nvidia kernel module
   # boot.initrd.kernelModules = [ "nvidia" ];
-  boot.kernelParams = [ "module_blacklist=amdgpu" "usbcore.autosuspend=-1" ];
+  # boot.kernelParams = [ "module_blacklist=amdgpu" "usbcore.autosuspend=-1" ];
 
   boot.kernelModules = [ "ntsync" ];
 
@@ -118,10 +118,10 @@ in {
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs.unstable; [
-      # rocmPackages.clr.icd
+      rocmPackages.clr.icd
       # Nvidia specific
-      libvdpau-va-gl
-      libva-vdpau-driver
+      # libvdpau-va-gl
+      # libva-vdpau-driver
     ];
   };
 
