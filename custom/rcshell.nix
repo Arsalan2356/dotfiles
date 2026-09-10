@@ -2,13 +2,13 @@
 
 pkgs.master.rustPlatform.buildRustPackage rec {
   pname = "rcshell";
-  version = "0.1.4";
+  version = "0.1.6";
 
   src = pkgs.fetchFromGitHub {
     owner = "Arsalan2356";
     repo = "rcshell";
-    rev = "16c340b18cbc89d8f330167c35da603efa90fd67";
-    hash = "sha256-5HNZGC9v/aKmcFx+Lzy3bmeu7TrkszyrBFBI1oZZlZQ=";
+    rev = "88bd4fde5dbed573be407f56c6bf549ba4d479bc";
+    hash = "sha256-BQXFy6N1a2hpkCMSxwXOlT4AEWgSCN6u5l5ljrt5fl8=";
   };
 
   nativeBuildInputs = with pkgs.master; [
@@ -25,7 +25,7 @@ pkgs.master.rustPlatform.buildRustPackage rec {
   ];
 
   useCargoFetchVendor = true;
-  cargoHash = "sha256-hlS+d4TDTq/1BdS+xA1lh32QQhv4SdACp7a7enys1Dg=";
+  cargoHash = "sha256-r76uRQkLAI+2WGguWrgOwalNaIchAXqk4PRMtU4ptl8=";
   doCheck = false;
 
   cargoBuildType = "prod";
