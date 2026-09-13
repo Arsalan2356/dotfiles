@@ -523,9 +523,30 @@ in {
   # Fixes unpatched packages
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs.unstable; [
-      stdenv.cc.cc
-    ];
+    libraries = with pkgs; [
+	zlib
+	zstd
+	stdenv.cc.cc.lib # provides libstdc++.so and libgcc_s.so
+	curl
+	openssl
+	attr
+	libssh
+	bzip2
+	libxml2
+	acl
+	libsodium
+	util-linux
+	xz
+	systemd
+	dbus # libdbus-1.so.3
+	fontconfig # libfontconfig.so.1
+	freetype # libfreetype.so.6
+	glib # libglib-2.0.so.0
+	libGL # libGL.so.1
+	libxkbcommon # libxkbcommon.so.0
+	libX11 # libX11.so.6
+	wayland
+      ];
   };
 
   # ssh auth
