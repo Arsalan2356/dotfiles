@@ -480,6 +480,13 @@ in {
     extraCompatPackages = [
       inputs.proton-cachyos.packages.${csystem}.default
     ];
+    package = pkgs.unstable.steam.override {
+      steam-unwrapped = pkgs.unstable.steam-unwrapped.overrideAttrs(final: prev: {
+	postInstall = prev.postInstall + ''
+	  sed -i 's|^Exec=steam |Exec=steam -console -nofriendsui |' $out/share/applications/steam.desktop
+	'';
+      });
+    };
   };
 
   # Gamescope
