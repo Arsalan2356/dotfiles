@@ -166,7 +166,7 @@ in {
   users.users.rc = {
     isNormalUser = true;
     description = "rc";
-    extraGroups = [ "networkmanager" "wheel" "kvm" "input" "gamemode" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "kvm" "input" "gamemode" "docker" "plocate" ];
     useDefaultShell = true;
     shell = pkgs.unstable.zsh;
   };
@@ -336,6 +336,12 @@ in {
   # Add UPower
   services.upower.enable = true;
   services.cpupower-gui.enable = true;
+
+  services.locate = {
+    enable = true;
+    package = pkgs.unstable.plocate;
+    interval = "hourly";
+  };
 
   # Audio
   services.pipewire = {
