@@ -391,6 +391,22 @@ in {
     openFirewall = true;
   };
 
+
+  services.open-webui = {
+    enable = true;
+    port = 8100;
+    environment = {
+      OFFLINE_MODE = "true";
+      HF_HUB_OFFLINE = "1";
+      ANALYTICS = "False";
+    };
+    package = pkgs.unstable.open-webui.overrideAttrs (old: {
+      propagatedBuildInputs = old.propagatedBuildInputs ++ (with pkgs.unstable.python3Packages; [requests tiktoken pyee]);
+    });
+  };
+
+
+
   # Configure Display Server (xserver seems to be an old name)
   services.xserver.xkb = {
     layout = "us";
