@@ -6,6 +6,15 @@
 let
   csystem = system;
   spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
+  kernelPkg = pkgs.linuxKernel.packagesFor (
+    pkgs.cachyosKernels.linux-cachyos-latest.override rec {
+      pname = "linux-cachyos-latest-${cpusched}-lto-${lto}-opt-${processorOpt}";
+      cpusched = "bore";
+      lto = "full";
+      bbr3 = true;
+      processorOpt = "native";
+    }
+  );
 in {
   nixpkgs = {
     overlays = [
@@ -29,8 +38,19 @@ in {
   boot.kernel.sysctl = { "vm.swappiness" = 134; };
 
   # Kernel Packages
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto;
-  system.modulesTree = [ (lib.getOutput "modules" pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto.kernel) ];
+  boot.kernelPackages = kernelPkg;
+
+  # Disable GUD until cachyos 7.3
+  boot.kernelPatches = [
+    {
+      name = "disable-drm-gud";
+      patch = null;
+      structuredExtraConfig = {
+	DRM_GUD = lib.kernel.no;
+      };
+    }
+  ];
+
 
   # Load amdgpu kernel module
   boot.initrd.kernelModules = [ "amdgpu" ];
