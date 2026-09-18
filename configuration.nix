@@ -425,6 +425,13 @@ in {
     });
   };
 
+  services.comfyui = {
+    enable = true;
+    port = 7860;
+    package = pkgs.unstable.comfyui;
+    dataDir = "/mnt/H/models";
+  };
+
 
 
   # Configure Display Server (xserver seems to be an old name)

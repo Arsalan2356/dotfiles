@@ -73,6 +73,12 @@
 	  # inputs.envfs.nixosModules.envfs
 	  inputs.flatpaks.nixosModules.nix-flatpak
 	  inputs.spicetify-nix.nixosModules.spicetify
+	  ({ modulesPath, ... }: {
+	    disabledModules = [ ];
+	    imports = [
+	      "${inputs.nixpkgs-unstable}/nixos/modules/services/misc/comfyui.nix"
+	    ];
+	  })
 	];
       };
     };
