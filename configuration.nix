@@ -292,9 +292,7 @@ in {
     egl-wayland
 
     # AI
-    (llama-cpp.override {
-      cudaSupport = true;
-    })
+    pkgs.master.llama-cpp-vulkan
   ];
   # Add dev outputs from packages as well (for development packages)
   environment.extraOutputsToInstall = [ "dev" ];
@@ -431,6 +429,7 @@ in {
     enableManager = true;
     port = 7860;
     dataDir = "/mnt/H/comfyui";
+    extraArgs = [ "--disable-xformers" ];
   };
 
 
