@@ -427,9 +427,10 @@ in {
 
   services.comfyui = {
     enable = true;
+    gpuSupport = "rocm";
+    enableManager = true;
     port = 7860;
-    package = pkgs.unstable.comfyui;
-    dataDir = "/mnt/H/models";
+    dataDir = "/mnt/H/comfyui";
   };
 
 

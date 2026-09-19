@@ -50,6 +50,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    comfyui-nix = {
+      url = "github:utensils/comfyui-nix";
+    };
+
   };
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
   let
@@ -73,12 +77,7 @@
 	  # inputs.envfs.nixosModules.envfs
 	  inputs.flatpaks.nixosModules.nix-flatpak
 	  inputs.spicetify-nix.nixosModules.spicetify
-	  ({ modulesPath, ... }: {
-	    disabledModules = [ ];
-	    imports = [
-	      "${inputs.nixpkgs-unstable}/nixos/modules/services/misc/comfyui.nix"
-	    ];
-	  })
+	  inputs.comfyui-nix.nixosModules.default
 	];
       };
     };
