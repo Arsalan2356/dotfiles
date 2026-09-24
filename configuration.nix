@@ -429,7 +429,7 @@ in {
     enableManager = true;
     port = 7860;
     dataDir = "/mnt/H/comfyui";
-    extraArgs = [ "--disable-xformers" ];
+    extraArgs = [ "--disable-xformers" "--disable-pinned-memory" ];
   };
 
 
