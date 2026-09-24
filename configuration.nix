@@ -186,7 +186,7 @@ in {
   users.users.rc = {
     isNormalUser = true;
     description = "rc";
-    extraGroups = [ "networkmanager" "wheel" "kvm" "input" "gamemode" "docker" "plocate" ];
+    extraGroups = [ "networkmanager" "wheel" "kvm" "input" "gamemode" "docker" "plocate" "comfyui" ];
     useDefaultShell = true;
     shell = pkgs.unstable.zsh;
   };
