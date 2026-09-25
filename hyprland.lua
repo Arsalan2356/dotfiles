@@ -178,11 +178,11 @@ hl.bind(mainMod .. " + " .. "J", hy3.move_focus("d"))
 
 -- Move window with mainMod + SHIFT + arrow/hjkl
 
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "left", hy3.move_window("l"))
+hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "left", hy3.move_to_workspace('-1'))
+
+hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "right", hy3.move_to_workspace('+1'))
 
 hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "H", hy3.move_window("l"))
-
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "right", hy3.move_window("r"))
 
 hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "L", hy3.move_window("r"))
 
@@ -251,10 +251,6 @@ hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. 6, hl.dsp.window.move({ workspac
 hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. 7, hl.dsp.window.move({ workspace = 7, follow = false }))
 
 hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. 8, hl.dsp.window.move({ workspace = 8, follow = false }))
-
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "right", hl.dsp.window.move({ direction = "right", follow = false }))
-
-hl.bind(mainMod .. " + " .. "SHIFT" .. " + " .. "left", hl.dsp.window.move({ direction = "left", follow = false }))
 
 hl.bind(mainMod .. " + " .. "M", hl.dsp.window.move({ workspace = 8 }, { follow = false }))
 
