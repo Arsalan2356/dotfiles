@@ -259,6 +259,7 @@ in {
     scanmem
     git-lfs
     nix-prefetch-git
+    aseprite
 
     # Installing wine here doesn't give conflicts for some reason
     wineWow64Packages.stableFull
