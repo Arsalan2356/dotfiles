@@ -85,7 +85,7 @@ in
     # Game Stuff
     pkgs.master.heroic
     protonup-qt
-    asdf-vm
+    pkgs.master.asdf-vm
     r2modman
     sqlite
 
