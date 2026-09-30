@@ -431,6 +431,7 @@ in {
     port = 7860;
     dataDir = "/mnt/H/comfyui";
     extraArgs = [ "--disable-xformers" "--disable-pinned-memory" ];
+    bundledCustomNodes = false;
   };
 
 
