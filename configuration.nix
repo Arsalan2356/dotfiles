@@ -419,8 +419,8 @@ in {
       HF_HUB_OFFLINE = "1";
       ANALYTICS = "False";
     };
-    package = pkgs.unstable.open-webui.overrideAttrs (old: {
-      propagatedBuildInputs = old.propagatedBuildInputs ++ (with pkgs.unstable.python3Packages; [requests tiktoken pyee]);
+    package = pkgs.master.open-webui.overrideAttrs (old: {
+      propagatedBuildInputs = old.propagatedBuildInputs ++ (with pkgs.master.python3Packages; [requests tiktoken pyee]);
     });
   };
 
