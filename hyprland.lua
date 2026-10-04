@@ -94,6 +94,7 @@ hl.config({
         mouse_move_enables_dpms = true,
         key_press_enables_dpms = true,
         disable_watchdog_warning = true,
+        initial_workspace_tracking = 0,
     },
 })
 
