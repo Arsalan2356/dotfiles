@@ -294,6 +294,8 @@ in {
 
     # AI
     pkgs.master.llama-cpp-vulkan
+
+    pkgs.master.mullvad-compass
   ];
   # Add dev outputs from packages as well (for development packages)
   environment.extraOutputsToInstall = [ "dev" ];
@@ -471,6 +473,13 @@ in {
   services.irqbalance.enable = true;
   services.tumbler.enable = true;
   services.gvfs.enable = true;
+
+
+  services.mullvad-vpn = {
+    package = pkgs.mullvad-vpn;
+    enable = true;
+    enableExcludeWrapper = true;
+  };
 
 
   # Start input-remapper on startup with a delay
