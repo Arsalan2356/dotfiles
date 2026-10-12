@@ -296,6 +296,7 @@ in {
     pkgs.master.llama-cpp-vulkan
 
     pkgs.master.mullvad-compass
+    pkgs.master.plex-desktop
   ];
   # Add dev outputs from packages as well (for development packages)
   environment.extraOutputsToInstall = [ "dev" ];
