@@ -414,6 +414,19 @@ in {
   };
 
 
+  systemd.services.plex.serviceConfig = {
+      ExecStart = lib.mkForce (
+        "/run/wrappers/bin/mullvad-exclude ${pkgs.bash}/bin/bash -c " +
+        "'LD_LIBRARY_PATH=\${LD_LIBRARY_PATH:-/run/opengl-driver/lib} exec ${config.services.plex.package}/bin/plexmediaserver'"
+      );
+
+    NoNewPrivileges = lib.mkForce false;
+    ProtectSystem = lib.mkForce false;
+    ProtectKernelTunables = lib.mkForce false;
+    ProtectControlGroups = lib.mkForce false;
+  };
+
+
   services.open-webui = {
     enable = true;
     port = 8100;
