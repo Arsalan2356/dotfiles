@@ -54,23 +54,40 @@
       url = "github:utensils/comfyui-nix";
     };
 
+    flake-input-patcher.url = "github:jfly/flake-input-patcher";
   };
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  outputs = unpatchedInputs:
   let
-    inherit (self) outputs;
     system = "x86_64-linux";
-  in {
+
+    patcher = unpatchedInputs.flake-input-patcher.lib.x86_64-linux;
+
+    inputs = patcher.patch {
+      inherit unpatchedInputs;
+      flakePath = ./.;
+      patchSpec = {
+	# Patching a direct dependency:
+	cachy-kernel.patches = [
+	  (patcher.fetchpatch {
+	    name = "cachy-kernel: remove binary cache";
+	    url = "https://raw.githubusercontent.com/Arsalan2356/cachy-kernel-patches/refs/heads/master/remove-binary-caches.patch";
+	    hash = "sha256-mx/IWBHaeIXTFyluxNj78Efh9OfSH/c4hmXFsgJXkYA=";
+	  })
+	];
+      };
+    };
+  in rec {
     overlays = import ./overlays { inherit inputs; };
 
     nixosConfigurations = {
-      rc = nixpkgs.lib.nixosSystem {
-	specialArgs = { inherit inputs outputs system; };
+      rc = inputs.nixpkgs.lib.nixosSystem {
+	specialArgs = { inherit inputs overlays system; };
 	modules = [
 	  ./configuration.nix
-	  home-manager.nixosModules.home-manager {
+	  inputs.home-manager.nixosModules.home-manager {
 	    home-manager.useGlobalPkgs = true;
 	    home-manager.useUserPackages = true;
-	    home-manager.extraSpecialArgs = { inherit inputs outputs system; };
+	    home-manager.extraSpecialArgs = { inherit inputs system; };
 	    home-manager.users.rc = import ./home.nix;
 	  }
 	  # inputs.stylix.nixosModules.stylix

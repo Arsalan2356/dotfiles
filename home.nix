@@ -1,4 +1,4 @@
-{ inputs, outputs, config, pkgs, system, ... }:
+{ inputs, config, pkgs, system, ... }:
 let
   tokyonight = pkgs.callPackage ./custom/tokyonight.nix {};
   customOhMyZshTheme = ''

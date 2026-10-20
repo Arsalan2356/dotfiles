@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, outputs, lib, config, pkgs, system, ... }:
+{ inputs, overlays, lib, config, pkgs, system, ... }:
 let
   csystem = system;
   spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
@@ -18,9 +18,9 @@ let
 in {
   nixpkgs = {
     overlays = [
-      outputs.overlays.unstable-packages
-      outputs.overlays.custom-packages
-      outputs.overlays.master-packages
+      overlays.unstable-packages
+      overlays.custom-packages
+      overlays.master-packages
       inputs.cachy-kernel.overlays.default
     ];
     config = {
