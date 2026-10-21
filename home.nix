@@ -83,7 +83,7 @@ in
 
 
     # Game Stuff
-    pkgs.master.heroic
+    pkgs.heroic
     protonup-qt
     pkgs.master.asdf-vm
     r2modman
