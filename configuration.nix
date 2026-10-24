@@ -86,17 +86,17 @@ in {
   fileSystems."/mnt/H" =
     { device = "/dev/disk/by-label/ssd";
       fsType = "ext4";
-      options = [ "relatime" "nofail" ];
+      options = [ "relatime" "commit=60" "nofail" ];
     };
   fileSystems."/mnt/D" =
     { device = "/dev/disk/by-label/hdd";
       fsType = "ext4";
-      options = [ "relatime" "nofail" ];
+      options = [ "relatime" "commit=60" "nofail" ];
     };
   fileSystems."/mnt/G" =
    { device = "/dev/disk/by-label/bhdd";
      fsType = "ext4";
-     options = [ "relatime" "nofail" ];
+     options = [ "relatime" "commit=60" "nofail" ];
    };
   fileSystems."/export/Media/Movies" =
    { device = "/mnt/G/Plex/Media/Movies";
