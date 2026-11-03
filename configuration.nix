@@ -294,6 +294,8 @@ in {
 
     # AI
     pkgs.master.llama-cpp-vulkan
+    pkgs.master.claude-code
+    pkgs.master.claude-monitor
 
     pkgs.master.mullvad-compass
     pkgs.master.plex-desktop
