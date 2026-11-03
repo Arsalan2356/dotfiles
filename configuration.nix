@@ -40,18 +40,6 @@ in {
   # Kernel Packages
   boot.kernelPackages = kernelPkg;
 
-  # Disable GUD until cachyos 7.3
-  boot.kernelPatches = [
-    {
-      name = "disable-drm-gud";
-      patch = null;
-      structuredExtraConfig = {
-	DRM_GUD = lib.kernel.no;
-      };
-    }
-  ];
-
-
   # Load amdgpu kernel module
   boot.initrd.kernelModules = [ "amdgpu" ];
   #
