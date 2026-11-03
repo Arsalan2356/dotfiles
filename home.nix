@@ -311,7 +311,6 @@ function venv_info {
   # plain files is through 'home.file'.
   home.file = {
     # Multiple jdks on system
-    "jdks/jdk8".source = pkgs.unstable.zulu8;
     "jdks/jdk17".source = pkgs.unstable.zulu17;
     "jdks/jdk".source = pkgs.unstable.zulu;
 
