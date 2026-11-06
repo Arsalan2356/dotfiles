@@ -54,6 +54,10 @@
       url = "github:utensils/comfyui-nix";
     };
 
+    fintracker = {
+      url = "git+file:///home/rc/fintracker";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
   let
@@ -78,6 +82,7 @@
 	  inputs.flatpaks.nixosModules.nix-flatpak
 	  inputs.spicetify-nix.nixosModules.spicetify
 	  inputs.comfyui-nix.nixosModules.default
+	  inputs.fintracker.nixosModules.default
 	];
       };
     };

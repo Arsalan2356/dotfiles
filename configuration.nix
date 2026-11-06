@@ -283,10 +283,21 @@ in {
     # AI
     pkgs.master.llama-cpp-vulkan
     pkgs.master.claude-code
+    (symlinkJoin {
+      name = "claude";
+      paths = [ pkgs.master.claude-code ];
+      buildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+	wrapProgram $out/bin/claude \
+	  --prefix PATH : ${lib.makeBinPath [ pkgs.mullvad-vpn ]} \
+	  --run "${pkgs.mullvad-vpn}/bin/mullvad-exclude"
+      '';
+    })
     pkgs.master.claude-monitor
 
     pkgs.master.mullvad-compass
     pkgs.master.plex-desktop
+    pkgs.unstable.nftables
   ];
   # Add dev outputs from packages as well (for development packages)
   environment.extraOutputsToInstall = [ "dev" ];
@@ -670,6 +681,70 @@ in {
 
   # 610 docker
   virtualisation.docker.enable = true;
+
+
+  # Custom service
+  services.fintracker = {
+    enable = true;
+    timezone = "America/New_York";
+    environmentFile = "/var/lib/fintracker/fintracker.env";
+    backup.directories = [
+      "/mnt/D/fintracker-backups"
+      "/mnt/G/fintracker-backups"
+    ];
+  };
+
+  networking.hosts."100.102.213.14" = [ "nixos.tail65c93c.ts.net" ];
+
+  systemd.services.tailscale-mullvad =
+    let
+      nft = "${pkgs.nftables}/bin/nft";
+      rules = pkgs.writeText "tailscale-mullvad.nft" ''
+        table inet tailscale_mullvad
+        delete table inet tailscale_mullvad
+        table inet tailscale_mullvad {
+          chain out {
+            type filter hook output priority -151; policy accept;
+            meta mark & 0x00ff0000 == 0x00080000 ct mark set 0x00000f41
+            oifname "tailscale0" ct mark set 0x00000f41
+          }
+          chain in {
+            type filter hook input priority -151; policy accept;
+            iifname "tailscale0" ct mark set 0x00000f41
+          }
+        }
+      '';
+    in
+    {
+      description = "Let Tailscale traffic bypass Mullvad";
+      wantedBy = [ "multi-user.target" ];
+      before = [ "tailscaled.service" ];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+        ExecStart = "${nft} -f ${rules}";
+        ExecStop = "${nft} delete table inet tailscale_mullvad";
+      };
+    };
+
+  systemd.services.tailscale-mullvad-dns =
+  {
+    description = "Allow Mullvad DNS through Tailscale firewall";
+    wantedBy = [ "multi-user.target" ];
+    requires = [ "tailscaled.service" ];
+    after = [ "tailscaled.service" ];
+    partOf = [ "tailscaled.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      Restart = "on-failure";
+      RestartSec = 5;
+      ExecStart = ''
+	${pkgs.bash}/bin/bash -c "${pkgs.iptables}/bin/iptables -C ts-input -i wg0-mullvad -s 100.64.0.3 -j ACCEPT 2>/dev/null || ${pkgs.iptables}/bin/iptables -I ts-input 1 -i wg0-mullvad -s 100.64.0.3 -j ACCEPT"
+      '';
+    };
+  };
+
 
 
   # Firewall for NFS
