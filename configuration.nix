@@ -731,9 +731,9 @@ in {
   {
     description = "Allow Mullvad DNS through Tailscale firewall";
     wantedBy = [ "multi-user.target" ];
-    requires = [ "tailscaled.service" ];
-    after = [ "tailscaled.service" ];
-    partOf = [ "tailscaled.service" ];
+    requires = [ "tailscaled.service" "tailscale-mullvad.service" ];
+    after = [ "tailscaled.service" "tailscale-mullvad.service" ];
+    partOf = [ "tailscaled.service"  ];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
