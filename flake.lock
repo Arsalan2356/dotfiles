@@ -46,11 +46,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794052849,
-        "narHash": "sha256-3E0UuZO0oTbz3Uy+zebfhHjjCy5onviPab2O5pw3nb0=",
+        "lastModified": 1794126215,
+        "narHash": "sha256-cC8Y99mnDsnRUnPKG6xCKZC+d301gQ+qA3r8PJUut+I=",
         "ref": "refs/heads/main",
-        "rev": "40becc97ea4298542dd76bc14b64aad4295d1bac",
-        "revCount": 8,
+        "rev": "d5aca286f811451b2793742567afac94b4749c57",
+        "revCount": 15,
         "type": "git",
         "url": "file:///home/rc/fintracker"
       },
