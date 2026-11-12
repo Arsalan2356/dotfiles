@@ -39,7 +39,7 @@ in
     php83Packages.composer
     php
     rustup
-    julia_111-bin
+    julia-stable-bin
     curlFull
     libdbusmenu-gtk3
     jc
