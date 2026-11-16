@@ -13,9 +13,6 @@ let
       lto = "full";
       bbr3 = true;
       processorOpt = "native";
-      structuredExtraConfig = {
-	DEBUG_INFO_BTF = lib.mkForce lib.kernel.no;
-      };
     }
   );
 in {
