@@ -58,6 +58,10 @@
       url = "git+file:///home/rc/fintracker";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+
+    hermes-agent.url = "github:NousResearch/hermes-agent";
+    hermes-webui.url = "github:nesquena/hermes-webui";
+
   };
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
   let
@@ -83,6 +87,8 @@
 	  inputs.spicetify-nix.nixosModules.spicetify
 	  inputs.comfyui-nix.nixosModules.default
 	  inputs.fintracker.nixosModules.default
+	  inputs.hermes-agent.nixosModules.default
+	  inputs.hermes-webui.nixosModules.default
 	];
       };
     };

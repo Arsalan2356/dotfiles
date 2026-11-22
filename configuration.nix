@@ -174,7 +174,7 @@ in {
   users.users.rc = {
     isNormalUser = true;
     description = "rc";
-    extraGroups = [ "networkmanager" "wheel" "kvm" "input" "gamemode" "docker" "plocate" "comfyui" ];
+    extraGroups = [ "networkmanager" "wheel" "kvm" "input" "gamemode" "docker" "plocate" "comfyui" "hermes" ];
     useDefaultShell = true;
     shell = pkgs.unstable.zsh;
   };
@@ -746,6 +746,40 @@ in {
 	${pkgs.bash}/bin/bash -c "${pkgs.iptables}/bin/iptables -C ts-input -i wg0-mullvad -s 100.64.0.3 -j ACCEPT 2>/dev/null || ${pkgs.iptables}/bin/iptables -I ts-input 1 -i wg0-mullvad -s 100.64.0.3 -j ACCEPT"
       '';
     };
+  };
+
+
+  services.hermes-agent = {
+    enable = true;
+    addToSystemPackages = true;
+
+    settings = {
+      providers."local-llama" = {
+        name = "Local llama-server";
+        base_url = "http://127.0.0.1:8200/v1";
+        default_model = "Gemma4-26B-UC-Q4";
+        discover_models = false;
+        models."Gemma4-26B-UC-Q4".context_length = 262144;
+      };
+      model = {
+        default = "Gemma4-26B-UC-Q4";
+        provider = "custom:local-llama";
+        base_url = "http://127.0.0.1:8200/v1";
+        context_length = 262144;
+      };
+      model_catalog.excluded_providers = [ "nous" "anthropic" ];
+    };
+  };
+
+  services.hermes-webui = {
+    enable = true;
+    host = "127.0.0.1";
+    port = 8787;
+    stateDir = "/var/lib/hermes-webui";
+    user = "hermes";
+    group = "hermes";
+    hermesHome = "/var/lib/hermes/.hermes";
+    agent.package = inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
 
 
