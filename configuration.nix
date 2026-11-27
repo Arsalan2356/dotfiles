@@ -768,6 +768,36 @@ in {
         context_length = 262144;
       };
       model_catalog.excluded_providers = [ "nous" "anthropic" ];
+
+      # Image generation through the local ComfyUI server (services.comfyui, port 7860),
+      # using the workflow + plugin installed by hermesHomeFiles below.
+      plugins.enabled = [ "image_gen/comfyui" ];
+      image_gen = {
+        provider = "comfyui";
+        comfyui = {
+          host = "http://127.0.0.1:7860";
+          workflow = "Flux2-Klein-GGUF.json"; # relative to HERMES_HOME
+          timeout = 600;
+        };
+      };
+
+      # Hermes' default deferred-tool list minus "image_generate", so the image tool is
+      # always loaded instead of hidden behind tool search. This list REPLACES the default,
+      # so tools Hermes adds to its default in future versions won't be deferred here.
+      tools.tool_search.defer = [
+        "computer_use" "session_search" "todo_list" "process_manage" "cronjob_manage"
+        "browser_vault" "text_to_speech" "manage_connections"
+        "drive_preview" "gui_tour" "desktop_preview" "annotate_preview" "manage_catalog"
+        "show_tip" "desktop_project" "close_terminal"
+        "set_theme" "read_terminal" "read_window_below" "focus_pane"
+      ];
+    };
+
+    # Copied (not symlinked) into /var/lib/hermes/.hermes on each activation.
+    hermesHomeFiles = {
+      "plugins/image_gen/comfyui/plugin.yaml" = ./hermes/comfyui/plugin.yaml;
+      "plugins/image_gen/comfyui/__init__.py" = ./hermes/comfyui/__init__.py;
+      "Flux2-Klein-GGUF.json" = ./hermes/Flux2-Klein-GGUF.json;
     };
   };
 

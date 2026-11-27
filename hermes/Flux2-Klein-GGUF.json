@@ -1,0 +1,248 @@
+{
+  "135": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "131:110",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "131:107": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "131:108": {
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "131:109": {
+    "inputs": {
+      "noise": [
+        "131:114",
+        0
+      ],
+      "guider": [
+        "131:105",
+        0
+      ],
+      "sampler": [
+        "131:107",
+        0
+      ],
+      "sigmas": [
+        "131:112",
+        0
+      ],
+      "latent_image": [
+        "131:113",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "131:110": {
+    "inputs": {
+      "samples": [
+        "131:109",
+        0
+      ],
+      "vae": [
+        "131:108",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "131:113": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyFlux2LatentImage",
+    "_meta": {
+      "title": "Empty Flux 2 Latent"
+    }
+  },
+  "131:114": {
+    "inputs": {
+      "noise_seed": 549742334301023
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "RandomNoise"
+    }
+  },
+  "131:118": {
+    "inputs": {
+      "value": 20
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Steps"
+    }
+  },
+  "131:134": {
+    "inputs": {
+      "unet_name": "flux-2-klein-9b-Q5_K_M.gguf"
+    },
+    "class_type": "UnetLoaderGGUF",
+    "_meta": {
+      "title": "Unet Loader (GGUF)"
+    }
+  },
+  "131:133": {
+    "inputs": {
+      "clip_name": "flux2-klein-9b-uncensored-text-encoder-q5_k_m.gguf",
+      "type": "flux2"
+    },
+    "class_type": "CLIPLoaderGGUF",
+    "_meta": {
+      "title": "CLIPLoader (GGUF)"
+    }
+  },
+  "131:115": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "131:133",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "131:117": {
+    "inputs": {
+      "switch": true,
+      "on_false": [
+        "131:134",
+        0
+      ],
+      "on_true": [
+        "131:116",
+        0
+      ]
+    },
+    "class_type": "ComfySwitchNode",
+    "_meta": {
+      "title": "Switch(model)"
+    }
+  },
+  "131:120": {
+    "inputs": {
+      "switch": true,
+      "on_false": [
+        "131:118",
+        0
+      ],
+      "on_true": [
+        "131:119",
+        0
+      ]
+    },
+    "class_type": "ComfySwitchNode",
+    "_meta": {
+      "title": "Switch(steps)"
+    }
+  },
+  "131:112": {
+    "inputs": {
+      "steps": [
+        "131:120",
+        0
+      ],
+      "width": 1024,
+      "height": 1024
+    },
+    "class_type": "Flux2Scheduler",
+    "_meta": {
+      "title": "Flux2Scheduler"
+    }
+  },
+  "131:105": {
+    "inputs": {
+      "model": [
+        "131:117",
+        0
+      ],
+      "conditioning": [
+        "131:106",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "Basic Guider"
+    }
+  },
+  "131:119": {
+    "inputs": {
+      "value": 8
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Steps"
+    }
+  },
+  "131:106": {
+    "inputs": {
+      "guidance": 4,
+      "conditioning": [
+        "131:115",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "131:116": {
+    "inputs": {
+      "lora_name": "klein_lora1.safetensors",
+      "strength_model": 1,
+      "model": [
+        "131:134",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "131:137": {
+    "inputs": {
+      "lora_name": "klein_lora2.safetensors",
+      "strength_model": 1
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+name: comfyui
+version: 1.0.0
+description: "Local ComfyUI backend: runs a user-supplied API-format workflow (prompt/seed/size injected) and saves the result to $HERMES_HOME/cache/generated/images/."
+author: local
+kind: backend
