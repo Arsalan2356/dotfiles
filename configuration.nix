@@ -760,7 +760,11 @@ in {
         default_model = "Gemma4-26B-UC-Q4";
         discover_models = false;
         models."Gemma4-26B-UC-Q4".context_length = 262144;
+        # Ask llama-server for at most one tool call per assistant turn.
+        extra_body.parallel_tool_calls = false;
       };
+      # Don't tell the model to batch independent tool calls into one turn.
+      agent.parallel_tool_call_guidance = false;
       model = {
         default = "Gemma4-26B-UC-Q4";
         provider = "custom:local-llama";
